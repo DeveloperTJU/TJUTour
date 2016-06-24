@@ -12,10 +12,24 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var databasePath:String!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let dirParh = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let docsDir = dirParh[0] as NSString
+        self.databasePath = docsDir.stringByAppendingPathComponent("task.db")
+        
+        let screenFrame = UIScreen.mainScreen().bounds
+        self.window = UIWindow(frame: screenFrame)
+        self.window?.backgroundColor = .whiteColor()
+        self.window?.makeKeyAndVisible()
+        
+        UITextField.appearance().font = UIFont(name: "HelveticaNeue-Thin", size: 13.0)
+        UITextField.appearance().tintColor = .blackColor()
+        
+        self.window?.rootViewController = HomeViewController()
+        
         return true
     }
 

@@ -8,11 +8,14 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class BaseCell: UITableViewCell {
 
+    var cellImage:UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let imageFrame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.width * 9 / 16)
+        cellImage = UIImageView(frame: imageFrame)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
