@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */; };
-		A5C960711D1CC08900ABA0EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C9606F1D1CC08900ABA0EF /* Main.storyboard */; };
 		A5C960731D1CC08900ABA0EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C960721D1CC08900ABA0EF /* Assets.xcassets */; };
 		A5C960761D1CC08900ABA0EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */; };
 		A5C9608B1D1CC27600ABA0EF /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C9607F1D1CC27600ABA0EF /* AFHTTPSessionManager.m */; };
@@ -56,7 +55,6 @@
 /* Begin PBXFileReference section */
 		A5C960681D1CC08900ABA0EF /* 掌上天大.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "掌上天大.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A5C960701D1CC08900ABA0EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5C960721D1CC08900ABA0EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5C960751D1CC08900ABA0EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5C960771D1CC08900ABA0EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 				A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */,
 				A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */,
 				A5C960ED1D1CC6C600ABA0EF /* Home */,
-				A5C9606F1D1CC08900ABA0EF /* Main.storyboard */,
 				A5C960721D1CC08900ABA0EF /* Assets.xcassets */,
 				A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */,
 				A5C960771D1CC08900ABA0EF /* Info.plist */,
@@ -400,7 +397,6 @@
 				A5C960731D1CC08900ABA0EF /* Assets.xcassets in Resources */,
 				A5C960CE1D1CC28100ABA0EF /* MJRefresh.bundle in Resources */,
 				A5C960E61D1CC28D00ABA0EF /* Info.plist in Resources */,
-				A5C960711D1CC08900ABA0EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,14 +451,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A5C9606F1D1CC08900ABA0EF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A5C960701D1CC08900ABA0EF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -598,6 +586,7 @@
 				A5C9607C1D1CC08900ABA0EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
