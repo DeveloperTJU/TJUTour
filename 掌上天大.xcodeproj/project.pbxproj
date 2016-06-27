@@ -50,6 +50,12 @@
 		A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */; };
 		A5C960F91D1CC7DB00ABA0EF /* CustomNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */; };
 		A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */; };
+		A862F9561D20F8BC00EBD06B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */; };
+		A862F9571D20F8BC00EBD06B /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */; };
+		A862F95B1D20FEE100EBD06B /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */; };
+		A862F95D1D2100EB00EBD06B /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F95C1D2100EB00EBD06B /* MyNavigationController.swift */; };
+		A862F9621D21078300EBD06B /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9611D21078300EBD06B /* ViewController1.swift */; };
+		A862F9641D21078D00EBD06B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9631D21078D00EBD06B /* ViewController2.swift */; };
 		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
 		A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */; };
 /* End PBXBuildFile section */
@@ -134,6 +140,12 @@
 		A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavController.swift; sourceTree = "<group>"; };
 		A5C960FA1D1CC83200ABA0EF /* 掌上天大-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "掌上天大-Bridging-Header.h"; sourceTree = "<group>"; };
 		A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
+		A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
+		A862F95C1D2100EB00EBD06B /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		A862F9611D21078300EBD06B /* ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
+		A862F9631D21078D00EBD06B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +182,7 @@
 		A5C9606A1D1CC08900ABA0EF /* 掌上天大 */ = {
 			isa = PBXGroup;
 			children = (
+				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
 				A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */,
 				A5C960FA1D1CC83200ABA0EF /* 掌上天大-Bridging-Header.h */,
 				A5C960EB1D1CC42500ABA0EF /* BaseCell.swift */,
@@ -184,6 +197,8 @@
 				A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */,
 				A5C960771D1CC08900ABA0EF /* Info.plist */,
 				A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */,
+				A862F9611D21078300EBD06B /* ViewController1.swift */,
+				A862F9631D21078D00EBD06B /* ViewController2.swift */,
 			);
 			path = "掌上天大";
 			sourceTree = "<group>";
@@ -341,6 +356,17 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		A862F95E1D2101F400EBD06B /* 侧滑菜单 */ = {
+			isa = PBXGroup;
+			children = (
+				A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */,
+				A862F95C1D2100EB00EBD06B /* MyNavigationController.swift */,
+				A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */,
+				A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */,
+			);
+			name = "侧滑菜单";
+			sourceTree = "<group>";
+		};
 		A8CC3D001D20BB1A00A44AD1 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,6 +471,7 @@
 				A5C9608C1D1CC27600ABA0EF /* AFNetworkReachabilityManager.m in Sources */,
 				A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */,
 				A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */,
+				A862F9571D20F8BC00EBD06B /* ENSideMenuNavigationController.swift in Sources */,
 				A5C960C21D1CC28100ABA0EF /* MJRefreshComponent.m in Sources */,
 				A5C960CA1D1CC28100ABA0EF /* MJRefreshBackStateFooter.m in Sources */,
 				A5C960C41D1CC28100ABA0EF /* MJRefreshHeader.m in Sources */,
@@ -453,11 +480,16 @@
 				A5C960C61D1CC28100ABA0EF /* MJRefreshAutoNormalFooter.m in Sources */,
 				A5C960D01D1CC28100ABA0EF /* NSBundle+MJRefresh.m in Sources */,
 				A5C960D31D1CC28100ABA0EF /* UIView+MJExtension.m in Sources */,
+				A862F95D1D2100EB00EBD06B /* MyNavigationController.swift in Sources */,
 				A5C960C01D1CC28100ABA0EF /* MJRefreshAutoFooter.m in Sources */,
 				A5C960F91D1CC7DB00ABA0EF /* CustomNavController.swift in Sources */,
+				A862F9621D21078300EBD06B /* ViewController1.swift in Sources */,
+				A862F9641D21078D00EBD06B /* ViewController2.swift in Sources */,
 				A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */,
+				A862F9561D20F8BC00EBD06B /* ENSideMenu.swift in Sources */,
 				A5C960E41D1CC28D00ABA0EF /* FMDatabaseQueue.m in Sources */,
 				A5C960C91D1CC28100ABA0EF /* MJRefreshBackNormalFooter.m in Sources */,
+				A862F95B1D20FEE100EBD06B /* MyMenuTableViewController.swift in Sources */,
 				A5C960C11D1CC28100ABA0EF /* MJRefreshBackFooter.m in Sources */,
 				A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */,
 				A5C960F51D1CC7DB00ABA0EF /* ImageHelper.swift in Sources */,
