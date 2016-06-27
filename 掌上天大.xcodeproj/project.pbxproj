@@ -50,6 +50,8 @@
 		A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */; };
 		A5C960F91D1CC7DB00ABA0EF /* CustomNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */; };
 		A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */; };
+		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
+		A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +134,8 @@
 		A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavController.swift; sourceTree = "<group>"; };
 		A5C960FA1D1CC83200ABA0EF /* 掌上天大-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "掌上天大-Bridging-Header.h"; sourceTree = "<group>"; };
 		A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,10 +178,12 @@
 				A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */,
 				A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */,
 				A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */,
+				A8CC3D001D20BB1A00A44AD1 /* Favorite */,
 				A5C960ED1D1CC6C600ABA0EF /* Home */,
 				A5C960721D1CC08900ABA0EF /* Assets.xcassets */,
 				A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */,
 				A5C960771D1CC08900ABA0EF /* Info.plist */,
+				A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */,
 			);
 			path = "掌上天大";
 			sourceTree = "<group>";
@@ -335,6 +341,14 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		A8CC3D001D20BB1A00A44AD1 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */,
+			);
+			name = Favorite;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -420,6 +434,7 @@
 				A5C960E31D1CC28D00ABA0EF /* FMDatabasePool.m in Sources */,
 				A5C9608D1D1CC27600ABA0EF /* AFSecurityPolicy.m in Sources */,
 				A5C960C71D1CC28100ABA0EF /* MJRefreshAutoStateFooter.m in Sources */,
+				A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */,
 				A5C960D21D1CC28100ABA0EF /* UIScrollView+MJRefresh.m in Sources */,
 				A5C960F71D1CC7DB00ABA0EF /* RequestClient.swift in Sources */,
 				A5C960CF1D1CC28100ABA0EF /* MJRefreshConst.m in Sources */,
@@ -429,6 +444,7 @@
 				A5C960CD1D1CC28100ABA0EF /* MJRefreshStateHeader.m in Sources */,
 				A5C9608C1D1CC27600ABA0EF /* AFNetworkReachabilityManager.m in Sources */,
 				A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */,
+				A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */,
 				A5C960C21D1CC28100ABA0EF /* MJRefreshComponent.m in Sources */,
 				A5C960CA1D1CC28100ABA0EF /* MJRefreshBackStateFooter.m in Sources */,
 				A5C960C41D1CC28100ABA0EF /* MJRefreshHeader.m in Sources */,
