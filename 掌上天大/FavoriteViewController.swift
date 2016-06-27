@@ -26,7 +26,9 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         leftBtn.title="菜单";
         leftBtn.tintColor=UIColor.whiteColor();
         self.navigationItem.leftBarButtonItem=leftBtn;
-        
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         // Do any additional setup after loading the view.
     }
     
@@ -42,6 +44,16 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
+                   forRowAtIndexPath indexPath: NSIndexPath){
+        //设置cell的显示动画为3D缩放
+        //xy方向缩放的初始值为0.1
+        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+        //设置动画时间为0.25秒，xy方向缩放的最终值为1
+        UIView.animateWithDuration(0.25, animations: {
+            cell.layer.transform=CATransform3DMakeScale(1, 1, 1)
+        })
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
