@@ -12,6 +12,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var mainTableView:UITableView!
     var dataArr = [String]()                //数据源
+    let backgroundImage = UIImage()
+    var blurView:UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +27,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         self.mainTableView.backgroundColor = .clearColor()
         self.mainTableView.separatorStyle = .None
+        let blurEffect = UIBlurEffect(style: .Light)
+        self.blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame.size = CGSize(width: view.frame.width, height: 64)
+        self.navigationController?.view.addSubview(self.blurView)
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(backgroundImage, forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = backgroundImage
         let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
         let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
         self.navigationItem.leftBarButtonItems = [mapButton]
         self.navigationItem.rightBarButtonItems = [searchButton]
-        self.navigationController?.navigationBar.translucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
     }
     
     func loadData(){
@@ -40,6 +47,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.dataArr.append("789")
     }
     
+    func openMap(){
+        
+    }
+    
+    func search(){
+        
+    }
     
     func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
         return 10
@@ -98,4 +112,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: true)
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.blurView.alpha = (scrollView.contentOffset.y + 64) / 150
+    }
 }
