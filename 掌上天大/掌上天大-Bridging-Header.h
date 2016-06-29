@@ -5,3 +5,4 @@
 #import "FMDatabaseQueue.h"
 #import "AFNetworking.h"
 #import "MJRefresh.h"
+#import "iCarousel.h"

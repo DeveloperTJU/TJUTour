@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let dirParh = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let docsDir = dirParh[0] as NSString
-        self.databasePath = docsDir.stringByAppendingPathComponent("task.db")
+        self.databasePath = docsDir.stringByAppendingPathComponent("data.db")
         
         let screenFrame = UIScreen.mainScreen().bounds
         self.window = UIWindow(frame: screenFrame)
@@ -27,11 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITextField.appearance().font = UIFont(name: "HelveticaNeue-Thin", size: 13.0)
         UITextField.appearance().tintColor = .blackColor()
-        self.window?.rootViewController = MyNavigationController(menuViewController: MyMenuTableViewController(), contentViewController: FavoriteViewController())
-//        let VC=TestViewController()
-//        
-//        let navigationC=UINavigationController(rootViewController: VC)
-//        self.window?.rootViewController=navigationC
+        self.window?.rootViewController = MyNavigationController(menuViewController: MyMenuTableViewController(), contentViewController: HomeViewController())
+
         return true
     }
 
