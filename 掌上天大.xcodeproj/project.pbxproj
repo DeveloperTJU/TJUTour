@@ -207,8 +207,7 @@
 				A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */,
 				A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */,
 				A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */,
-
-				C3D124051D20EBC4006FAB34 /* DetailViewController.swift */,
+				C31732941D236EA200F0FAA9 /* Detail */,
 				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
 				A8CC3D001D20BB1A00A44AD1 /* Favorite */,
 				A5C960ED1D1CC6C600ABA0EF /* Home */,
@@ -393,6 +392,14 @@
 				A84A23231D22B269006A01FA /* TestViewController.swift */,
 			);
 			name = Favorite;
+			sourceTree = "<group>";
+		};
+		C31732941D236EA200F0FAA9 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C3D124051D20EBC4006FAB34 /* DetailViewController.swift */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

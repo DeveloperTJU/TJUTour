@@ -115,7 +115,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: true)
+        let detailVC = DetailViewController()
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
