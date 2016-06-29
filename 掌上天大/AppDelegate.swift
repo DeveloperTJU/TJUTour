@@ -27,7 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITextField.appearance().font = UIFont(name: "HelveticaNeue-Thin", size: 13.0)
         UITextField.appearance().tintColor = .blackColor()
+<<<<<<< Updated upstream
         self.window?.rootViewController = MyNavigationController(menuViewController: MyMenuTableViewController(), contentViewController: HomeViewController())
+=======
+<<<<<<< HEAD
+//        let a = UINavigationController(rootViewController: FavoriteViewController())
+//        self.window?.rootViewController = a
+        let b = UINavigationController(rootViewController: DetailViewController())
+        self.window?.rootViewController = b
+        
+=======
+        self.window?.rootViewController = MyNavigationController(menuViewController: MyMenuTableViewController(), contentViewController: HomeViewController())
+>>>>>>> origin/master
+>>>>>>> Stashed changes
         return true
     }
 

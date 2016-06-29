@@ -60,6 +60,7 @@
 		A862F9641D21078D00EBD06B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9631D21078D00EBD06B /* ViewController2.swift */; };
 		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
 		A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */; };
+		C3D124061D20EBC4006FAB34 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D124051D20EBC4006FAB34 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +154,7 @@
 		A862F9631D21078D00EBD06B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
+		C3D124051D20EBC4006FAB34 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,7 +207,15 @@
 				A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */,
 				A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */,
 				A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */,
+<<<<<<< Updated upstream
 				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
+=======
+<<<<<<< HEAD
+				C3D124051D20EBC4006FAB34 /* DetailViewController.swift */,
+=======
+				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 				A8CC3D001D20BB1A00A44AD1 /* Favorite */,
 				A5C960ED1D1CC6C600ABA0EF /* Home */,
 				A5C960721D1CC08900ABA0EF /* Assets.xcassets */,
@@ -474,6 +484,7 @@
 				A5C960EC1D1CC42500ABA0EF /* BaseCell.swift in Sources */,
 				A5C960E51D1CC28D00ABA0EF /* FMResultSet.m in Sources */,
 				A5C960901D1CC27600ABA0EF /* AFURLSessionManager.m in Sources */,
+				C3D124061D20EBC4006FAB34 /* DetailViewController.swift in Sources */,
 				A5C960E31D1CC28D00ABA0EF /* FMDatabasePool.m in Sources */,
 				A5C9608D1D1CC27600ABA0EF /* AFSecurityPolicy.m in Sources */,
 				A5C960C71D1CC28100ABA0EF /* MJRefreshAutoStateFooter.m in Sources */,
