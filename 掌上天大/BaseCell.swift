@@ -11,7 +11,7 @@ import UIKit
 class BaseCell: UITableViewCell {
 
     var cellImage = UIImageView(frame: CGRectMake(10, 5, UIScreen.mainScreen().bounds.width - 20, (UIScreen.mainScreen().bounds.width - 20) * 9 / 16))
-    var detailLabel = UILabel(frame: CGRectMake(5, UIScreen.mainScreen().bounds.width * 9 / 16 - 25, 200, 20))
+    var detailLabel = UILabel(frame: CGRectMake(15, (UIScreen.mainScreen().bounds.width - 20) * 9 / 16 - 15, 200, 20))
     
     override func awakeFromNib() {
         super.awakeFromNib()

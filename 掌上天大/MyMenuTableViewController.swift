@@ -90,7 +90,7 @@ class MyMenuTableViewController: UITableViewController {
         case 1:
             destViewController = FavoriteViewController()
         default:
-            destViewController = ViewController2()
+            destViewController = SetupViewController()
             break
         }
         sideMenuController()?.setContentViewController(destViewController)
