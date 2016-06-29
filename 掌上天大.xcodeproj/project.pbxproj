@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BBB7BB61D238D4E009FB4DB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB7BB51D238D4E009FB4DB /* SearchViewController.swift */; };
 		8509C2741D23744D00639CE5 /* BaiduMapOfTJUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509C2731D23744D00639CE5 /* BaiduMapOfTJUViewController.swift */; };
 		A5AD8B3B1D22E0460017ED19 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AD8B3A1D22E0460017ED19 /* iCarousel.m */; };
 		A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BBB7BB51D238D4E009FB4DB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8509C2731D23744D00639CE5 /* BaiduMapOfTJUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiduMapOfTJUViewController.swift; sourceTree = "<group>"; };
 		9C3A251F75B04971089B66C7 /* Pods-掌上天大.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-掌上天大.debug.xcconfig"; path = "Pods/Target Support Files/Pods-掌上天大/Pods-掌上天大.debug.xcconfig"; sourceTree = "<group>"; };
 		A5AD8B391D22E0460017ED19 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
@@ -176,6 +178,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BBB7BB41D238D1B009FB4DB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				5BBB7BB51D238D4E009FB4DB /* SearchViewController.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		8509C2721D23741900639CE5 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +238,7 @@
 				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
 				A8CC3D001D20BB1A00A44AD1 /* Favorite */,
 				A5C960ED1D1CC6C600ABA0EF /* Home */,
+				5BBB7BB41D238D1B009FB4DB /* Search */,
 				A5C960721D1CC08900ABA0EF /* Assets.xcassets */,
 				A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */,
 				A5C960771D1CC08900ABA0EF /* Info.plist */,
@@ -555,6 +566,7 @@
 				A84A23241D22B269006A01FA /* TestViewController.swift in Sources */,
 				A5C9608B1D1CC27600ABA0EF /* AFHTTPSessionManager.m in Sources */,
 				A5C960F61D1CC7DB00ABA0EF /* DatabaseService.swift in Sources */,
+				5BBB7BB61D238D4E009FB4DB /* SearchViewController.swift in Sources */,
 				A5C960C81D1CC28100ABA0EF /* MJRefreshBackGifFooter.m in Sources */,
 				A5C960C51D1CC28100ABA0EF /* MJRefreshAutoGifFooter.m in Sources */,
 				A5C960E11D1CC28D00ABA0EF /* FMDatabase.m in Sources */,
