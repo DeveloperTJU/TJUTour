@@ -84,18 +84,16 @@ class MyMenuTableViewController: UITableViewController {
         switch (indexPath.row) {
         case 0:
             destViewController = FavoriteViewController()
-            destViewController.navigationItem.leftBarButtonItem=leftBtn;
             break
         case 1:
             destViewController = ViewController1()
-            destViewController.navigationItem.leftBarButtonItem=leftBtn;
             break
         
         default:
             destViewController = ViewController2()
-            destViewController.navigationItem.leftBarButtonItem=leftBtn;
             break
         }
+        destViewController.navigationItem.leftBarButtonItem=leftBtn;
         sideMenuController()?.setContentViewController(destViewController)
     }
     func actionBack(){
