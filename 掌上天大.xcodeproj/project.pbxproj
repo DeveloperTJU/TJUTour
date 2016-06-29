@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8509C2741D23744D00639CE5 /* BaiduMapOfTJUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509C2731D23744D00639CE5 /* BaiduMapOfTJUViewController.swift */; };
 		A5AD8B3B1D22E0460017ED19 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AD8B3A1D22E0460017ED19 /* iCarousel.m */; };
 		A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */; };
 		A5C960731D1CC08900ABA0EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C960721D1CC08900ABA0EF /* Assets.xcassets */; };
@@ -60,10 +61,13 @@
 		A862F9641D21078D00EBD06B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9631D21078D00EBD06B /* ViewController2.swift */; };
 		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
 		A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */; };
+		C3B1EDD142FE33F407179B93 /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFAF80E2D79C889ADB5635C4 /* Pods_____.framework */; };
 		C3D124061D20EBC4006FAB34 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D124051D20EBC4006FAB34 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8509C2731D23744D00639CE5 /* BaiduMapOfTJUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiduMapOfTJUViewController.swift; sourceTree = "<group>"; };
+		9C3A251F75B04971089B66C7 /* Pods-掌上天大.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-掌上天大.debug.xcconfig"; path = "Pods/Target Support Files/Pods-掌上天大/Pods-掌上天大.debug.xcconfig"; sourceTree = "<group>"; };
 		A5AD8B391D22E0460017ED19 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		A5AD8B3A1D22E0460017ED19 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		A5C960681D1CC08900ABA0EF /* 掌上天大.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "掌上天大.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +159,8 @@
 		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 		C3D124051D20EBC4006FAB34 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DFAF80E2D79C889ADB5635C4 /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_____.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE26D1251A6032D6CD42DCF1 /* Pods-掌上天大.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-掌上天大.release.xcconfig"; path = "Pods/Target Support Files/Pods-掌上天大/Pods-掌上天大.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,12 +169,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5C960E91D1CC3D800ABA0EF /* libsqlite3.0.tbd in Frameworks */,
+				C3B1EDD142FE33F407179B93 /* Pods_____.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8509C2721D23741900639CE5 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				8509C2731D23744D00639CE5 /* BaiduMapOfTJUViewController.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		A5AD8B381D22E0460017ED19 /* iCarousel */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +199,7 @@
 				A5C960E71D1CC29300ABA0EF /* Frameworks */,
 				A5C9606A1D1CC08900ABA0EF /* 掌上天大 */,
 				A5C960691D1CC08900ABA0EF /* Products */,
+				A85118C19DFC39B43DD0D4BE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -207,6 +223,7 @@
 				A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */,
 				A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */,
 				A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */,
+				8509C2721D23741900639CE5 /* Map */,
 				C31732941D236EA200F0FAA9 /* Detail */,
 				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
 				A8CC3D001D20BB1A00A44AD1 /* Favorite */,
@@ -362,6 +379,7 @@
 				A5AD8B381D22E0460017ED19 /* iCarousel */,
 				A5C960911D1CC28100ABA0EF /* MJRefresh */,
 				A5C9607D1D1CC27600ABA0EF /* AFNetworking */,
+				DFAF80E2D79C889ADB5635C4 /* Pods_____.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -372,6 +390,15 @@
 				A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		A85118C19DFC39B43DD0D4BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C3A251F75B04971089B66C7 /* Pods-掌上天大.debug.xcconfig */,
+				FE26D1251A6032D6CD42DCF1 /* Pods-掌上天大.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		A862F95E1D2101F400EBD06B /* 侧滑菜单 */ = {
@@ -409,9 +436,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5C9607A1D1CC08900ABA0EF /* Build configuration list for PBXNativeTarget "掌上天大" */;
 			buildPhases = (
+				F20C3127035E975827EBB329 /* [CP] Check Pods Manifest.lock */,
 				A5C960641D1CC08900ABA0EF /* Sources */,
 				A5C960651D1CC08900ABA0EF /* Frameworks */,
 				A5C960661D1CC08900ABA0EF /* Resources */,
+				53E411EEFFE362E20FDDC6F1 /* [CP] Embed Pods Frameworks */,
+				BF2B4DF0A0AD08BF72A25093 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -469,6 +499,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		53E411EEFFE362E20FDDC6F1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-掌上天大/Pods-掌上天大-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF2B4DF0A0AD08BF72A25093 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-掌上天大/Pods-掌上天大-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F20C3127035E975827EBB329 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A5C960641D1CC08900ABA0EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -490,6 +568,7 @@
 				A5C9608D1D1CC27600ABA0EF /* AFSecurityPolicy.m in Sources */,
 				A5C960C71D1CC28100ABA0EF /* MJRefreshAutoStateFooter.m in Sources */,
 				A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */,
+				8509C2741D23744D00639CE5 /* BaiduMapOfTJUViewController.swift in Sources */,
 				A5AD8B3B1D22E0460017ED19 /* iCarousel.m in Sources */,
 				A5C960D21D1CC28100ABA0EF /* UIScrollView+MJRefresh.m in Sources */,
 				A5C960F71D1CC7DB00ABA0EF /* RequestClient.swift in Sources */,
@@ -623,11 +702,12 @@
 		};
 		A5C9607B1D1CC08900ABA0EF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C3A251F75B04971089B66C7 /* Pods-掌上天大.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "掌上天大/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hui.----";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tju.scs.TJUTour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "掌上天大/掌上天大-Bridging-Header.h";
 			};
@@ -635,11 +715,12 @@
 		};
 		A5C9607C1D1CC08900ABA0EF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE26D1251A6032D6CD42DCF1 /* Pods-掌上天大.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "掌上天大/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.hui.----";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tju.scs.TJUTour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "掌上天大/掌上天大-Bridging-Header.h";
 			};

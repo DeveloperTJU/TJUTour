@@ -9,12 +9,20 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
+    var _mapManager: BMKMapManager?
     var window: UIWindow?
     var databasePath:String!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        //baidumap
+        _mapManager = BMKMapManager()
+        let ret = _mapManager?.start("7swNK08V4eriNyB5FlM1QrMde81CrV6Y", generalDelegate: self)
+        
+        if ret == false {
+            NSLog("manager start failed!")
+        }
+        
         // Override point for customization after application launch.
         let dirParh = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let docsDir = dirParh[0] as NSString
