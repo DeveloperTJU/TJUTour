@@ -13,15 +13,19 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     
     var mainTableView:UITableView!
     let cellidentifier:String = "BaseCell"
+    var blurEffectView:UIVisualEffectView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let tableViewFrame = self.view.bounds
         self.mainTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.Plain)
-        self.mainTableView.backgroundColor = UIColor.whiteColor()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.backgroundColor = UIColor.redColor()
-        
+        let blurEffect = UIBlurEffect(style:UIBlurEffectStyle.Light)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame=CGRectMake(0, 0, self.view.bounds.size.width, 64)
+        self.navigationController?.view.addSubview(blurEffectView)
         self.view.addSubview(mainTableView)
         let leftBtn:UIBarButtonItem=UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: "actionBack")
         leftBtn.title="菜单";
@@ -30,6 +34,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        print(self.mainTableView.contentOffset)
+
         // Do any additional setup after loading the view.
     }
     
@@ -70,7 +76,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = BaseCell()
-        
         cell.backgroundColor = UIColor.clearColor()
         cell.cellImage.image = UIImage(named: "3")
         cell.contentView.addSubview(cell.cellImage)
@@ -84,12 +89,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         return cell
     }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        print("开始拖拽视图")
-        self.navigationController?.navigationBar.barTintColor=UIColor.greenColor()
+    func scrollViewDidScroll(scrollView: UIScrollView) {
         
+        blurEffectView.alpha = (scrollView.contentOffset.y + 64) / 150
+//        self.navigationController?.navigationBar.backgroundColor = UIColor.greenColor().colorWithAlphaComponent( )
+
     }
-
-    
-
 }
