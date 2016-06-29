@@ -48,7 +48,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func openMap(){
-        self.navigationController?.pushViewController(BaiduMapOfTJUViewController(), animated: true)
+        let nav = UINavigationController(rootViewController: mapVC)
+        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     func search(){

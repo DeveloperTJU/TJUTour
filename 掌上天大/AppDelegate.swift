@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+let mapVC = BaiduMapOfTJUViewController()
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
     var _mapManager: BMKMapManager?
@@ -61,7 +61,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    //MARK: - BMKGeneralDelegate
+    func onGetNetworkState(iError: Int32) {
+        if (0 == iError) {
+            NSLog("联网成功");
+        }
+        else{
+            NSLog("联网失败，错误代码：Error\(iError)");
+        }
+    }
+    
+    func onGetPermissionState(iError: Int32) {
+        if (0 == iError) {
+            NSLog("授权成功");
+        }
+        else{
+            NSLog("授权失败，错误代码：Error\(iError)");
+        }
+    }
 
 }
 
