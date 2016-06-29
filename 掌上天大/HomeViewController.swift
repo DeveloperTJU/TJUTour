@@ -8,34 +8,28 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDataSource, ENSideMenuDelegate {
     
     var mainTableView:UITableView!
     var dataArr = [String]()                //数据源
-    let backgroundImage = UIImage()
     var navigationBlurView:UIVisualEffectView!
     var backgroundBlurView:UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadData()
-        
+        self.sideMenuController()?.sideMenu?.delegate = self
         let blurEffect = UIBlurEffect(style: .Light)
-        self.navigationBlurView = UIVisualEffectView(effect: blurEffect)
-        self.backgroundBlurView = UIVisualEffectView(effect: blurEffect)
-        navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
+        backgroundBlurView = UIVisualEffectView(effect: blurEffect)
         backgroundBlurView.frame.size = self.view.bounds.size
-        self.navigationController?.view.addSubview(self.navigationBlurView)
         self.view.addSubview(backgroundBlurView)
-        self.navigationController?.navigationBar.translucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(backgroundImage, forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = backgroundImage
         let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
         let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
         self.navigationItem.leftBarButtonItems = [mapButton]
         self.navigationItem.rightBarButtonItems = [searchButton]
-        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
-        
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         let tableViewFrame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         self.mainTableView = UITableView(frame: tableViewFrame, style: .Grouped)
         self.mainTableView.backgroundColor = .whiteColor()
@@ -67,13 +61,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
         let imageView: UIImageView
-        
         if view != nil {
             imageView = view as! UIImageView
         } else {
-            imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width * 2 / 3, height: UIScreen.mainScreen().bounds.width * 3 / 8))
+            imageView = UIImageView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width * 2 / 3, UIScreen.mainScreen().bounds.width * 3 / 8))
         }
         imageView.image = UIImage(named: "0")
+        let nameLabel = UILabel(frame: CGRectMake(0, UIScreen.mainScreen().bounds.width * 3 / 8, UIScreen.mainScreen().bounds.width * 2 / 3, 20))
+        nameLabel.text = "NAME"
+        nameLabel.textColor = .whiteColor()
+        nameLabel.textAlignment = .Center
+        imageView.addSubview(nameLabel)
         return imageView
     }
     
@@ -86,7 +84,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return (UIScreen.mainScreen().bounds.width - 20) * 9 / 16 + 15
+        return (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 110
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -94,7 +92,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let coverflow = iCarousel(frame: CGRectMake(10, 10, self.view.bounds.width - 20, (UIScreen.mainScreen().bounds.width - 20) * 9 / 16))
+        let coverflow = iCarousel(frame: CGRectMake(10, 100, self.view.bounds.width - 20, (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 5))
         coverflow.dataSource = self
         coverflow.type = .CoverFlow
         return coverflow
@@ -120,6 +118,29 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.navigationBlurView.alpha = (scrollView.contentOffset.y + 64) / 150
+        self.navigationBlurView.alpha = scrollView.contentOffset.y / 120
+        self.backgroundBlurView.alpha = scrollView.contentOffset.y / 120
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        let blurEffect = UIBlurEffect(style: .Light)
+        navigationBlurView = UIVisualEffectView(effect: blurEffect)
+        navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
+        self.navigationController?.view.addSubview(self.navigationBlurView)
+        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
+        self.navigationBlurView.alpha = self.mainTableView.contentOffset.y / 120
+        self.backgroundBlurView.alpha = self.mainTableView.contentOffset.y / 120
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationBlurView.removeFromSuperview()
+    }
+    
+    func sideMenuWillOpen() {
+    }
+    
+    func sideMenuDidClose() {
     }
 }
