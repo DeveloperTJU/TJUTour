@@ -13,11 +13,29 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var mainTableView:UITableView!
     var dataArr = [String]()                //数据源
     let backgroundImage = UIImage()
-    var blurView:UIVisualEffectView!
+    var navigationBlurView:UIVisualEffectView!
+    var backgroundBlurView:UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadData()
+        
+        let blurEffect = UIBlurEffect(style: .Light)
+        self.navigationBlurView = UIVisualEffectView(effect: blurEffect)
+        self.backgroundBlurView = UIVisualEffectView(effect: blurEffect)
+        navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
+        backgroundBlurView.frame.size = self.view.bounds.size
+        self.navigationController?.view.addSubview(self.navigationBlurView)
+        self.view.addSubview(backgroundBlurView)
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(backgroundImage, forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = backgroundImage
+        let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
+        let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
+        self.navigationItem.leftBarButtonItems = [mapButton]
+        self.navigationItem.rightBarButtonItems = [searchButton]
+        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
+        
         let tableViewFrame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         self.mainTableView = UITableView(frame: tableViewFrame, style: .Grouped)
         self.mainTableView.backgroundColor = .whiteColor()
@@ -27,18 +45,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         self.mainTableView.backgroundColor = .clearColor()
         self.mainTableView.separatorStyle = .None
-        let blurEffect = UIBlurEffect(style: .Light)
-        self.blurView = UIVisualEffectView(effect: blurEffect)
-        blurView.frame.size = CGSize(width: view.frame.width, height: 64)
-        self.navigationController?.view.addSubview(self.blurView)
-        self.navigationController?.navigationBar.translucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(backgroundImage, forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = backgroundImage
-        let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
-        let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
-        self.navigationItem.leftBarButtonItems = [mapButton]
-        self.navigationItem.rightBarButtonItems = [searchButton]
-        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
     }
     
     func loadData(){
@@ -113,6 +119,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        self.blurView.alpha = (scrollView.contentOffset.y + 64) / 150
+        self.navigationBlurView.alpha = (scrollView.contentOffset.y + 64) / 150
     }
 }
