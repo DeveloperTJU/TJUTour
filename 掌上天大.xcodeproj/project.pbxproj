@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BBB7BB61D238D4E009FB4DB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB7BB51D238D4E009FB4DB /* SearchViewController.swift */; };
 		8509C2741D23744D00639CE5 /* BaiduMapOfTJUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509C2731D23744D00639CE5 /* BaiduMapOfTJUViewController.swift */; };
 		A5AD8B3B1D22E0460017ED19 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AD8B3A1D22E0460017ED19 /* iCarousel.m */; };
+		A5AD8B3D1D238CA20017ED19 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AD8B3C1D238CA20017ED19 /* MyNavigationController.swift */; };
 		A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */; };
 		A5C960731D1CC08900ABA0EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C960721D1CC08900ABA0EF /* Assets.xcassets */; };
 		A5C960761D1CC08900ABA0EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */; };
@@ -56,7 +58,6 @@
 		A862F9561D20F8BC00EBD06B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */; };
 		A862F9571D20F8BC00EBD06B /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */; };
 		A862F95B1D20FEE100EBD06B /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */; };
-		A862F95D1D2100EB00EBD06B /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F95C1D2100EB00EBD06B /* MyNavigationController.swift */; };
 		A862F9621D21078300EBD06B /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9611D21078300EBD06B /* ViewController1.swift */; };
 		A862F9641D21078D00EBD06B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9631D21078D00EBD06B /* ViewController2.swift */; };
 		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
@@ -66,10 +67,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BBB7BB51D238D4E009FB4DB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8509C2731D23744D00639CE5 /* BaiduMapOfTJUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaiduMapOfTJUViewController.swift; sourceTree = "<group>"; };
 		9C3A251F75B04971089B66C7 /* Pods-掌上天大.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-掌上天大.debug.xcconfig"; path = "Pods/Target Support Files/Pods-掌上天大/Pods-掌上天大.debug.xcconfig"; sourceTree = "<group>"; };
 		A5AD8B391D22E0460017ED19 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		A5AD8B3A1D22E0460017ED19 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		A5AD8B3C1D238CA20017ED19 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		A5C960681D1CC08900ABA0EF /* 掌上天大.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "掌上天大.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C960721D1CC08900ABA0EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,7 +156,6 @@
 		A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
-		A862F95C1D2100EB00EBD06B /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		A862F9611D21078300EBD06B /* ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		A862F9631D21078D00EBD06B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5BBB7BB41D238D1B009FB4DB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				5BBB7BB51D238D4E009FB4DB /* SearchViewController.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		8509C2721D23741900639CE5 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +238,7 @@
 				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
 				A8CC3D001D20BB1A00A44AD1 /* Favorite */,
 				A5C960ED1D1CC6C600ABA0EF /* Home */,
+				5BBB7BB41D238D1B009FB4DB /* Search */,
 				A5C960721D1CC08900ABA0EF /* Assets.xcassets */,
 				A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */,
 				A5C960771D1CC08900ABA0EF /* Info.plist */,
@@ -405,7 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */,
-				A862F95C1D2100EB00EBD06B /* MyNavigationController.swift */,
+				A5AD8B3C1D238CA20017ED19 /* MyNavigationController.swift */,
 				A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */,
 				A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */,
 			);
@@ -555,6 +566,7 @@
 				A84A23241D22B269006A01FA /* TestViewController.swift in Sources */,
 				A5C9608B1D1CC27600ABA0EF /* AFHTTPSessionManager.m in Sources */,
 				A5C960F61D1CC7DB00ABA0EF /* DatabaseService.swift in Sources */,
+				5BBB7BB61D238D4E009FB4DB /* SearchViewController.swift in Sources */,
 				A5C960C81D1CC28100ABA0EF /* MJRefreshBackGifFooter.m in Sources */,
 				A5C960C51D1CC28100ABA0EF /* MJRefreshAutoGifFooter.m in Sources */,
 				A5C960E11D1CC28D00ABA0EF /* FMDatabase.m in Sources */,
@@ -589,7 +601,6 @@
 				A5C960C61D1CC28100ABA0EF /* MJRefreshAutoNormalFooter.m in Sources */,
 				A5C960D01D1CC28100ABA0EF /* NSBundle+MJRefresh.m in Sources */,
 				A5C960D31D1CC28100ABA0EF /* UIView+MJExtension.m in Sources */,
-				A862F95D1D2100EB00EBD06B /* MyNavigationController.swift in Sources */,
 				A5C960C01D1CC28100ABA0EF /* MJRefreshAutoFooter.m in Sources */,
 				A5C960F91D1CC7DB00ABA0EF /* CustomNavController.swift in Sources */,
 				A862F9621D21078300EBD06B /* ViewController1.swift in Sources */,
@@ -600,6 +611,7 @@
 				A5C960C91D1CC28100ABA0EF /* MJRefreshBackNormalFooter.m in Sources */,
 				A862F95B1D20FEE100EBD06B /* MyMenuTableViewController.swift in Sources */,
 				A5C960C11D1CC28100ABA0EF /* MJRefreshBackFooter.m in Sources */,
+				A5AD8B3D1D238CA20017ED19 /* MyNavigationController.swift in Sources */,
 				A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */,
 				A5C960F51D1CC7DB00ABA0EF /* ImageHelper.swift in Sources */,
 			);

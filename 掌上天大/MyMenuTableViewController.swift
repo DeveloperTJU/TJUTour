@@ -55,9 +55,16 @@ class MyMenuTableViewController: UITableViewController {
             selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
             cell!.selectedBackgroundView = selectedBackgroundView
         }
-        
-        cell!.textLabel?.text = "ViewController #\(indexPath.row+1)"
-        
+        switch indexPath.row{
+        case 0:
+            cell!.textLabel?.text = "首页"
+        case 1:
+            cell!.textLabel?.text = "收藏"
+        case 2:
+            cell!.textLabel?.text = "设置"
+        default:
+            break
+        }
         return cell!
     }
     
@@ -76,7 +83,7 @@ class MyMenuTableViewController: UITableViewController {
         selectedMenuItem = indexPath.row
         
         //Present new view controller
-        var destViewController = UIViewController()
+        var destViewController:UIViewController!
         switch (indexPath.row) {
         case 0:
             destViewController = HomeViewController()
@@ -86,13 +93,6 @@ class MyMenuTableViewController: UITableViewController {
             destViewController = ViewController2()
             break
         }
-        let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
-        let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
-        destViewController.navigationItem.leftBarButtonItems = [mapButton]
-        destViewController.navigationItem.rightBarButtonItems = [searchButton]
-        destViewController.navigationController?.navigationBar.translucent = true
-        destViewController.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        destViewController.navigationController?.navigationBar.shadowImage = UIImage()
         sideMenuController()?.setContentViewController(destViewController)
     }
     
