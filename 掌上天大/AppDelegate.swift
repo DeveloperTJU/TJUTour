@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITextField.appearance().font = UIFont(name: "HelveticaNeue-Thin", size: 13.0)
         UITextField.appearance().tintColor = .blackColor()
-        self.window?.rootViewController = MyNavigationController(menuViewController: MyMenuTableViewController(), contentViewController: FavoriteViewController())
+        self.window?.rootViewController = MyNavigationController(menuViewController: MyMenuTableViewController(), contentViewController: HomeViewController())
         return true
     }
 

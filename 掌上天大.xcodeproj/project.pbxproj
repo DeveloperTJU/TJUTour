@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5AD8B3B1D22E0460017ED19 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AD8B3A1D22E0460017ED19 /* iCarousel.m */; };
 		A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */; };
 		A5C960731D1CC08900ABA0EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C960721D1CC08900ABA0EF /* Assets.xcassets */; };
 		A5C960761D1CC08900ABA0EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */; };
@@ -61,6 +62,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A5AD8B391D22E0460017ED19 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		A5AD8B3A1D22E0460017ED19 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		A5C960681D1CC08900ABA0EF /* 掌上天大.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "掌上天大.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C960721D1CC08900ABA0EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +165,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5AD8B381D22E0460017ED19 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				A5AD8B391D22E0460017ED19 /* iCarousel.h */,
+				A5AD8B3A1D22E0460017ED19 /* iCarousel.m */,
+			);
+			path = iCarousel;
+			sourceTree = "<group>";
+		};
 		A5C9605F1D1CC08900ABA0EF = {
 			isa = PBXGroup;
 			children = (
@@ -182,21 +194,21 @@
 		A5C9606A1D1CC08900ABA0EF /* 掌上天大 */ = {
 			isa = PBXGroup;
 			children = (
-				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
 				A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */,
 				A5C960FA1D1CC83200ABA0EF /* 掌上天大-Bridging-Header.h */,
 				A5C960EB1D1CC42500ABA0EF /* BaseCell.swift */,
+				A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */,
 				A5C960F01D1CC7DB00ABA0EF /* ImageHelper.swift */,
 				A5C960F11D1CC7DB00ABA0EF /* DatabaseService.swift */,
 				A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */,
 				A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */,
 				A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */,
+				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
 				A8CC3D001D20BB1A00A44AD1 /* Favorite */,
 				A5C960ED1D1CC6C600ABA0EF /* Home */,
 				A5C960721D1CC08900ABA0EF /* Assets.xcassets */,
 				A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */,
 				A5C960771D1CC08900ABA0EF /* Info.plist */,
-				A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */,
 				A862F9611D21078300EBD06B /* ViewController1.swift */,
 				A862F9631D21078D00EBD06B /* ViewController2.swift */,
 			);
@@ -342,6 +354,7 @@
 			children = (
 				A5C960E81D1CC3D800ABA0EF /* libsqlite3.0.tbd */,
 				A5C960D41D1CC28D00ABA0EF /* FMDataBase */,
+				A5AD8B381D22E0460017ED19 /* iCarousel */,
 				A5C960911D1CC28100ABA0EF /* MJRefresh */,
 				A5C9607D1D1CC27600ABA0EF /* AFNetworking */,
 			);
@@ -461,6 +474,7 @@
 				A5C9608D1D1CC27600ABA0EF /* AFSecurityPolicy.m in Sources */,
 				A5C960C71D1CC28100ABA0EF /* MJRefreshAutoStateFooter.m in Sources */,
 				A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */,
+				A5AD8B3B1D22E0460017ED19 /* iCarousel.m in Sources */,
 				A5C960D21D1CC28100ABA0EF /* UIScrollView+MJRefresh.m in Sources */,
 				A5C960F71D1CC7DB00ABA0EF /* RequestClient.swift in Sources */,
 				A5C960CF1D1CC28100ABA0EF /* MJRefreshConst.m in Sources */,

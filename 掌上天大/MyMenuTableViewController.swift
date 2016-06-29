@@ -40,7 +40,7 @@ class MyMenuTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return 4
+        return 3
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -77,25 +77,24 @@ class MyMenuTableViewController: UITableViewController {
         
         //Present new view controller
         var destViewController = UIViewController()
-        let leftBtn:UIBarButtonItem=UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: "actionBack")
-        leftBtn.title="菜单";
-        leftBtn.tintColor=UIColor.whiteColor();
-        destViewController.navigationItem.leftBarButtonItem=leftBtn;
         switch (indexPath.row) {
         case 0:
-            destViewController = FavoriteViewController()
-            destViewController.navigationItem.leftBarButtonItem=leftBtn;
+            destViewController = HomeViewController()
             break
         case 1:
-            destViewController = ViewController1()
-            destViewController.navigationItem.leftBarButtonItem=leftBtn;
+            destViewController = FavoriteViewController()
             break
-        
         default:
             destViewController = ViewController2()
-            destViewController.navigationItem.leftBarButtonItem=leftBtn;
             break
         }
+        let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
+        let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
+        destViewController.navigationItem.leftBarButtonItems = [mapButton]
+        destViewController.navigationItem.rightBarButtonItems = [searchButton]
+        destViewController.navigationController?.navigationBar.translucent = true
+        destViewController.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        destViewController.navigationController?.navigationBar.shadowImage = UIImage()
         sideMenuController()?.setContentViewController(destViewController)
     }
     func actionBack(){
