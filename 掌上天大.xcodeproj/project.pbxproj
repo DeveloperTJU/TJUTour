@@ -207,15 +207,9 @@
 				A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */,
 				A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */,
 				A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */,
-<<<<<<< Updated upstream
-				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
-=======
-<<<<<<< HEAD
+
 				C3D124051D20EBC4006FAB34 /* DetailViewController.swift */,
-=======
 				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,
->>>>>>> origin/master
->>>>>>> Stashed changes
 				A8CC3D001D20BB1A00A44AD1 /* Favorite */,
 				A5C960ED1D1CC6C600ABA0EF /* Home */,
 				A5C960721D1CC08900ABA0EF /* Assets.xcassets */,
