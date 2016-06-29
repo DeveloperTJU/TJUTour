@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let dirParh = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let docsDir = dirParh[0] as NSString
-        self.databasePath = docsDir.stringByAppendingPathComponent("task.db")
+        self.databasePath = docsDir.stringByAppendingPathComponent("data.db")
         
         let screenFrame = UIScreen.mainScreen().bounds
         self.window = UIWindow(frame: screenFrame)

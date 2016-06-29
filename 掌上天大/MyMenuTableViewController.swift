@@ -80,10 +80,8 @@ class MyMenuTableViewController: UITableViewController {
         switch (indexPath.row) {
         case 0:
             destViewController = HomeViewController()
-            break
         case 1:
             destViewController = FavoriteViewController()
-            break
         default:
             destViewController = ViewController2()
             break
@@ -97,6 +95,7 @@ class MyMenuTableViewController: UITableViewController {
         destViewController.navigationController?.navigationBar.shadowImage = UIImage()
         sideMenuController()?.setContentViewController(destViewController)
     }
+    
     func actionBack(){
         if self.isSideMenuOpen(){
             self.hideSideMenuView()

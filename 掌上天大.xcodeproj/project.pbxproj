@@ -51,6 +51,7 @@
 		A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */; };
 		A5C960F91D1CC7DB00ABA0EF /* CustomNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */; };
 		A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */; };
+		A84A23241D22B269006A01FA /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A23231D22B269006A01FA /* TestViewController.swift */; };
 		A862F9561D20F8BC00EBD06B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */; };
 		A862F9571D20F8BC00EBD06B /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */; };
 		A862F95B1D20FEE100EBD06B /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */; };
@@ -143,6 +144,7 @@
 		A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavController.swift; sourceTree = "<group>"; };
 		A5C960FA1D1CC83200ABA0EF /* 掌上天大-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "掌上天大-Bridging-Header.h"; sourceTree = "<group>"; };
 		A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A84A23231D22B269006A01FA /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */,
+				A84A23231D22B269006A01FA /* TestViewController.swift */,
 			);
 			name = Favorite;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84A23241D22B269006A01FA /* TestViewController.swift in Sources */,
 				A5C9608B1D1CC27600ABA0EF /* AFHTTPSessionManager.m in Sources */,
 				A5C960F61D1CC7DB00ABA0EF /* DatabaseService.swift in Sources */,
 				A5C960C81D1CC28100ABA0EF /* MJRefreshBackGifFooter.m in Sources */,
