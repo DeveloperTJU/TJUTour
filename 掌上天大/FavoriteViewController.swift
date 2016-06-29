@@ -21,6 +21,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.backgroundColor = UIColor.redColor()
+        
         self.view.addSubview(mainTableView)
         let leftBtn:UIBarButtonItem=UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: "actionBack")
         leftBtn.title="菜单";
@@ -69,6 +70,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = BaseCell()
+        
         cell.backgroundColor = UIColor.clearColor()
         cell.cellImage.image = UIImage(named: "3")
         cell.contentView.addSubview(cell.cellImage)
@@ -80,6 +82,12 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         cell.addSubview(view)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        print("开始拖拽视图")
+        self.navigationController?.navigationBar.barTintColor=UIColor.greenColor()
+        
     }
 
     
