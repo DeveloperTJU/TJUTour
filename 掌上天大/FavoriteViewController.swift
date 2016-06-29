@@ -27,13 +27,14 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         blurEffectView.frame=CGRectMake(0, 0, self.view.bounds.size.width, 64)
         self.navigationController?.view.addSubview(blurEffectView)
         self.view.addSubview(mainTableView)
-        let leftBtn:UIBarButtonItem=UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: "actionBack")
+        let leftBtn:UIBarButtonItem=UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(FavoriteViewController.actionBack))
         leftBtn.title="菜单";
         leftBtn.tintColor=UIColor.whiteColor();
         self.navigationItem.leftBarButtonItem=leftBtn;
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         print(self.mainTableView.contentOffset)
 
         // Do any additional setup after loading the view.
