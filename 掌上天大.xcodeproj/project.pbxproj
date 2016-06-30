@@ -237,7 +237,6 @@
 		A5C9606A1D1CC08900ABA0EF /* 掌上天大 */ = {
 			isa = PBXGroup;
 			children = (
-				A87478731D23AD61009CB3FD /* setup */,
 				A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */,
 				A5C960FA1D1CC83200ABA0EF /* 掌上天大-Bridging-Header.h */,
 				A5C960EB1D1CC42500ABA0EF /* BaseCell.swift */,
@@ -247,6 +246,7 @@
 				A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */,
 				A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */,
 				A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */,
+				A87478731D23AD61009CB3FD /* setup */,
 				8509C2721D23741900639CE5 /* Map */,
 				C31732941D236EA200F0FAA9 /* Detail */,
 				A862F95E1D2101F400EBD06B /* 侧滑菜单 */,

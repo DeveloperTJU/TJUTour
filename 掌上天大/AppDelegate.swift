@@ -7,7 +7,11 @@
 //
 
 import UIKit
+
 let mapVC = BaiduMapOfTJUViewController()
+let HomeVC = HomeViewController()
+var Buildings = [BuildingData]()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
     var _mapManager: BMKMapManager?
@@ -35,7 +39,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
         
         UITextField.appearance().font = UIFont(name: "HelveticaNeue-Thin", size: 13.0)
         UITextField.appearance().tintColor = .blackColor()
-        self.window?.rootViewController = HomeContainerViewController()//MyNavigationController(menuViewController: MyMenuTableViewController(), contentViewController: HomeViewController())
+
+        self.window?.rootViewController = HomeContainerViewController()
+//        let url = "index.php/Home/BuildingData/getAllData"
+//        RequestAPI.POST(url, body: [], succeed:{ (task:NSURLSessionDataTask!, responseObject:AnyObject?) -> Void in
+//            let resultDict = try! NSJSONSerialization.JSONObjectWithData(responseObject as! NSData, options: NSJSONReadingOptions.MutableContainers)
+//            
+//            let arr = resultDict["modelArr"] as! NSArray
+//            for data in arr{
+//                Buildings.append(BuildingData(images: [UIImage](), path: <#T##String#>, name: <#T##String#>, id: data["id"] as! String, positionX: <#T##String#>, positionY: <#T##String#>))
+//            }
+//            HomeVC.reloadImages()
+//        }) { (task:NSURLSessionDataTask?, error:NSError?) -> Void in
+//        }
+        
 
         return true
     }
