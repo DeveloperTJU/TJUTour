@@ -10,10 +10,10 @@ import UIKit
 
 class BuildingData: NSObject {
 
+    var images:[UIImage] = []//摸个建筑所有图片的路径的数组
     var id:String = ""//建筑ID, 用于建筑的索引，也是其图片文件夹名称和模型文件在本地、远程的文件名
     var name:String = ""//建筑名称
     var detail:String = ""//详情页的描述
-    var images:[UIImage] = []//当前建筑所有图片构成的数组
     
     override init(){
         super.init()

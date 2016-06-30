@@ -8,20 +8,20 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDataSource, ENSideMenuDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDataSource, iCarouselDelegate, ENSideMenuDelegate {
     
     var mainTableView:UITableView!
-    var dataArr = [String]()                //数据源
+    var coverflow:iCarousel!
     var navigationBlurView:UIVisualEffectView!
     var backgroundBlurView:UIVisualEffectView!
     var mapButton:UIBarButtonItem!
+    var indexChanged = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        self.loadData()
         self.sideMenuController()?.sideMenu?.delegate = self
         let blurEffect = UIBlurEffect(style: .Light)
         backgroundBlurView = UIVisualEffectView(effect: blurEffect)
@@ -33,6 +33,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        coverflow = iCarousel(frame: CGRectMake(10, 100, self.view.bounds.width - 20, (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 5))
+        coverflow.scrollToItemAtIndex((Buildings.count - 1) / 2, animated: false)
+        coverflow.dataSource = self
+        coverflow.delegate = self
+        coverflow.type = .CoverFlow
         let tableViewFrame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         self.mainTableView = UITableView(frame: tableViewFrame, style: .Grouped)
         self.mainTableView.backgroundColor = .whiteColor()
@@ -42,13 +47,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         self.mainTableView.backgroundColor = .clearColor()
         self.mainTableView.separatorStyle = .None
-        
-    }
-    
-    func loadData(){
-        self.dataArr.append("123")
-        self.dataArr.append("456")
-        self.dataArr.append("789")
     }
     
     func openMap(){
@@ -61,7 +59,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
-        return 10
+        return Buildings.count
     }
     
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
@@ -72,17 +70,42 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         else {
             imageView = UIImageView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width * 2 / 3, UIScreen.mainScreen().bounds.width * 3 / 8))
         }
-        imageView.image = UIImage(named: "0")
+        if Buildings[self.coverflow.currentItemIndex].images.count == 0{
+            imageView.image = UIImage(named: "0")
+        }
+        else{
+            imageView.image = Buildings[self.coverflow.currentItemIndex].images[0]
+        }
         let nameLabel = UILabel(frame: CGRectMake(0, UIScreen.mainScreen().bounds.width * 3 / 8, UIScreen.mainScreen().bounds.width * 2 / 3, 20))
-        nameLabel.text = "NAME"
+        nameLabel.text = Buildings[self.coverflow.currentItemIndex].name
         nameLabel.textColor = .whiteColor()
         nameLabel.textAlignment = .Center
         imageView.addSubview(nameLabel)
         return imageView
     }
     
+//    func carouselCurrentItemIndexDidChange(carousel: iCarousel) {
+//        if self.mainTableView != nil{
+//            self.mainTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .None)
+//        }
+//    }
+    
+    func carouselDidEndScrollingAnimation(carousel: iCarousel) {
+        if self.mainTableView != nil && indexChanged{
+            indexChanged = false
+            self.mainTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .None)
+        }
+    }
+    
+    func carouselCurrentItemIndexDidChange(carousel: iCarousel) {
+        indexChanged = true
+        if self.mainTableView != nil{
+//            self.mainTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .None)
+        }
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataArr.count
+        return Buildings.count == 0 ? 0 : Buildings[self.coverflow.currentItemIndex].images.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -98,17 +121,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let coverflow = iCarousel(frame: CGRectMake(10, 100, self.view.bounds.width - 20, (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 5))
-        coverflow.dataSource = self
-        coverflow.type = .CoverFlow
         return coverflow
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) ->UITableViewCell{
         let cell = BaseCell()
-        //        cell.cellImage?.image = self.dataArr[indexPath.row].
         cell.backgroundColor = UIColor.clearColor()
-        cell.cellImage.image = UIImage(named: "0")
+        cell.cellImage.image = Buildings[self.coverflow.currentItemIndex].images[indexPath.row]
         cell.contentView.addSubview(cell.cellImage)
         cell.selectionStyle = .None
         return cell
@@ -146,6 +165,4 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationBlurView.removeFromSuperview()
     }
     
-
-
 }
