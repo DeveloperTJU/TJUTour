@@ -1,26 +1,24 @@
 //
-//  ViewController1.swift
+//  FavoriteContainerViewController.swift
 //  掌上天大
 //
-//  Created by zyf on 16/6/27.
+//  Created by zyf on 16/6/30.
 //  Copyright © 2016年 hui. All rights reserved.
 //
 
 import UIKit
 
-class ViewController1: UIViewController {
+class FavoriteContainerViewController: SWRevealViewController {
     
-    let a = MyMenuTableViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.greenColor()
-        var sideMenu = ENSideMenu(sourceView: self.view, menuViewController: a, menuPosition:.Left)
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //设置侧栏菜单
+        self.setRearViewController(MyMenuTableViewController(), animated: true)
+        
+        //设置主页面
+        let a = UINavigationController(rootViewController: FavoriteViewController())
+        self.setFrontViewController(a, animated: true)
+        // Do any additional setup after loading the view.
     }
     
 

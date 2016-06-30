@@ -19,8 +19,6 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKLoca
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let leftBtn:UIBarButtonItem = UIBarButtonItem(title: "<返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(BaiduMapOfTJUViewController.actionBack))
-        leftBtn.tintColor = UIColor.whiteColor()
         
         // Do any additional setup after loading the view, typically from a nib.
         _mapView = BMKMapView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
@@ -35,7 +33,6 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKLoca
         self.startLocation()
         self.view.addSubview(_mapView!)
         
-        self.navigationItem.leftBarButtonItem = leftBtn
         
     }
     
@@ -96,7 +93,5 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKLoca
         _mapView?.updateLocationData(userLocation)
     }
     
-    func actionBack(){
-        self.presentViewController(MyNavigationController(menuViewController: MyMenuTableViewController(), contentViewController:HomeViewController()), animated: true, completion: nil)
-    }
+
 }
