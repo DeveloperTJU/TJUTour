@@ -74,6 +74,17 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         
         return 5
     }
+    //左滑删除
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        let more = UITableViewRowAction(style: .Normal, title: "删除") { action, index in
+            print("shanchu")
+            
+        }
+        more.backgroundColor = UIColor.lightGrayColor()
+        return [more]
+    }
+
     
 
 
@@ -142,9 +153,5 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.navigationBlurView.removeFromSuperview()
     }
     
-    func sideMenuWillOpen() {
-    }
-    
-    func sideMenuDidClose() {
-    }
+
 }
