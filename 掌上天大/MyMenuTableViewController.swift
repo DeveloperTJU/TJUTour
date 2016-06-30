@@ -12,11 +12,10 @@ class MyMenuTableViewController: UITableViewController {
     var selectedMenuItem : Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Customize apperance of table view
         tableView.contentInset = UIEdgeInsetsMake(64.0, 0, 0, 0) //
         tableView.separatorStyle = .None
-        tableView.backgroundColor = UIColor.clearColor()
+        tableView.backgroundColor = UIColor.lightGrayColor()
         tableView.scrollsToTop = false
         
         // Preserve selection between presentations
@@ -76,9 +75,9 @@ class MyMenuTableViewController: UITableViewController {
         
         print("did select row: \(indexPath.row)")
         
-        if (indexPath.row == selectedMenuItem) {
-            return
-        }
+//        if (indexPath.row == selectedMenuItem) {
+//            return
+//        }
         
         selectedMenuItem = indexPath.row
         
@@ -86,36 +85,18 @@ class MyMenuTableViewController: UITableViewController {
         var destViewController:UIViewController!
         switch (indexPath.row) {
         case 0:
-            destViewController = HomeViewController()
+            destViewController = HomeContainerViewController()
         case 1:
-            destViewController = FavoriteViewController()
+            destViewController = FavoriteContainerViewController()
         default:
-            destViewController = ViewController2()
+            destViewController = SetupContainerViewController()
             break
         }
-        sideMenuController()?.setContentViewController(destViewController)
+        self.presentViewController(destViewController, animated: true, completion: nil)
     }
     
-    func actionBack(){
-        if self.isSideMenuOpen(){
-            self.hideSideMenuView()
-            
-        }
-        else {
-            self.showSideMenuView()
-            
-        }
-        
-    }
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

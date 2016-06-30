@@ -11,24 +11,19 @@ import UIKit
 class BuildingData: NSObject {
 
     var images:[UIImage] = []//摸个建筑所有图片的路径的数组
+    var id:String = ""//建筑ID, 用于建筑的索引，也是其图片文件夹名称和模型文件在本地、远程的文件名
     var name:String = ""//建筑名称
-    var id:String = ""//建筑ID
-    var positionX:String = ""//建筑在地图上的X坐标
-    var positionY:String = ""//建筑在地图上的Y坐标
+    var detail:String = ""//详情页的描述
     
     override init(){
         super.init()
     }
     
-    convenience init(images:[UIImage],name:String,description:String,id:String,positionX:String,positionY:String){
+    convenience init(id:String, name:String, detail:String){
         self.init()
-        self.images = images
-        self.name = name
-        self.description = description
         self.id = id
-        self.positionX = positionX
-        self.positionY = positionY
-
+        self.name = name
+        self.detail = detail
     }
 
 }

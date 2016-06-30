@@ -8,24 +8,30 @@
 
 import UIKit
 
-class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,ENSideMenuDelegate {
     
     
     var mainTableView:UITableView!
     let cellidentifier:String = "BaseCell"
-    var blurEffectView:UIVisualEffectView!
-
+    var navigationBlurView:UIVisualEffectView!
+    var backgroundBlurView:UIVisualEffectView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        self.sideMenuController()?.sideMenu?.delegate = self
+        let blurEffect = UIBlurEffect(style: .Light)
+        backgroundBlurView = UIVisualEffectView(effect: blurEffect)
+        backgroundBlurView.frame.size = self.view.bounds.size
+        self.view.addSubview(backgroundBlurView)
         let tableViewFrame = self.view.bounds
         self.mainTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.Plain)
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
-        self.mainTableView.backgroundColor = UIColor.redColor()
-        let blurEffect = UIBlurEffect(style:UIBlurEffectStyle.Light)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame=CGRectMake(0, 0, self.view.bounds.size.width, 64)
-        self.navigationController?.view.addSubview(blurEffectView)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        self.mainTableView.backgroundColor = .clearColor()
+        self.mainTableView.separatorStyle = .None
         self.view.addSubview(mainTableView)
         let leftBtn:UIBarButtonItem=UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(FavoriteViewController.actionBack))
         leftBtn.title="菜单";
@@ -69,16 +75,14 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         return 5
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.width * 9 / 16
-    }
+
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = BaseCell()
         cell.backgroundColor = UIColor.clearColor()
-        cell.cellImage.image = UIImage(named: "3")
+        cell.cellImage.image = UIImage(named: "0")
         cell.contentView.addSubview(cell.cellImage)
         cell.detailLabel.text = "test"
         cell.detailLabel.textColor = UIColor.redColor()
@@ -90,10 +94,57 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         return cell
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        
-        blurEffectView.alpha = (scrollView.contentOffset.y + 64) / 150
-//        self.navigationController?.navigationBar.backgroundColor = UIColor.greenColor().colorWithAlphaComponent( )
 
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return (UIScreen.mainScreen().bounds.width - 20) * 9 / 16 + 10
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let detailVC = DetailViewController()
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.navigationBlurView.alpha = scrollView.contentOffset.y / 120
+        self.backgroundBlurView.alpha = scrollView.contentOffset.y / 120
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clearColor()
+        return view
+    }
+
+    
+    
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 74
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 5
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        let blurEffect = UIBlurEffect(style: .Light)
+        navigationBlurView = UIVisualEffectView(effect: blurEffect)
+        navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
+        self.navigationController?.view.addSubview(self.navigationBlurView)
+        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
+        self.navigationBlurView.alpha = self.mainTableView.contentOffset.y / 120
+        self.backgroundBlurView.alpha = self.mainTableView.contentOffset.y / 120
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationBlurView.removeFromSuperview()
+    }
+    
+    func sideMenuWillOpen() {
+    }
+    
+    func sideMenuDidClose() {
     }
 }
