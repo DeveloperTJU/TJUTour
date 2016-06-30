@@ -157,8 +157,8 @@
 		A5C960FA1D1CC83200ABA0EF /* 掌上天大-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "掌上天大-Bridging-Header.h"; sourceTree = "<group>"; };
 		A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A84A23231D22B269006A01FA /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
-		A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenu.swift; path = "掌上天大/ENSideMenu.swift"; sourceTree = "<group>"; };
+		A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenuNavigationController.swift; path = "掌上天大/ENSideMenuNavigationController.swift"; sourceTree = "<group>"; };
 		A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
 		A862F9611D21078300EBD06B /* ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		A862F9631D21078D00EBD06B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
@@ -394,6 +394,8 @@
 		A5C960E71D1CC29300ABA0EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */,
+				A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */,
 				A5C960E81D1CC3D800ABA0EF /* libsqlite3.0.tbd */,
 				A5C960D41D1CC28D00ABA0EF /* FMDataBase */,
 				A5AD8B381D22E0460017ED19 /* iCarousel */,
@@ -426,8 +428,6 @@
 			children = (
 				A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */,
 				A5AD8B3C1D238CA20017ED19 /* MyNavigationController.swift */,
-				A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */,
-				A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */,
 			);
 			name = "侧滑菜单";
 			sourceTree = "<group>";
