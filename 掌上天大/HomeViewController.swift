@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var dataArr = [String]()                //数据源
     var navigationBlurView:UIVisualEffectView!
     var backgroundBlurView:UIVisualEffectView!
+    var mapButton:UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +24,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         backgroundBlurView = UIVisualEffectView(effect: blurEffect)
         backgroundBlurView.frame.size = self.view.bounds.size
         self.view.addSubview(backgroundBlurView)
-        let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
+        mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
         let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
-        self.navigationItem.leftBarButtonItems = [mapButton]
         self.navigationItem.rightBarButtonItems = [searchButton]
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -39,6 +39,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         self.mainTableView.backgroundColor = .clearColor()
         self.mainTableView.separatorStyle = .None
+        
     }
     
     func loadData(){
@@ -64,7 +65,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let imageView: UIImageView
         if view != nil {
             imageView = view as! UIImageView
-        } else {
+        }
+        else {
             imageView = UIImageView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width * 2 / 3, UIScreen.mainScreen().bounds.width * 3 / 8))
         }
         imageView.image = UIImage(named: "0")
@@ -125,11 +127,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        self.navigationItem.leftBarButtonItems = [mapButton]
         let blurEffect = UIBlurEffect(style: .Light)
         navigationBlurView = UIVisualEffectView(effect: blurEffect)
         navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
         self.navigationController?.view.addSubview(self.navigationBlurView)
-        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
+//        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         self.navigationBlurView.alpha = self.mainTableView.contentOffset.y / 120
         self.backgroundBlurView.alpha = self.mainTableView.contentOffset.y / 120
     }
@@ -139,9 +142,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationBlurView.removeFromSuperview()
     }
     
-    func sideMenuWillOpen() {
-    }
-    
-    func sideMenuDidClose() {
-    }
+//    func sideMenuWillOpen() {
+//        self.navigationItem.leftBarButtonItems = []
+//    }
+//    
+//    func sideMenuWillClose() {
+//        self.navigationItem.leftBarButtonItems = [mapButton]
+        
+//    }
+//    
+//    func sideMenuDidClose() {
+//        self.navigationItem.leftBarButtonItems = [mapButton]
+//    }
 }
