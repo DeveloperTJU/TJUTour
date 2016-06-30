@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController,UITextViewDelegate {
+class DetailViewController: UIViewController,UITextViewDelegate,ENSideMenuDelegate {
     
     var likeArray : [NSArray]?
     var contentTextView:UITextView!
@@ -29,6 +29,10 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         self.navigationItem.rightBarButtonItem = rightItem
         
         
+        
+        func sideMenuShouldOpenSideMenu() -> Bool {
+            return false
+        }
         //轮播图
         
         

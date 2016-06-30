@@ -132,7 +132,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationBlurView = UIVisualEffectView(effect: blurEffect)
         navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
         self.navigationController?.view.addSubview(self.navigationBlurView)
-//        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
+        self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         self.navigationBlurView.alpha = self.mainTableView.contentOffset.y / 120
         self.backgroundBlurView.alpha = self.mainTableView.contentOffset.y / 120
     }

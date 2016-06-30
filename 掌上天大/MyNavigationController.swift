@@ -15,7 +15,6 @@ class MyNavigationController: ENSideMenuNavigationController, ENSideMenuDelegate
         
         sideMenu = ENSideMenu(sourceView: self.view, menuViewController: MyMenuTableViewController(), menuPosition:.Left)
         sideMenu?.menuWidth = 180.0 // optional, default is 160
-        view.bringSubviewToFront(navigationBar)
     }
 
     override func didReceiveMemoryWarning() {
