@@ -19,7 +19,7 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKLoca
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let leftBtn:UIBarButtonItem = UIBarButtonItem(title: "<返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(BaiduMapOfTJUViewController.actionBack))
+        let leftBtn:UIBarButtonItem = UIBarButtonItem(title: "< 返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(BaiduMapOfTJUViewController.actionBack))
         leftBtn.tintColor = UIColor.whiteColor()
         
         // Do any additional setup after loading the view, typically from a nib.

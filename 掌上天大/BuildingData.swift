@@ -11,7 +11,6 @@ import UIKit
 class BuildingData: NSObject {
 
     var images:[UIImage] = []//摸个建筑所有图片的路径的数组
-    var path:String = ""//下载下来的模型的路径
     var name:String = ""//建筑名称
     var id:String = ""//建筑ID
     var positionX:String = ""//建筑在地图上的X坐标
@@ -21,11 +20,11 @@ class BuildingData: NSObject {
         super.init()
     }
     
-    convenience init(images:[UIImage],path:String,name:String,id:String,positionX:String,positionY:String){
+    convenience init(images:[UIImage],name:String,description:String,id:String,positionX:String,positionY:String){
         self.init()
         self.images = images
-        self.path = path
         self.name = name
+        self.description = description
         self.id = id
         self.positionX = positionX
         self.positionY = positionY
