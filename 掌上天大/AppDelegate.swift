@@ -10,6 +10,7 @@ import UIKit
 
 let mapVC = BaiduMapOfTJUViewController()
 let HomeVC = HomeViewController()
+let a = UINavigationController(rootViewController: HomeVC)
 var Buildings = [BuildingData]()
 
 @UIApplicationMain

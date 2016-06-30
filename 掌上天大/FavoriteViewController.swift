@@ -41,8 +41,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
-        print(self.mainTableView.contentOffset)
-
+        self.title = "收藏"
         // Do any additional setup after loading the view.
     }
     
