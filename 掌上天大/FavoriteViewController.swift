@@ -17,6 +17,9 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     var backgroundBlurView:UIVisualEffectView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         self.sideMenuController()?.sideMenu?.delegate = self
         let blurEffect = UIBlurEffect(style: .Light)
         backgroundBlurView = UIVisualEffectView(effect: blurEffect)

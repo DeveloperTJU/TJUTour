@@ -17,6 +17,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         self.loadData()
         self.sideMenuController()?.sideMenu?.delegate = self
         let blurEffect = UIBlurEffect(style: .Light)
@@ -48,8 +51,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func openMap(){
-        let nav = UINavigationController(rootViewController: mapVC)
-        self.presentViewController(nav, animated: true, completion: nil)
+        
+        self.navigationController?.pushViewController(mapVC, animated: true)
     }
     
     func search(){
@@ -115,6 +118,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailVC = DetailViewController()
+        
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
@@ -140,8 +144,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func sideMenuWillOpen() {
+
     }
     
     func sideMenuDidClose() {
     }
+    
+    func sideMenuShouldOpenSideMenu() -> Bool {
+        return false
+    }
+    
 }

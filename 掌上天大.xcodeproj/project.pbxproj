@@ -10,7 +10,6 @@
 		5BBB7BB61D238D4E009FB4DB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB7BB51D238D4E009FB4DB /* SearchViewController.swift */; };
 		8509C2741D23744D00639CE5 /* BaiduMapOfTJUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509C2731D23744D00639CE5 /* BaiduMapOfTJUViewController.swift */; };
 		A5AD8B3B1D22E0460017ED19 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AD8B3A1D22E0460017ED19 /* iCarousel.m */; };
-		A5AD8B3D1D238CA20017ED19 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AD8B3C1D238CA20017ED19 /* MyNavigationController.swift */; };
 		A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */; };
 		A5C960731D1CC08900ABA0EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C960721D1CC08900ABA0EF /* Assets.xcassets */; };
 		A5C960761D1CC08900ABA0EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */; };
@@ -54,7 +53,6 @@
 		A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */; };
 		A5C960F91D1CC7DB00ABA0EF /* CustomNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */; };
 		A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */; };
-		A84A23241D22B269006A01FA /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A23231D22B269006A01FA /* TestViewController.swift */; };
 		A862F9561D20F8BC00EBD06B /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */; };
 		A862F9571D20F8BC00EBD06B /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */; };
 		A862F95B1D20FEE100EBD06B /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */; };
@@ -66,6 +64,10 @@
 		A874787B1D23AD72009CB3FD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478771D23AD72009CB3FD /* AboutViewController.swift */; };
 		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
 		A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */; };
+		A8E92FEF1D24E9FE00485BD9 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E92FED1D24E9FE00485BD9 /* SWRevealViewController.m */; };
+		A8E92FFB1D24F13000485BD9 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E92FFA1D24F13000485BD9 /* HomeContainerViewController.swift */; };
+		A8E92FFD1D24F54100485BD9 /* FavoriteContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E92FFC1D24F54100485BD9 /* FavoriteContainerViewController.swift */; };
+		A8E92FFF1D24F5CC00485BD9 /* SetupContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E92FFE1D24F5CC00485BD9 /* SetupContainerViewController.swift */; };
 		C3B1EDD142FE33F407179B93 /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFAF80E2D79C889ADB5635C4 /* Pods_____.framework */; };
 		C3D124061D20EBC4006FAB34 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D124051D20EBC4006FAB34 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -76,7 +78,6 @@
 		9C3A251F75B04971089B66C7 /* Pods-掌上天大.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-掌上天大.debug.xcconfig"; path = "Pods/Target Support Files/Pods-掌上天大/Pods-掌上天大.debug.xcconfig"; sourceTree = "<group>"; };
 		A5AD8B391D22E0460017ED19 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		A5AD8B3A1D22E0460017ED19 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
-		A5AD8B3C1D238CA20017ED19 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
 		A5C960681D1CC08900ABA0EF /* 掌上天大.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "掌上天大.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C9606B1D1CC08900ABA0EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C960721D1CC08900ABA0EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,9 +157,8 @@
 		A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavController.swift; sourceTree = "<group>"; };
 		A5C960FA1D1CC83200ABA0EF /* 掌上天大-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "掌上天大-Bridging-Header.h"; sourceTree = "<group>"; };
 		A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A84A23231D22B269006A01FA /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
-		A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenu.swift; path = "掌上天大/ENSideMenu.swift"; sourceTree = "<group>"; };
+		A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ENSideMenuNavigationController.swift; path = "掌上天大/ENSideMenuNavigationController.swift"; sourceTree = "<group>"; };
 		A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
 		A862F9611D21078300EBD06B /* ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		A862F9631D21078D00EBD06B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
@@ -168,6 +168,11 @@
 		A87478771D23AD72009CB3FD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
+		A8E92FED1D24E9FE00485BD9 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		A8E92FEE1D24E9FE00485BD9 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		A8E92FFA1D24F13000485BD9 /* HomeContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeContainerViewController.swift; sourceTree = "<group>"; };
+		A8E92FFC1D24F54100485BD9 /* FavoriteContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteContainerViewController.swift; sourceTree = "<group>"; };
+		A8E92FFE1D24F5CC00485BD9 /* SetupContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupContainerViewController.swift; sourceTree = "<group>"; };
 		C3D124051D20EBC4006FAB34 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DFAF80E2D79C889ADB5635C4 /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_____.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE26D1251A6032D6CD42DCF1 /* Pods-掌上天大.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-掌上天大.release.xcconfig"; path = "Pods/Target Support Files/Pods-掌上天大/Pods-掌上天大.release.xcconfig"; sourceTree = "<group>"; };
@@ -394,6 +399,8 @@
 		A5C960E71D1CC29300ABA0EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */,
+				A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */,
 				A5C960E81D1CC3D800ABA0EF /* libsqlite3.0.tbd */,
 				A5C960D41D1CC28D00ABA0EF /* FMDataBase */,
 				A5AD8B381D22E0460017ED19 /* iCarousel */,
@@ -408,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */,
+				A8E92FFA1D24F13000485BD9 /* HomeContainerViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -424,10 +432,9 @@
 		A862F95E1D2101F400EBD06B /* 侧滑菜单 */ = {
 			isa = PBXGroup;
 			children = (
+				A8E92FED1D24E9FE00485BD9 /* SWRevealViewController.m */,
+				A8E92FEE1D24E9FE00485BD9 /* SWRevealViewController.h */,
 				A862F95A1D20FEE100EBD06B /* MyMenuTableViewController.swift */,
-				A5AD8B3C1D238CA20017ED19 /* MyNavigationController.swift */,
-				A862F9541D20F8BC00EBD06B /* ENSideMenu.swift */,
-				A862F9551D20F8BC00EBD06B /* ENSideMenuNavigationController.swift */,
 			);
 			name = "侧滑菜单";
 			sourceTree = "<group>";
@@ -439,6 +446,7 @@
 				A87478751D23AD72009CB3FD /* UrlLabel.swift */,
 				A87478761D23AD72009CB3FD /* SetupViewController.swift */,
 				A87478771D23AD72009CB3FD /* AboutViewController.swift */,
+				A8E92FFE1D24F5CC00485BD9 /* SetupContainerViewController.swift */,
 			);
 			name = setup;
 			sourceTree = "<group>";
@@ -447,7 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */,
-				A84A23231D22B269006A01FA /* TestViewController.swift */,
+				A8E92FFC1D24F54100485BD9 /* FavoriteContainerViewController.swift */,
 			);
 			name = Favorite;
 			sourceTree = "<group>";
@@ -583,7 +591,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A84A23241D22B269006A01FA /* TestViewController.swift in Sources */,
 				A5C9608B1D1CC27600ABA0EF /* AFHTTPSessionManager.m in Sources */,
 				A5C960F61D1CC7DB00ABA0EF /* DatabaseService.swift in Sources */,
 				5BBB7BB61D238D4E009FB4DB /* SearchViewController.swift in Sources */,
@@ -598,6 +605,7 @@
 				C3D124061D20EBC4006FAB34 /* DetailViewController.swift in Sources */,
 				A874787B1D23AD72009CB3FD /* AboutViewController.swift in Sources */,
 				A5C960E31D1CC28D00ABA0EF /* FMDatabasePool.m in Sources */,
+				A8E92FFB1D24F13000485BD9 /* HomeContainerViewController.swift in Sources */,
 				A5C9608D1D1CC27600ABA0EF /* AFSecurityPolicy.m in Sources */,
 				A5C960C71D1CC28100ABA0EF /* MJRefreshAutoStateFooter.m in Sources */,
 				A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */,
@@ -610,6 +618,7 @@
 				A5C9608E1D1CC27600ABA0EF /* AFURLRequestSerialization.m in Sources */,
 				A5C960CB1D1CC28100ABA0EF /* MJRefreshGifHeader.m in Sources */,
 				A5C960C31D1CC28100ABA0EF /* MJRefreshFooter.m in Sources */,
+				A8E92FFD1D24F54100485BD9 /* FavoriteContainerViewController.swift in Sources */,
 				A5C960CD1D1CC28100ABA0EF /* MJRefreshStateHeader.m in Sources */,
 				A5C9608C1D1CC27600ABA0EF /* AFNetworkReachabilityManager.m in Sources */,
 				A87478791D23AD72009CB3FD /* UrlLabel.swift in Sources */,
@@ -618,6 +627,8 @@
 				A862F9571D20F8BC00EBD06B /* ENSideMenuNavigationController.swift in Sources */,
 				A5C960C21D1CC28100ABA0EF /* MJRefreshComponent.m in Sources */,
 				A5C960CA1D1CC28100ABA0EF /* MJRefreshBackStateFooter.m in Sources */,
+				A8E92FEF1D24E9FE00485BD9 /* SWRevealViewController.m in Sources */,
+				A8E92FFF1D24F5CC00485BD9 /* SetupContainerViewController.swift in Sources */,
 				A874787A1D23AD72009CB3FD /* SetupViewController.swift in Sources */,
 				A5C960C41D1CC28100ABA0EF /* MJRefreshHeader.m in Sources */,
 				A5C9608F1D1CC27600ABA0EF /* AFURLResponseSerialization.m in Sources */,
@@ -635,7 +646,6 @@
 				A5C960C91D1CC28100ABA0EF /* MJRefreshBackNormalFooter.m in Sources */,
 				A862F95B1D20FEE100EBD06B /* MyMenuTableViewController.swift in Sources */,
 				A5C960C11D1CC28100ABA0EF /* MJRefreshBackFooter.m in Sources */,
-				A5AD8B3D1D238CA20017ED19 /* MyNavigationController.swift in Sources */,
 				A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */,
 				A5C960F51D1CC7DB00ABA0EF /* ImageHelper.swift in Sources */,
 			);
