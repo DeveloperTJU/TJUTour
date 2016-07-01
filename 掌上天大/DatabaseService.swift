@@ -37,12 +37,12 @@ class DatabaseService: NSObject {
                 print("Error:\(db.lastErrorMessage())")
             }
             if db.open(){
-                var sqlStr = "CREATE TABLE IF NOT EXISTS BUILDING(ID TEXT, NAME TEXT, DETAIL TEXT, PRIMARY KEY(ID))"
+                var sqlStr = "CREATE TABLE IF NOT EXISTS BUILDING(ID TEXT, NAME TEXT, DETAIL TEXT,ISHISTORY INT, PRIMARY KEY(ID))"
                 if !db.executeUpdate(sqlStr, withArgumentsInArray: []) {
                     print("Error:\(db.lastErrorMessage())")
                 }
                
-                sqlStr = "CREATE TABLE IF NOT EXISTS HISTORY(TIME TIMESTAMP DEFAULT CURRENT_TIMESTAMP UPDATE CURRENT_TIMESTAMP, STR TEXT, PRIMARY KEY(TIME))"
+                sqlStr = "CREATE TABLE IF NOT EXISTS HISTORY(STR TEXT, PRIMARY KEY(STR))"
                 if !db.executeUpdate(sqlStr, withArgumentsInArray: []) {
                     print("Error:\(db.lastErrorMessage())")
                 }
@@ -64,8 +64,8 @@ class DatabaseService: NSObject {
     //新增用户
     func insert(buildingData : BuildingData) -> Bool{
         self.database.open()
-        let sqlStr = "INSERT INTO BUILDING VALUES (?, ? ,?)"
-        let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [buildingData.id, buildingData.name, buildingData.detail])
+        let sqlStr = "INSERT INTO BUILDING VALUES (?, ? ,? ,?)"
+        let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [buildingData.id, buildingData.name, buildingData.detail, buildingData.isHistory])
         self.database.close()
         return succeed
     }
@@ -75,7 +75,6 @@ class DatabaseService: NSObject {
         self.database.open()
         var sqlStr = "DELETE FROM BUILDING WHERE NUM = ?"
         self.database.executeUpdate(sqlStr, withArgumentsInArray: [id])
-        sqlStr = "INSERT INTO BUILDING VALUES (?, ? ,?, )"
         let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [id])
         self.database.close()
         return succeed
@@ -92,6 +91,7 @@ class DatabaseService: NSObject {
             buildingData[i].detail = rs.stringForColumn("DETAIL")
             buildingData[i].name = rs.stringForColumn("NAME")
             buildingData[i].id = rs.stringForColumn("NUM")
+            buildingData[i].isHistory = rs.stringForColumn("ISHISTORY")
             i = i + 1
         }
         self.database.close()
@@ -110,8 +110,16 @@ class DatabaseService: NSObject {
     //清除本地
     func clearHistory() -> Bool {
         self.database.open()
-        let sqlStr = "DELETE * FROM HISTORY"
+        let sqlStr = "DELETE FROM HISTORY"
         let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [])
+        self.database.close()
+        return succeed
+    }
+    
+    func deleteHistory(str:String) -> Bool {
+        self.database.open()
+        let sqlStr = "DELETE FROM HISTORY WHERE STR = ?"
+        let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [str])
         self.database.close()
         return succeed
     }
@@ -124,7 +132,7 @@ class DatabaseService: NSObject {
         var history:[String] = [String]()
         var i = 0
         while rs.next(){
-            history[i] = rs.stringForColumn("STR")
+            history.append(rs.stringForColumn("STR"))
             i = i + 1
         }
         self.database.close()

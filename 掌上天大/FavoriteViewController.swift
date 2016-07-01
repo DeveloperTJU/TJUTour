@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewDataSource,ENSideMenuDelegate {
+class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     
     var mainTableView:UITableView!
@@ -20,7 +20,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        self.sideMenuController()?.sideMenu?.delegate = self
         let blurEffect = UIBlurEffect(style: .Light)
         backgroundBlurView = UIVisualEffectView(effect: blurEffect)
         backgroundBlurView.frame.size = self.view.bounds.size
@@ -33,28 +32,15 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.mainTableView.backgroundColor = .clearColor()
         self.mainTableView.separatorStyle = .None
         self.view.addSubview(mainTableView)
-        let leftBtn:UIBarButtonItem=UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(FavoriteViewController.actionBack))
-        leftBtn.title="菜单";
-        leftBtn.tintColor=UIColor.whiteColor();
-        self.navigationItem.leftBarButtonItem=leftBtn;
+        let leftBtn = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
+        leftBtn.tintColor=UIColor.whiteColor()
+        self.navigationItem.leftBarButtonItem=leftBtn
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         self.title = "收藏"
         // Do any additional setup after loading the view.
-    }
-    
-    func actionBack(){
-        if self.isSideMenuOpen(){
-            self.hideSideMenuView()
-            
-        }
-        else {
-            self.showSideMenuView()
-
-        }
-        
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
@@ -71,7 +57,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         
-        return 5
+        return Buildings.count
     }
     //左滑删除
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
@@ -92,10 +78,14 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     {
         let cell = BaseCell()
         cell.backgroundColor = UIColor.clearColor()
+        //cell.cellImage.image = UIImage(named: "0")
+        
         cell.cellImage.image = UIImage(named: "0")
+        print(indexPath.row)
         cell.contentView.addSubview(cell.cellImage)
-        cell.detailLabel.text = "test"
+        cell.detailLabel.text = Buildings[indexPath.row].name
         cell.detailLabel.textColor = UIColor.redColor()
+        cell.detailLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20.0)
         cell.contentView.addSubview(cell.detailLabel)
         let view = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 10))
         view.backgroundColor = UIColor.clearColor()
@@ -132,9 +122,9 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         return 74
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 5
-    }
+//    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 5
+//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)

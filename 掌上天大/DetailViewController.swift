@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController,UITextViewDelegate,ENSideMenuDelegate {
+class DetailViewController: UIViewController,UITextViewDelegate {
     
     var likeArray : [NSArray]?
     var contentTextView:UITextView!
@@ -22,8 +22,6 @@ class DetailViewController: UIViewController,UITextViewDelegate,ENSideMenuDelega
         
         self.title = "此处应该是楼名"
         self.view.backgroundColor = UIColor.grayColor()
-        self.sideMenuController()?.sideMenu?.delegate = self
-        self.sideMenuController()?.sideMenu?.allowRightSwipe = false
 
         //给导航增加item
         let rightItem = UIBarButtonItem(title: "3D模式", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(DetailViewController.threeDItem(_:)))
@@ -33,18 +31,6 @@ class DetailViewController: UIViewController,UITextViewDelegate,ENSideMenuDelega
         
         //轮播图
         
-        
-        
-        func sideMenuShouldOpenSideMenu() -> Bool {
-            return false
-        }
-        
-        func sideMenuWillOpen() {
-            print("sideMenuWillOpen")
-            self.sideMenuController()?.sideMenu?.allowRightSwipe = false
-            print(self.sideMenuController()?.sideMenu?.allowRightSwipe )
-            
-        }
         
         
         //详细信息

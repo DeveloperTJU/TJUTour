@@ -16,9 +16,8 @@ class HomeContainerViewController: SWRevealViewController {
         self.setRearViewController(MyMenuTableViewController(), animated: true)
         
         //设置主页面
-        //let a = UINavigationController(rootViewController: HomeVC)
-        self.setFrontViewController(a, animated: true)
-        
+        let navVC = UINavigationController(rootViewController: HomeViewController())
+        self.setFrontViewController(navVC, animated: true)
         // Do any additional setup after loading the view.
     }
 

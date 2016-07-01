@@ -9,8 +9,6 @@
 import UIKit
 
 let mapVC = BaiduMapOfTJUViewController()
-let HomeVC = HomeViewController()
-let a = UINavigationController(rootViewController: HomeVC)
 var Buildings = [BuildingData]()
 
 @UIApplicationMain
@@ -42,33 +40,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
         UITextField.appearance().tintColor = .blackColor()
         
         //测试数据
-        let data0 = BuildingData(id: "123", name: "55楼", detail: "Your Sample Text Here.")
-        data0.images.append(UIImage(named: "0")!)
-        data0.images.append(UIImage(named: "0")!)
-        data0.images.append(UIImage(named: "0")!)
-        Buildings.append(data0)
-        Buildings.append(BuildingData())
-        let data = BuildingData(id: "456", name: "33楼", detail: "Your Sample Text Here.")
-        data.images.append(UIImage(named: "0")!)
-        Buildings.append(data)
-        Buildings.append(BuildingData())
-        Buildings.append(BuildingData())
+//        let data0 = BuildingData(id: "123", name: "55楼", detail: "Your Sample Text Here.")
+//        data0.images.append(UIImage(named: "0")!)
+//        data0.images.append(UIImage(named: "0")!)
+//        data0.images.append(UIImage(named: "0")!)
+//        Buildings.append(data0)
+//        Buildings.append(BuildingData())
+//        let data = BuildingData(id: "456", name: "33楼", detail: "Your Sample Text Here.")
+//        data.images.append(UIImage(named: "0")!)
+//        Buildings.append(data)
+//        Buildings.append(BuildingData())
+//        Buildings.append(BuildingData())
         
-//        let url = "index.php/Home/BuildingData/getAllData"
-//        RequestAPI.POST(url, body: [], succeed:{ (task:NSURLSessionDataTask!, responseObject:AnyObject?) -> Void in
-//            let resultDict = try! NSJSONSerialization.JSONObjectWithData(responseObject as! NSData, options: NSJSONReadingOptions.MutableContainers)
-//            
-//            let arr = resultDict["modelArr"] as! NSArray
-//            Buildings = [BuildingData]()
-//            for data in arr{
-//                Buildings.append(BuildingData(id: data["id"] as! String, name: data["name"] as! String, detail: data["description"] as! String))
-//            }
-////            HomeVC.reloadImages()
-//        }) { (task:NSURLSessionDataTask?, error:NSError?) -> Void in
-//            //显示无连接
-//        }
+        let url = "index.php/Home/BuildingData/getAllData"
+        RequestAPI.POST(url, body: [], succeed:{ (task:NSURLSessionDataTask!, responseObject:AnyObject?) -> Void in
+            let resultDict = try! NSJSONSerialization.JSONObjectWithData(responseObject as! NSData, options: NSJSONReadingOptions.MutableContainers)
+            
+            let arr = resultDict["modelArr"] as! NSArray
+            Buildings = [BuildingData]()
+            for data in arr{
+                Buildings.append(BuildingData(id: data["id"] as! String, name: data["name"] as! String, detail: data["description"] as! String))
+            }
+            self.window?.rootViewController = HomeContainerViewController()
+        }) { (task:NSURLSessionDataTask?, error:NSError?) -> Void in
+            //显示无连接
+        }
+        
         self.window?.rootViewController = HomeContainerViewController()
-
         return true
     }
 

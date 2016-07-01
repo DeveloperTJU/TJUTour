@@ -8,13 +8,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDataSource, iCarouselDelegate, ENSideMenuDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDataSource, iCarouselDelegate {
     
     var mainTableView:UITableView!
     var coverflow:iCarousel!
     var navigationBlurView:UIVisualEffectView!
     var backgroundBlurView:UIVisualEffectView!
-    var mapButton:UIBarButtonItem!
     var indexChanged = false
     
     override func viewDidLoad() {
@@ -22,13 +21,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        self.sideMenuController()?.sideMenu?.delegate = self
         let blurEffect = UIBlurEffect(style: .Light)
         backgroundBlurView = UIVisualEffectView(effect: blurEffect)
         backgroundBlurView.frame.size = self.view.bounds.size
         self.view.addSubview(backgroundBlurView)
-        mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
+        let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
         let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
+        self.navigationItem.leftBarButtonItems = [mapButton]
         self.navigationItem.rightBarButtonItems = [searchButton]
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -50,12 +49,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func openMap(){
-        
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
     
     func search(){
-        
+        self.navigationController?.pushViewController(SearchViewController(), animated: true)
     }
     
     func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
@@ -77,7 +75,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             imageView.image = Buildings[self.coverflow.currentItemIndex].images[0]
         }
         let nameLabel = UILabel(frame: CGRectMake(0, UIScreen.mainScreen().bounds.width * 3 / 8, UIScreen.mainScreen().bounds.width * 2 / 3, 20))
-        nameLabel.text = Buildings[self.coverflow.currentItemIndex].name
+        nameLabel.text = Buildings[index].name
         nameLabel.textColor = .whiteColor()
         nameLabel.textAlignment = .Center
         imageView.addSubview(nameLabel)
@@ -105,7 +103,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Buildings.count == 0 ? 0 : Buildings[self.coverflow.currentItemIndex].images.count
+        return Buildings.count <= 0 ? 0 : Buildings[self.coverflow.currentItemIndex].images.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -150,7 +148,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationItem.leftBarButtonItems = [mapButton]
         let blurEffect = UIBlurEffect(style: .Light)
         navigationBlurView = UIVisualEffectView(effect: blurEffect)
         navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)

@@ -14,7 +14,6 @@ class ViewController1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.greenColor()
-        var sideMenu = ENSideMenu(sourceView: self.view, menuViewController: a, menuPosition:.Left)
 
     }
 
