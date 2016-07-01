@@ -17,13 +17,14 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
     var searchState:Int = 1//1表示历史搜索，0表示当前搜索列表
     
     //数据库部分
-    var database:FMDatabase!
+    var dataService:DatabaseService = DatabaseService()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        database = FMDatabase()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         self.setSearchBar()
+        
         self.setMainTableView()
     }
     
@@ -65,27 +66,29 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
         }
         self.mainTableView.reloadData()
     }
-
+    
     
     //点击导航栏返回按钮事件
     func OnBackBtnClicked(){
-        print("返回了")
-        //self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     //设置搜索结果的tableView
     func setMainTableView(){
-        let userDefault = NSUserDefaults.standardUserDefaults()
-        if userDefault.objectForKey("history") == nil{
-            let inputSet:NSArray = NSArray(array: [])
-            userDefault.setObject(inputSet, forKey: "history")
-        }
-        let set:NSArray = userDefault.objectForKey("history") as! NSArray
-        self.historyArr = set as! [String]
-        let frame:CGRect = CGRectMake(10, 10, self.view.bounds.width-20, self.view.bounds.height-84)
+        //        let userDefault = NSUserDefaults.standardUserDefaults()
+        //        if userDefault.objectForKey("history") == nil{
+        //            let inputSet:NSArray = NSArray(array: [])
+        //            userDefault.setObject(inputSet, forKey: "history")
+        //        }
+        //        let set:NSArray = userDefault.objectForKey("history") as! NSArray
+        //        self.historyArr = set as! [String]
+        self.historyArr = dataService.loadHistory()
+        let frame:CGRect = CGRectMake(10, 10, self.view.bounds.width-20, self.view.bounds.height)
         self.mainTableView = UITableView(frame: frame)
         self.mainTableView.dataSource = self
         self.mainTableView.delegate = self
+        self.mainTableView.backgroundColor = UIColor.clearColor()
+        
         self.view.addSubview(mainTableView)
     }
     
@@ -137,14 +140,19 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
         let cell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         if searchState == 0{
             self.searchBar.resignFirstResponder()
-            //修改数据库中状态为历史搜索
             if historyArr.contains(self.searchBar.text!){
                 historyArr.removeAtIndex(historyArr.indexOf(self.searchBar.text!)!)
             }
             self.historyArr.append(self.searchBar.text!)
-            let userDefault:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            let set:NSArray = NSArray(array: self.historyArr)
-            userDefault.setObject(set, forKey: "history")
+            //            let userDefault:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            //            let set:NSArray = NSArray(array: self.historyArr)
+            //            userDefault.setObject(set, forKey: "history")
+            dataService.insertInHistory(self.searchBar.text!)
+            
+            let detailVC = DetailViewController()
+            
+            self.navigationController?.pushViewController(detailVC, animated: true)
+            
         }else if searchState == 1 && indexPath.row > 0{
             self.searchBar.text = cell.textLabel?.text?.substringFromIndex((cell.textLabel?.text!.startIndex.advancedBy(3))!)
             self.refreshSearchTableView(searchBar.text!)
@@ -153,30 +161,24 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
     
     //设置删除图标响应事件
     func onDeleteHistorySearch(){
-        print("已删除历史搜索")
-        //修改本地数据中state = 1
         self.historyArr.removeAll()
-        let userDefault = NSUserDefaults.standardUserDefaults()
-        let array:NSArray = NSArray(array: [])
-        userDefault.setObject(array, forKey: "history")
+        //        let userDefault = NSUserDefaults.standardUserDefaults()
+        //        let array:NSArray = NSArray(array: [])
+        //        userDefault.setObject(array, forKey: "history")
+        
+        if DatabaseService.sharedInstance.clearHistory()
+        {
+            print("删除成功")
+        }
+        else{
+            print("删除失败")
+        }
         self.mainTableView.reloadData()
     }
     
     //从数据库中搜索当前关键词
     func getAllBuildings()->[BuildingData]{
         var allBuildings:[BuildingData] = [BuildingData]()
-        self.database.open()
-        let sql = "select * from building"
-        let rs = self.database.executeQuery(sql, withArgumentsInArray: [])
-        if rs != nil{
-            while rs.next(){
-                let building:BuildingData = BuildingData()
-                building.id = rs.stringForColumn("id")
-                building.name = rs.stringForColumn("name")
-                allBuildings.append(building)
-            }
-        }
-        self.database.close()
         
         //因返回数据库为空，此处模拟数据
         for i in 0 ... 10{
