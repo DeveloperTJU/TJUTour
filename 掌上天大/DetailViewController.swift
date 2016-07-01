@@ -72,7 +72,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         
         
         //喜欢按钮
-        if(building.isHistory=="NO"){
+        if(building.favourite=="NO"){
             self.isLike = "1"
         }
         self.likeButton = UIButton()
