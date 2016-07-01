@@ -40,7 +40,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.mainTableView.backgroundColor = .clearColor()
         self.mainTableView.separatorStyle = .None
         self.view.addSubview(self.mainTableView)
-        for i in 0 ..< Buildings.count - 1{
+        for i in 0 ..< Buildings.count{
             if Buildings[i].images.count == 0{
                 Buildings[i].images.append(UIImage(data: NSData(contentsOfURL: NSURL(string: "\(RequestClient.URL)/building_pictures/\(Buildings[i].id)/\(Buildings[i].id).jpg")!)!)!)
             }
@@ -147,6 +147,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         let cell = BaseCell()
         cell.backgroundColor = UIColor.clearColor()
+//        if Buildings[index].images.count == 0{
+//            cell.cellImage.image = UIImage(named: "0")
+//        }
+//        else{
+//            cell.cellImage.image = Buildings[index].images[0]
+//        }
         cell.cellImage.image = Buildings[self.coverflow.currentItemIndex].images[indexPath.row]
         cell.contentView.addSubview(cell.cellImage)
         cell.selectionStyle = .None

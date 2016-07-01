@@ -15,6 +15,7 @@ class HomeContainerViewController: SWRevealViewController {
         //设置侧栏菜单
         self.setRearViewController(MyMenuTableViewController(), animated: true)
         let homeVC = HomeViewController()
+        self.setFrontViewController(UINavigationController(rootViewController: homeVC), animated: true)
         if Buildings.count > 0{
             homeVC.loadData()
         }
@@ -33,9 +34,6 @@ class HomeContainerViewController: SWRevealViewController {
                 //显示无连接
             }
         }
-        //设置主页面
-        let navVC = UINavigationController(rootViewController: homeVC)
-        self.setFrontViewController(navVC, animated: true)
         // Do any additional setup after loading the view.
     }
 
