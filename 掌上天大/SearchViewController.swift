@@ -16,16 +16,13 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
     var currentArr:[BuildingData] = []
     var searchState:Int = 1//1表示历史搜索，0表示当前搜索列表
     
-    //数据库部分
-    var dataService:DatabaseService = DatabaseService()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         self.setSearchBar()
-        
         self.setMainTableView()
+        self.mainTableView.userInteractionEnabled = true
+        self.mainTableView.backgroundColor = UIColor.clearColor()
     }
     
     //设置搜索条
@@ -55,15 +52,17 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
         let buildings = self.getAllBuildings()
         self.searchState = 0
         self.currentArr.removeAll()
-        for i in 0 ..< buildings.count{
-            let name = buildings[i].name
-            if name.containsString(string){
-                let building:BuildingData = BuildingData()
-                building.name = buildings[i].name
-                building.id = buildings[i].id
-                self.currentArr.append(building)
-            }
-        }
+        self.currentArr = self.getAllBuildings()
+        self.filterContentForSearchText(string)
+        //        for i in 0 ..< buildings.count{
+        //            let name = buildings[i].name
+        //            if name.containsString(string){
+        //                let building:BuildingData = BuildingData()
+        //                building.name = buildings[i].name
+        //                building.id = buildings[i].id
+        //                self.currentArr.append(building)
+        //            }
+        //        }
         self.mainTableView.reloadData()
     }
     
@@ -82,7 +81,7 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
         //        }
         //        let set:NSArray = userDefault.objectForKey("history") as! NSArray
         //        self.historyArr = set as! [String]
-        self.historyArr = dataService.loadHistory()
+        self.historyArr = DatabaseService.sharedInstance.loadHistory()
         let frame:CGRect = CGRectMake(10, 10, self.view.bounds.width-20, self.view.bounds.height)
         self.mainTableView = UITableView(frame: frame)
         self.mainTableView.dataSource = self
@@ -106,6 +105,8 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
         let frame:CGRect = CGRectMake(0, 0, self.mainTableView.bounds.width, 0)
         let cell:UITableViewCell = UITableViewCell(frame: frame)
         cell.selectionStyle = .None
+        cell.backgroundColor = .clearColor()
+        cell.textLabel?.textColor = UIColor.whiteColor()
         tableView.separatorStyle = .None
         if searchState == 1{
             if indexPath.row == 0{
@@ -142,13 +143,13 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
             self.searchBar.resignFirstResponder()
             if historyArr.contains(self.searchBar.text!){
                 historyArr.removeAtIndex(historyArr.indexOf(self.searchBar.text!)!)
+                DatabaseService.sharedInstance.deleteHistory(self.searchBar.text!)
             }
             self.historyArr.append(self.searchBar.text!)
             //            let userDefault:NSUserDefaults = NSUserDefaults.standardUserDefaults()
             //            let set:NSArray = NSArray(array: self.historyArr)
             //            userDefault.setObject(set, forKey: "history")
-            dataService.insertInHistory(self.searchBar.text!)
-            
+            DatabaseService.sharedInstance.insertInHistory(self.searchBar.text!)
             let detailVC = DetailViewController()
             
             self.navigationController?.pushViewController(detailVC, animated: true)
@@ -156,6 +157,7 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
         }else if searchState == 1 && indexPath.row > 0{
             self.searchBar.text = cell.textLabel?.text?.substringFromIndex((cell.textLabel?.text!.startIndex.advancedBy(3))!)
             self.refreshSearchTableView(searchBar.text!)
+            // DatabaseService.sharedInstance.insertInHistory(searchBar.text!)
         }
     }
     
@@ -189,5 +191,14 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
         }
         return allBuildings
     }
+    
+    
+    func filterContentForSearchText(searchText: String) {
+        currentArr = self.currentArr.filter({ (buildingModel:BuildingData) -> Bool in
+            let nameMatch = buildingModel.name.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return nameMatch != nil
+        })
+    }
+    
 }
     
