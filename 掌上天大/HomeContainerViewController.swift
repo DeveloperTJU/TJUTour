@@ -17,7 +17,7 @@ class HomeContainerViewController: SWRevealViewController {
         let homeVC = HomeViewController()
         self.setFrontViewController(UINavigationController(rootViewController: homeVC), animated: true)
         if Buildings.count > 0{
-            homeVC.loadData()
+//            homeVC.loadData()
         }
         else{
             let url = "index.php/Home/BuildingData/getAllData"

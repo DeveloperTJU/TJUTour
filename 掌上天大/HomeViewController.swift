@@ -41,9 +41,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.mainTableView.separatorStyle = .None
         self.view.addSubview(self.mainTableView)
         for i in 0 ..< Buildings.count{
-            if Buildings[i].images.count == 0{
-                Buildings[i].images.append(UIImage(data: NSData(contentsOfURL: NSURL(string: "\(RequestClient.URL)/building_pictures/\(Buildings[i].id)/\(Buildings[i].id).jpg")!)!)!)
-            }
+            Buildings[i].getCoverImage()
         }
         coverflow.reloadData()
     }
@@ -88,12 +86,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         else {
             imageView = UIImageView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width * 2 / 3, UIScreen.mainScreen().bounds.width * 3 / 8))
         }
-        if Buildings[index].images.count == 0{
-            imageView.image = UIImage(named: "0")
-        }
-        else{
-            imageView.image = Buildings[index].images[0]
-        }
+        imageView.image = Buildings[index].getCoverImage()
         let nameLabel = UILabel(frame: CGRectMake(0, UIScreen.mainScreen().bounds.width * 3 / 8, UIScreen.mainScreen().bounds.width * 2 / 3, 20))
         nameLabel.text = Buildings[index].name
         nameLabel.textColor = .whiteColor()
@@ -105,22 +98,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func carouselDidEndScrollingAnimation(carousel: iCarousel) {
         if self.mainTableView != nil && indexChanged{
             indexChanged = false
+            Buildings[coverflow.currentItemIndex].getImages()
             self.mainTableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
         }
     }
     
     func carouselCurrentItemIndexDidChange(carousel: iCarousel) {
         indexChanged = true
-        if self.mainTableView != nil{
-//            self.mainTableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .None)
-        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section != 1{
             return 0
         }
-        return Buildings.count <= 0 ? 0 : Buildings[self.coverflow.currentItemIndex].images.count
+        return Buildings.count <= 0 ? 0 : Buildings[self.coverflow.currentItemIndex].getImageCount()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -145,13 +136,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         let cell = BaseCell()
         cell.backgroundColor = UIColor.clearColor()
-//        if Buildings[index].images.count == 0{
-//            cell.cellImage.image = UIImage(named: "0")
-//        }
-//        else{
-//            cell.cellImage.image = Buildings[index].images[0]
-//        }
-        cell.cellImage.image = Buildings[self.coverflow.currentItemIndex].images[indexPath.row]
+        cell.cellImage.image = Buildings[self.coverflow.currentItemIndex].getImages()[indexPath.row]
         cell.contentView.addSubview(cell.cellImage)
         cell.selectionStyle = .None
         return cell
@@ -163,6 +148,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailVC = DetailViewController()
+        detailVC.building = Buildings[indexPath.row]
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
