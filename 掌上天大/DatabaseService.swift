@@ -37,7 +37,7 @@ class DatabaseService: NSObject {
                 print("Error:\(db.lastErrorMessage())")
             }
             if db.open(){
-                var sqlStr = "CREATE TABLE IF NOT EXISTS BUILDING(ID TEXT, NAME TEXT, DETAIL TEXT,ISHISTORY INT, PRIMARY KEY(ID))"
+                var sqlStr = "CREATE TABLE IF NOT EXISTS BUILDING(ID TEXT, NAME TEXT, DETAIL TEXT,FAVOURITE INT, PRIMARY KEY(ID))"
                 if !db.executeUpdate(sqlStr, withArgumentsInArray: []) {
                     print("Error:\(db.lastErrorMessage())")
                 }
@@ -65,7 +65,7 @@ class DatabaseService: NSObject {
     func insert(buildingData : BuildingData) -> Bool{
         self.database.open()
         let sqlStr = "INSERT INTO BUILDING VALUES (?, ? ,? ,?)"
-        let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [buildingData.id, buildingData.name, buildingData.detail, buildingData.isHistory])
+        let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [buildingData.id, buildingData.name, buildingData.detail, buildingData.favourite])
         self.database.close()
         return succeed
     }
@@ -91,7 +91,7 @@ class DatabaseService: NSObject {
             buildingData[i].detail = rs.stringForColumn("DETAIL")
             buildingData[i].name = rs.stringForColumn("NAME")
             buildingData[i].id = rs.stringForColumn("NUM")
-            buildingData[i].isHistory = rs.stringForColumn("ISHISTORY")
+            buildingData[i].isHistory = rs.stringForColumn("FAVOURITE")
             i = i + 1
         }
         self.database.close()
