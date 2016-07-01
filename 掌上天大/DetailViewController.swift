@@ -24,7 +24,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "此处应该是楼名"
+        self.title = building.name
         self.view.backgroundColor = UIColor.grayColor()
 
         //给导航增加item
@@ -56,7 +56,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         comment_message_style.firstLineHeadIndent = 12.0
         comment_message_style.headIndent = 10.0
         let comment_message_indent = NSMutableAttributedString(string:
-            "此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍此处应该有介绍")
+            building.detail)
         comment_message_indent.addAttribute(NSParagraphStyleAttributeName,
                                             value: comment_message_style,
                                             range: NSMakeRange(0, comment_message_indent.length))
@@ -72,6 +72,9 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         
         
         //喜欢按钮
+        if(building.isHistory=="NO"){
+            self.isLike = "1"
+        }
         self.likeButton = UIButton()
         likeButton.frame=CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width / 2, 60)
         if(self.isLike == "0"){
