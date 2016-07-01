@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController,UITextViewDelegate {
     
+    var building:BuildingData!
     var likeArray : [NSArray]?
     var contentTextView:UITextView!
     var likeButton:UIButton!
