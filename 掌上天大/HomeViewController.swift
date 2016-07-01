@@ -49,7 +49,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func openMap(){
+        mapVC.curPos = Buildings[coverflow.currentItemIndex].nameinmap
+        print(mapVC.curPos)
         self.navigationController?.pushViewController(mapVC, animated: true)
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
     }
     
     func search(){

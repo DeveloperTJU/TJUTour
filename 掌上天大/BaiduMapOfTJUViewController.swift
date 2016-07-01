@@ -8,15 +8,14 @@
 
 import UIKit
 
-class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKLocationServiceDelegate {
-    let west = CLLocationCoordinate2D(latitude: 39.004659, longitude: 117.303725)
-    let east = CLLocationCoordinate2D(latitude: 39.005718, longitude: 117.334033)
-    let north = CLLocationCoordinate2D(latitude: 39.013053, longitude: 117.327916)
-    let south = CLLocationCoordinate2D(latitude: 38.99473, longitude: 117.328607)
-    
+class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearchDelegate  {
+    let leftBottom = CLLocationCoordinate2D(latitude: 38.99473,longitude: 117.303725)
+    let rightTop = CLLocationCoordinate2D(latitude:39.013053, longitude: 117.334033)
+    var curPos: String = ""
     var _mapView: BMKMapView?
     var _locService: BMKLocationService?
-    
+    var poiSearch: BMKPoiSearch!
+    var currPageIndex: Int32 = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,22 +25,20 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKLoca
         let region = self.getRegion()
         _mapView?.setRegion(region, animated: true)
         _mapView?.limitMapRegion = region
-        //_mapView?.showMapPoi = true
+        _mapView?.isSelectedAnnotationViewFront = true
         
-        _locService = BMKLocationService()
-        //_locService?.allowsBackgroundLocationUpdates = true
-        self.startLocation()
+        poiSearch = BMKPoiSearch()
+        currPageIndex = 0
+        self.sendPoiSearchRequest()
+        
         self.view.addSubview(_mapView!)
-        
-        
     }
     
-    
     func getRegion() -> BMKCoordinateRegion{
-        let center = CLLocationCoordinate2D(latitude: (north.latitude+south.latitude)/2, longitude: (east.longitude+west.longitude)/2)
+        let center = CLLocationCoordinate2D(latitude: (rightTop.latitude+leftBottom.latitude)/2, longitude: (rightTop.longitude+leftBottom.longitude)/2)
         
-        let latitudeDelta = (north.latitude - south.latitude)
-        let longitudeDelta = (east.longitude - west.longitude)
+        let latitudeDelta = (rightTop.latitude - leftBottom.latitude)
+        let longitudeDelta = (rightTop.longitude - leftBottom.longitude)
         let span = BMKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
         
         let region = BMKCoordinateRegion(center: center, span: span)
@@ -55,9 +52,10 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKLoca
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        _locService?.delegate = self
+       // _locService?.delegate = self
         _mapView?.viewWillAppear()
         _mapView?.delegate = self // 此处记得不用的时候需要置nil，否则影响内存的释放
+        poiSearch.delegate = self
         
         
         self.navigationController?.navigationBar.translucent = true
@@ -67,17 +65,21 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKLoca
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        _locService?.delegate = self
+       // _locService?.delegate = self
         _mapView?.viewWillDisappear()
         _mapView?.delegate = nil // 不用时，置nil
+        poiSearch.delegate = nil
     }
     
     // MARK: - BMKMapViewDelegate
     
     func mapView(mapView: BMKMapView!, onClickedMapPoi mapPoi: BMKMapPoi!) {
-        print( "您点击了地图标注\(mapPoi.text)，当前经纬度:(\(mapPoi.pt.longitude),\(mapPoi.pt.latitude))，缩放级别:\(mapView.zoomLevel)，旋转角度:\(mapView.rotation)，俯视角度:\(mapView.overlooking)")
+        print(mapPoi.uid)
+        print( "您点击了地图标注\(mapPoi.text)，当前经纬度:(\(mapPoi.pt.longitude),\(mapPoi.pt.latitude))")
         let detailVC = DetailViewController()
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        
+        self._mapView?.centerCoordinate = mapPoi.pt
+        //self.navigationController?.pushViewController(detailVC, animated: true)
     }
     func startLocation() {
         print("进入普通定位态");
@@ -91,6 +93,56 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKLoca
     func didUpdateBMKUserLocation(userLocation: BMKUserLocation!) {
         print("didUpdateUserLocation lat:\(userLocation.location.coordinate.latitude) lon:\(userLocation.location.coordinate.longitude)")
         _mapView?.updateLocationData(userLocation)
+    }
+    
+    func sendPoiSearchRequest() {
+        let bound = BMKBoundSearchOption()
+        bound.leftBottom = self.leftBottom
+        bound.rightTop = self.rightTop
+        bound.keyword = self.curPos
+        bound.pageIndex = currPageIndex
+        bound.pageCapacity = 10
+//        let citySearchOption = BMKCitySearchOption()
+//        citySearchOption.pageIndex = currPageIndex
+//        citySearchOption.pageCapacity = 10
+//        citySearchOption.city = "天津"
+        //citySearchOption.keyword = "天津大学北洋园校区" + buildingName;
+        
+        
+        if poiSearch.poiSearchInbounds(bound){
+            print("城市内检索发送成功！")
+        }else {
+            print("城市内检索发送失败！")
+        }
+    }
+    // MARK: - BMKPoiSearchDelegate
+    /**
+     *返回POI搜索结果
+     *@param searcher 搜索对象
+     *@param poiResult 搜索结果列表
+     *@param errorCode 错误号，@see BMKSearchErrorCode
+     */
+    func onGetPoiResult(searcher: BMKPoiSearch!, result poiResult: BMKPoiResult!, errorCode: BMKSearchErrorCode) {
+        print("onGetPoiResult code: \(errorCode)");
+        
+        // 清除屏幕中所有的 annotation
+        _mapView!.removeAnnotations(_mapView!.annotations)
+        if errorCode == BMK_SEARCH_NO_ERROR {
+            var annotations = [BMKPointAnnotation]()
+            for i in 0..<poiResult.poiInfoList.count {
+                let poi = poiResult.poiInfoList[i] as! BMKPoiInfo
+                let item = BMKPointAnnotation()
+                item.coordinate = poi.pt
+                item.title = poi.name
+                annotations.append(item)
+            }
+            _mapView!.addAnnotations(annotations)
+            _mapView!.showAnnotations(annotations, animated: true)
+        } else if errorCode == BMK_SEARCH_AMBIGUOUS_KEYWORD {
+            print("检索词有歧义")
+        } else {
+            // 各种情况的判断……
+        }
     }
     
 
