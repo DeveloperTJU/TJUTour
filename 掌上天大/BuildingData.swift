@@ -15,15 +15,16 @@ class BuildingData: NSObject {
     var nameinmap = ""
     var name:String = ""//建筑名称
     var detail:String = ""//详情页的描述
-    var favourite = "NO"//YES 或 NO
+    var isFavourite = "NO"//YES 或 NO
     
     override init(){
         super.init()
     }
     
-    convenience init(id:String, name:String, detail:String){
+    convenience init(id:String, nameinmap:String, name:String, detail:String){
         self.init()
         self.id = id
+        self.nameinmap = nameinmap
         self.name = name
         self.detail = detail
     }
@@ -34,7 +35,7 @@ class BuildingData: NSObject {
         self.nameinmap = nameinmap
         self.name = name
         self.detail = detail
-        self.favourite = favourite
+        self.isFavourite = favourite
     }
 
 }
