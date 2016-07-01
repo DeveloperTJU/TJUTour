@@ -47,12 +47,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
         data0.images.append(UIImage(named: "0")!)
         data0.images.append(UIImage(named: "0")!)
         Buildings.append(data0)
-        Buildings.append(BuildingData())
+        Buildings.append(data0)
         let data = BuildingData(id: "456", name: "33楼", detail: "Your Sample Text Here.")
         data.images.append(UIImage(named: "0")!)
         Buildings.append(data)
-        Buildings.append(BuildingData())
-        Buildings.append(BuildingData())
+//        Buildings.append(data)
+//        Buildings.append(data)
+        print(Buildings[0].images[0])
         
 //        let url = "index.php/Home/BuildingData/getAllData"
 //        RequestAPI.POST(url, body: [], succeed:{ (task:NSURLSessionDataTask!, responseObject:AnyObject?) -> Void in

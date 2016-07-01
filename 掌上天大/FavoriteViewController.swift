@@ -71,7 +71,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         
-        return 5
+        return Buildings.count
     }
     //左滑删除
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
@@ -92,10 +92,13 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     {
         let cell = BaseCell()
         cell.backgroundColor = UIColor.clearColor()
-        cell.cellImage.image = UIImage(named: "0")
+        //cell.cellImage.image = UIImage(named: "0")
+        cell.cellImage.image = Buildings[indexPath.row].images[0]
+        print(indexPath.row)
         cell.contentView.addSubview(cell.cellImage)
-        cell.detailLabel.text = "test"
+        cell.detailLabel.text = Buildings[indexPath.row].name
         cell.detailLabel.textColor = UIColor.redColor()
+        cell.detailLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20.0)
         cell.contentView.addSubview(cell.detailLabel)
         let view = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 10))
         view.backgroundColor = UIColor.clearColor()
@@ -132,9 +135,9 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         return 74
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 5
-    }
+//    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 5
+//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
