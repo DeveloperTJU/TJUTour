@@ -193,7 +193,7 @@ class AboutViewController: UIViewController ,UITableViewDelegate,UITableViewData
                 let frame:CGRect = CGRectMake(20, 0, 200, 200)
                 cell = UITableViewCell(frame: frame)
                 cell.addSubview(imageView)
-                self.versionText.text = "咕嘟笔记 v1.0"
+                self.versionText.text = "掌上天大 v1.0"
                 cell.addSubview(versionText)
                 versionText.font = font
                 cell.selectionStyle = .None

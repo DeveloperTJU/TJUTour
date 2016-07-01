@@ -9,12 +9,18 @@
 import UIKit
 
 class SetupViewController: UIViewController,UIAlertViewDelegate {
+    
+    var navigationBlurView:UIVisualEffectView!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         let mainSize = self.view.bounds.size
         self.view.backgroundColor = .whiteColor()
         let img = UIImage(named:"background")

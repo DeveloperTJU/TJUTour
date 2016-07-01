@@ -14,6 +14,7 @@ class BuildingData: NSObject {
     var id:String = ""//建筑ID, 用于建筑的索引，也是其图片文件夹名称和模型文件在本地、远程的文件名
     var name:String = ""//建筑名称
     var detail:String = ""//详情页的描述
+    var isHistory = "NO"//YES 或 NO
     
     override init(){
         super.init()
@@ -24,6 +25,14 @@ class BuildingData: NSObject {
         self.id = id
         self.name = name
         self.detail = detail
+    }
+    
+    convenience init(id:String, name:String, detail:String, isHistory:String){
+        self.init()
+        self.id = id
+        self.name = name
+        self.detail = detail
+        self.isHistory = isHistory
     }
 
 }

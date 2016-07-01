@@ -9,7 +9,6 @@
 import UIKit
 
 let mapVC = BaiduMapOfTJUViewController()
-let HomeVC = HomeViewController()
 var Buildings = [BuildingData]()
 
 @UIApplicationMain
@@ -63,7 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
                 Buildings.append(BuildingData(id: data["id"] as! String, name: data["name"] as! String, detail: data["description"] as! String))
             }
             self.window?.rootViewController = HomeContainerViewController()
-//            HomeVC.reloadImages()
         }) { (task:NSURLSessionDataTask?, error:NSError?) -> Void in
             //显示无连接
         }
