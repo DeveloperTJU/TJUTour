@@ -110,7 +110,7 @@ class DatabaseService: NSObject {
     //清除本地
     func clearHistory() -> Bool {
         self.database.open()
-        let sqlStr = "DELETE * FROM HISTORY"
+        let sqlStr = "DELETE FROM HISTORY"
         let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [])
         self.database.close()
         return succeed
