@@ -72,8 +72,9 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         
         
         //喜欢按钮
+
         if(building.isFavourite=="NO"){
-            self.isLike = "1"
+            self.isLike = "0"
         }
         self.likeButton = UIButton()
         likeButton.frame=CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width / 2, 60)
@@ -120,18 +121,19 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     }
     
     func like(button:UIButton){
-        print("like")
         if(self.isLike == "0"){
             self.likeButton.setImage(UIImage(named: "2"), forState: .Normal)
             self.likeButton.setImage(UIImage(named: "2"), forState: .Highlighted)
             self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
             self.isLike = "1"
+            select(building)
         }
         else{
             self.likeButton.setImage(UIImage(named: "3"), forState: .Normal)
             self.likeButton.setImage(UIImage(named: "3"), forState: .Highlighted)
             self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
             self.isLike = "0"
+            delete(building.id)
         }
         
 
