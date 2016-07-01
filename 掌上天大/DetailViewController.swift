@@ -16,6 +16,9 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     var goodButton:UIButton!
     var isLike:String = "1"
     var isGood:String = "1"
+    var scrollview:UIScrollView!
+    var pagecontrol:UIPageControl!
+    var timer:NSTimer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +33,18 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         
         
         //轮播图
-        
+        self.scrollview = UIScrollView()
+        self.pagecontrol = UIPageControl()
+        self.scrollview.backgroundColor = UIColor.whiteColor()
+        self.scrollview.frame = CGRect(x: 20, y: 90, width: (self.view.frame.size.width - 40), height: 190)
+        self.pagecontrol.frame = CGRect(x: 200, y: 240, width: 20, height: 20)
+        initView()
+        self.view.addSubview(self.scrollview)
+        self.view.addSubview(self.pagecontrol)
         
         
         //详细信息
-        self.contentTextView = UITextView(frame: CGRectMake(15, 250, self.view.frame.size.width - 30, self.view.frame.size.height - 380))
+        self.contentTextView = UITextView(frame: CGRectMake(15, 270, self.view.frame.size.width - 30, self.view.frame.size.height - 380))
         
         self.contentTextView.layer.borderColor = UIColor(red: 60/255, green: 40/255, blue: 129/255, alpha: 1).CGColor;
         self.contentTextView.editable = false
@@ -141,6 +151,63 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     
     
     
+    
+    func initView(){
+        let image_W:CGFloat = self.scrollview.frame.size.width
+        let image_H:CGFloat = self.scrollview.frame.size.height
+        var image_Y:CGFloat = 0
+        var totalCount:NSInteger = 5
+        for index in 0..<totalCount{
+            var imageView:UIImageView = UIImageView()
+            let image_X:CGFloat = CGFloat(index) * image_W
+            imageView.frame = CGRectMake(image_X, image_Y, image_W, image_H)
+            let name:NSString = NSString(format:"%d",index+1)
+            imageView.image = UIImage(named:name as String)
+            self.scrollview.showsHorizontalScrollIndicator = false
+            self.scrollview.addSubview(imageView)
+        }
+        self.view.addSubview(self.pagecontrol)
+        let content_W:CGFloat = image_W * CGFloat(totalCount)
+        self.scrollview.contentSize = CGSizeMake(content_W, 0)
+        self.scrollview.pagingEnabled = true;
+        self.scrollview.delegate = self
+        self.pagecontrol.numberOfPages = totalCount
+        self.addTimer()
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let scrollviewW:CGFloat = scrollview.frame.size.width
+        let x:CGFloat = scrollview.contentOffset.x
+        let page:Int = (Int)((x + scrollviewW / 2) / scrollviewW)
+        self.pagecontrol.currentPage = page
+    }
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        print("scrollViewWillBeginDragging")
+        self.removeTimer()
+    }
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        print("scrollViewDidEndDragging")
+        self.addTimer()
+    }
+    
+    func addTimer(){
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "nextImage:", userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(self.timer, forMode: NSRunLoopCommonModes)
+    }
+    func removeTimer(){
+        self.timer.invalidate()
+    }
+    func nextImage(sender:AnyObject!){
+        var page:Int = self.pagecontrol.currentPage
+        if(page == 4){
+            page = 0
+        }
+        else{
+            ++page
+        }
+        let x:CGFloat = CGFloat(page) * self.scrollview.frame.size.width
+        self.scrollview.contentOffset = CGPointMake(x, 0)
+    }
     
 //    func load () {
 //        var likes : [NSArray] = []

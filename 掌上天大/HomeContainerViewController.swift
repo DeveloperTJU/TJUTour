@@ -10,13 +10,11 @@ import UIKit
 
 class HomeContainerViewController: SWRevealViewController {
 
-    var homeVC:HomeViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //设置侧栏菜单
         self.setRearViewController(MyMenuTableViewController(), animated: true)
-        homeVC = HomeViewController()
+        let homeVC = HomeViewController()
         if Buildings.count > 0{
             homeVC.loadData()
         }
@@ -30,7 +28,7 @@ class HomeContainerViewController: SWRevealViewController {
                 for data in arr{
                     Buildings.append(BuildingData(id: data["id"] as! String, name: data["name"] as! String, detail: data["description"] as! String))
                 }
-                self.homeVC.loadData()
+                homeVC.loadData()
             }) { (task:NSURLSessionDataTask?, error:NSError?) -> Void in
                 //显示无连接
             }

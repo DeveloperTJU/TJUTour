@@ -37,7 +37,7 @@ class DatabaseService: NSObject {
                 print("Error:\(db.lastErrorMessage())")
             }
             if db.open(){
-                var sqlStr = "CREATE TABLE IF NOT EXISTS BUILDING(ID TEXT, NAME TEXT, DETAIL TEXT,ISHISTORY INT, PRIMARY KEY(ID))"
+                var sqlStr = "CREATE TABLE IF NOT EXISTS BUILDING(ID TEXT, NAME TEXT, DETAIL TEXT,FAVOURITE INT, PRIMARY KEY(ID))"
                 if !db.executeUpdate(sqlStr, withArgumentsInArray: []) {
                     print("Error:\(db.lastErrorMessage())")
                 }
@@ -59,18 +59,14 @@ class DatabaseService: NSObject {
         return FMDatabaseQueue(path: (UIApplication.sharedApplication().delegate as! AppDelegate).databasePath)
     }
     
-    
-    
-    //新增用户
     func insert(buildingData : BuildingData) -> Bool{
         self.database.open()
         let sqlStr = "INSERT INTO BUILDING VALUES (?, ? ,? ,?)"
-        let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [buildingData.id, buildingData.name, buildingData.detail, buildingData.isHistory])
+        let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [buildingData.id, buildingData.name, buildingData.detail, buildingData.isFavourite])
         self.database.close()
         return succeed
     }
     
-    //新增或更新用户信息
     func deleteData(id:String) -> Bool{
         self.database.open()
         var sqlStr = "DELETE FROM BUILDING WHERE NUM = ?"
@@ -80,7 +76,6 @@ class DatabaseService: NSObject {
         return succeed
     }
     
-    //选取当前用户所有数据准备上传
     func selectAll() -> [BuildingData] {
         self.database.open()
         var buildingData = [BuildingData]()
@@ -91,14 +86,13 @@ class DatabaseService: NSObject {
             buildingData[i].detail = rs.stringForColumn("DETAIL")
             buildingData[i].name = rs.stringForColumn("NAME")
             buildingData[i].id = rs.stringForColumn("NUM")
-            buildingData[i].isHistory = rs.stringForColumn("ISHISTORY")
+            buildingData[i].isFavourite = rs.stringForColumn("ISFAVOURITE")
             i = i + 1
         }
         self.database.close()
         return buildingData
     }
     
-    //新建任务
     func insertInHistory(str:String) -> Bool {
         self.database.open()
         let sqlStr = "INSERT INTO HISTORY VALUES (?)"
@@ -107,7 +101,6 @@ class DatabaseService: NSObject {
         return succeed
     }
     
-    //清除本地
     func clearHistory() -> Bool {
         self.database.open()
         let sqlStr = "DELETE FROM HISTORY"
@@ -124,7 +117,6 @@ class DatabaseService: NSObject {
         return succeed
     }
     
-    //
     func loadHistory() -> [String] {
         self.database.open()
         let sqlStr = "SELECT * FROM HISTORY"
