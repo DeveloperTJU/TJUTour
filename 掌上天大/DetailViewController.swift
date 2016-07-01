@@ -73,7 +73,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         
         //喜欢按钮
 
-        if(building.favourite=="NO"){
+        if(building.isFavourite=="NO"){
             self.isLike = "0"
         }
         self.likeButton = UIButton()
@@ -121,7 +121,6 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     }
     
     func like(button:UIButton){
-//        print("like")
         if(self.isLike == "0"){
             self.likeButton.setImage(UIImage(named: "2"), forState: .Normal)
             self.likeButton.setImage(UIImage(named: "2"), forState: .Highlighted)
