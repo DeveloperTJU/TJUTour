@@ -42,7 +42,7 @@ class DatabaseService: NSObject {
                     print("Error:\(db.lastErrorMessage())")
                 }
                
-                sqlStr = "CREATE TABLE IF NOT EXISTS HISTORY(TIME TIMESTAMP DEFAULT CURRENT_TIMESTAMP UPDATE CURRENT_TIMESTAMP, STR TEXT, PRIMARY KEY(TIME))"
+                sqlStr = "CREATE TABLE IF NOT EXISTS HISTORY(TIME TIMESTAMP DEFAULT CURRENT_TIMESTAMP, STR TEXT, PRIMARY KEY(TIME))"
                 if !db.executeUpdate(sqlStr, withArgumentsInArray: []) {
                     print("Error:\(db.lastErrorMessage())")
                 }
@@ -124,7 +124,7 @@ class DatabaseService: NSObject {
         var history:[String] = [String]()
         var i = 0
         while rs.next(){
-            history[i] = rs.stringForColumn("STR")
+            history.append(rs.stringForColumn("STR"))
             i = i + 1
         }
         self.database.close()
