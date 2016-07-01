@@ -105,7 +105,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Buildings.count == 0 ? 0 : Buildings[self.coverflow.currentItemIndex].images.count
+        return Buildings.count <= 0 ? 0 : Buildings[self.coverflow.currentItemIndex].images.count
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
