@@ -29,7 +29,7 @@ class BuildingData: NSObject {
         self.detail = detail
     }
     
-    convenience init(id:String, nameinmap:String, name:String, detail:String, isHistory:String, favourite: String){
+    convenience init(id:String, nameinmap:String, name:String, detail:String, favourite: String){
         self.init()
         self.id = id
         self.nameinmap = nameinmap

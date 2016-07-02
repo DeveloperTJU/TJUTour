@@ -27,7 +27,7 @@ class HomeContainerViewController: SWRevealViewController {
                 let arr = resultDict["modelArr"] as! NSArray
                 Buildings = [BuildingData]()
                 for data in arr{
-                    Buildings.append(BuildingData(id: data["id"] as! String, nameinmap: data["nameinmap"], name: data["name"] as! String, detail: data["description"] as! String))
+                    Buildings.append(BuildingData(id: data["id"] as! String, nameinmap: data["nameinmap"] as! String, name: data["name"] as! String, detail: data["description"] as! String))
                 }
                 homeVC.loadData()
             }) { (task:NSURLSessionDataTask?, error:NSError?) -> Void in

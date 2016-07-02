@@ -11,7 +11,7 @@ import UIKit
 class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearchDelegate  {
     let leftBottom = CLLocationCoordinate2D(latitude: 38.99473,longitude: 117.303725)
     let rightTop = CLLocationCoordinate2D(latitude:39.013053, longitude: 117.334033)
-    var curPos: String = ""
+    var curPosIndex: NSInteger = 0
     var _mapView: BMKMapView?
     var _locService: BMKLocationService?
     var poiSearch: BMKPoiSearch!
@@ -29,7 +29,7 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
         
         poiSearch = BMKPoiSearch()
         currPageIndex = 0
-        self.sendPoiSearchRequest()
+        //self.sendPoiSearchRequest()
         
         self.view.addSubview(_mapView!)
     }
@@ -52,7 +52,7 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-       // _locService?.delegate = self
+        self.sendPoiSearchRequest()
         _mapView?.viewWillAppear()
         _mapView?.delegate = self // 此处记得不用的时候需要置nil，否则影响内存的释放
         poiSearch.delegate = self
@@ -74,40 +74,45 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
     // MARK: - BMKMapViewDelegate
     
     func mapView(mapView: BMKMapView!, onClickedMapPoi mapPoi: BMKMapPoi!) {
-        print(mapPoi.uid)
-        print( "您点击了地图标注\(mapPoi.text)，当前经纬度:(\(mapPoi.pt.longitude),\(mapPoi.pt.latitude))")
+        _mapView!.removeOverlays(_mapView?.overlays)
+//        //_mapView!.removeAnnotations(_mapView!.annotations)
+        let marker = BMKGroundOverlay()
+        marker.pt = mapPoi.pt
+        //marker.icon
+//        marker.
+//        item.coordinate = mapPoi.pt
+//        item.title = mapPoi.text
+//        item
+        self._mapView?.centerCoordinate = mapPoi.pt
+        //_mapView.
+        _mapView?.addOverlay(marker)
+        //_mapView!.showAnnotations(_mapView!.annotations, animated: true)
         let detailVC = DetailViewController()
         
         self._mapView?.centerCoordinate = mapPoi.pt
-        //self.navigationController?.pushViewController(detailVC, animated: true)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
-    func startLocation() {
-        print("进入普通定位态");
-        _locService?.startUserLocationService()
-        _mapView?.showsUserLocation = false//先关闭显示的定位图层
-        _mapView?.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
-        _mapView?.showsUserLocation = true//显示定位图层
-    }
+//    func startLocation() {
+//        print("进入普通定位态");
+//        _locService?.startUserLocationService()
+//        _mapView?.showsUserLocation = false//先关闭显示的定位图层
+//        _mapView?.userTrackingMode = BMKUserTrackingModeNone;//设置定位的状态
+//        _mapView?.showsUserLocation = true//显示定位图层
+//    }
 
     
-    func didUpdateBMKUserLocation(userLocation: BMKUserLocation!) {
-        print("didUpdateUserLocation lat:\(userLocation.location.coordinate.latitude) lon:\(userLocation.location.coordinate.longitude)")
-        _mapView?.updateLocationData(userLocation)
-    }
+//    func didUpdateBMKUserLocation(userLocation: BMKUserLocation!) {
+//        print("didUpdateUserLocation lat:\(userLocation.location.coordinate.latitude) lon:\(userLocation.location.coordinate.longitude)")
+//        _mapView?.updateLocationData(userLocation)
+//    }
     
     func sendPoiSearchRequest() {
         let bound = BMKBoundSearchOption()
         bound.leftBottom = self.leftBottom
         bound.rightTop = self.rightTop
-        bound.keyword = self.curPos
+        bound.keyword = Buildings[self.curPosIndex].nameinmap
         bound.pageIndex = currPageIndex
         bound.pageCapacity = 10
-//        let citySearchOption = BMKCitySearchOption()
-//        citySearchOption.pageIndex = currPageIndex
-//        citySearchOption.pageCapacity = 10
-//        citySearchOption.city = "天津"
-        //citySearchOption.keyword = "天津大学北洋园校区" + buildingName;
-        
         
         if poiSearch.poiSearchInbounds(bound){
             print("城市内检索发送成功！")
@@ -136,6 +141,7 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
                 item.title = poi.name
                 annotations.append(item)
             }
+            self._mapView?.centerCoordinate = (poiResult.poiInfoList[0] as! BMKPoiInfo).pt
             _mapView!.addAnnotations(annotations)
             _mapView!.showAnnotations(annotations, animated: true)
         } else if errorCode == BMK_SEARCH_AMBIGUOUS_KEYWORD {
