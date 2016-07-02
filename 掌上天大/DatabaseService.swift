@@ -87,6 +87,7 @@ class DatabaseService: NSObject {
             buildingData[i].name = rs.stringForColumn("NAME")
             buildingData[i].id = rs.stringForColumn("NUM")
             //buildingData[i].isHistory = rs.stringForColumn("FAVOURITE")
+            buildingData[i].isFavourite = rs.stringForColumn("FAVOURITE")
             i = i + 1
         }
         self.database.close()

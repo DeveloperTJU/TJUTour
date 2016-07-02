@@ -75,22 +75,21 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
     
     func mapView(mapView: BMKMapView!, onClickedMapPoi mapPoi: BMKMapPoi!) {
         _mapView!.removeOverlays(_mapView?.overlays)
-//        //_mapView!.removeAnnotations(_mapView!.annotations)
-        let marker = BMKGroundOverlay()
-        marker.pt = mapPoi.pt
-        //marker.icon
-//        marker.
-//        item.coordinate = mapPoi.pt
-//        item.title = mapPoi.text
-//        item
-        self._mapView?.centerCoordinate = mapPoi.pt
+        //_mapView!.removeAnnotations(_mapView!.annotations)
+        //let marker = BMKGroundOverlay()
+        //marker.pt = mapPoi.pt
+        //self._mapView?.centerCoordinate = mapPoi.pt
         //_mapView.
-        _mapView?.addOverlay(marker)
+        //_mapView?.addOverlay(marker)
         //_mapView!.showAnnotations(_mapView!.annotations, animated: true)
-        let detailVC = DetailViewController()
-        
-        self._mapView?.centerCoordinate = mapPoi.pt
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        let index = BuildingDict[mapPoi.text]
+        if index != nil {
+            let detailVC = DetailViewController()
+            detailVC.building = Buildings[index! as! NSInteger]
+            //._mapView?.centerCoordinate = mapPoi.pt
+            self.navigationController?.pushViewController(detailVC, animated: true)
+
+        }
     }
 //    func startLocation() {
 //        print("进入普通定位态");
@@ -143,7 +142,7 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
             }
             self._mapView?.centerCoordinate = (poiResult.poiInfoList[0] as! BMKPoiInfo).pt
             _mapView!.addAnnotations(annotations)
-            _mapView!.showAnnotations(annotations, animated: true)
+            //_mapView!.showAnnotations(annotations, animated: true)
         } else if errorCode == BMK_SEARCH_AMBIGUOUS_KEYWORD {
             print("检索词有歧义")
         } else {
