@@ -7,8 +7,11 @@
 //
 
 import UIKit
-
+protocol SearchPosInMap{
+    func sendPoiSearchRequest()
+}
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDataSource, iCarouselDelegate {
+    var delegate: SearchPosInMap?
     
     var mainTableView:UITableView!
     var coverflow:iCarousel!
@@ -66,6 +69,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func openMap(){
+        mapVC.curPosIndex = coverflow.currentItemIndex
         self.navigationController?.pushViewController(mapVC, animated: true)
         self.navigationController?.interactivePopGestureRecognizer?.enabled = false
     }
@@ -148,7 +152,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailVC = DetailViewController()
-        detailVC.building = Buildings[indexPath.row]
+        detailVC.building = Buildings[coverflow.currentItemIndex]
+        detailVC.initIndex = indexPath.row
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
