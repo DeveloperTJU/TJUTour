@@ -59,7 +59,7 @@ class DatabaseService: NSObject {
         return FMDatabaseQueue(path: (UIApplication.sharedApplication().delegate as! AppDelegate).databasePath)
     }
     
-    func insert(buildingData : BuildingData) -> Bool{
+    func insertData(buildingData : BuildingData) -> Bool{
         self.database.open()
         let sqlStr = "INSERT INTO BUILDING VALUES (?, ? ,? ,?)"
         let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [buildingData.id, buildingData.name, buildingData.detail, buildingData.isFavourite])
