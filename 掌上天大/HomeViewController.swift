@@ -236,6 +236,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let detailVC = DetailViewController()
         detailVC.building = Buildings[coverflow.currentItemIndex]
         detailVC.initIndex = indexPath.row
+        print(detailVC.building.isFavourite)
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

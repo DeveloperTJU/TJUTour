@@ -69,7 +69,7 @@ class DatabaseService: NSObject {
     
     func deleteData(id:String) -> Bool{
         self.database.open()
-        var sqlStr = "DELETE FROM BUILDING WHERE NUM = ?"
+        var sqlStr = "DELETE FROM BUILDING WHERE ID = ?"
         self.database.executeUpdate(sqlStr, withArgumentsInArray: [id])
         let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [id])
         self.database.close()
@@ -111,7 +111,9 @@ class DatabaseService: NSObject {
     func cancelFavouite(id:String) {
         self.database.open()
         let sqlStr = "UPDATE BUILDING SET FAVOURITE = ? WHERE ID = ?"
+        print(id)
         let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: ["NO",id])
+        print(self.database.lastErrorMessage())
         self.database.close()
 
     }
