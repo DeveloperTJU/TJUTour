@@ -19,6 +19,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var coverflow:iCarousel!
     var navigationBlurView:UIVisualEffectView!
     var backgroundBlurView:UIVisualEffectView!
+    var connectionErrorView:UIView!
+    var connectionErrorLabel:UILabel!
+    var retryButton:UIButton!
+    var indicator:UIActivityIndicatorView!
     var indexChanged = false
     var isDataLoaded = false
     var countdownTimer: NSTimer?
@@ -47,14 +51,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func updateTime(timer: NSTimer) {
         // 计时开始时，逐秒减少remainingSeconds的值
         remainingSeconds -= 1
-    }
-    
-    init(){
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
     
     func loadData() {
@@ -93,6 +89,64 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
         self.navigationItem.leftBarButtonItems = [mapButton]
         self.navigationItem.rightBarButtonItems = [searchButton]
+        
+        //无连接显示error并提示重试
+        connectionErrorView = UIButton(type: .Custom)
+        connectionErrorView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height)
+        let errorBlurEffect = UIBlurEffect(style: .Dark)
+        let errorBlurView = UIVisualEffectView(effect: errorBlurEffect)
+        errorBlurView.frame.size = self.view.bounds.size
+        connectionErrorView.addSubview(errorBlurView)
+        
+        retryButton = UIButton(frame: CGRectMake(UIScreen.mainScreen().bounds.width / 2 - 40, UIScreen.mainScreen().bounds.height / 2 - 120, 80, 80))
+        retryButton.setImage(UIImage(named: "1"), forState: .Normal)
+        retryButton.setImage(UIImage(named: "1"), forState: .Highlighted)
+        retryButton.addTarget(self, action: Selector("downloadCoverImages"), forControlEvents: .TouchDown)
+        connectionErrorView.addSubview(self.retryButton)
+        
+        connectionErrorLabel = UILabel(frame: CGRectMake(20, UIScreen.mainScreen().bounds.height / 2 - 20, UIScreen.mainScreen().bounds.width - 40, 60))
+        connectionErrorLabel.textAlignment = .Center
+        connectionErrorLabel.textColor = .whiteColor()
+        connectionErrorView.addSubview(connectionErrorLabel)
+        self.view.addSubview(connectionErrorView)
+        
+        let frame = CGRectMake(self.view.bounds.size.width/2 - 5, self.view.bounds.size.height/2 - 60, 10, 10)
+        indicator = UIActivityIndicatorView(frame: frame)
+        indicator.activityIndicatorViewStyle = .WhiteLarge
+        indicator.color = UIColor.grayColor()
+        indicator.hidesWhenStopped = true
+        self.view.addSubview(indicator)
+        downloadCoverImages()
+    }
+    
+    func downloadCoverImages(){
+        if Buildings.count <= 0{
+            indicator.startAnimating()
+            retryButton.removeFromSuperview()
+            connectionErrorLabel.text = "正在获取数据..."
+            self.navigationController?.navigationBarHidden = true
+            let url = "index.php/Home/BuildingData/getAllData"
+            RequestAPI.POST(url, body: [], succeed:{ (task:NSURLSessionDataTask!, responseObject:AnyObject?) -> Void in
+                let resultDict = try! NSJSONSerialization.JSONObjectWithData(responseObject as! NSData, options: NSJSONReadingOptions.MutableContainers)
+                let arr = resultDict["modelArr"] as! NSArray
+                Buildings = [BuildingData]()
+                var i : NSInteger = 0
+                for data in arr{
+                    Buildings.append(BuildingData(id: data["id"] as! String, nameinmap: data["nameinmap"] as! String, name: data["name"] as! String, detail: data["description"] as! String))
+                    BuildingDict[data["nameinmap"] as! String] = i
+                    DatabaseService.sharedInstance.insertData(BuildingData(id: data["id"] as! String, nameinmap: data["nameinmap"] as! String, name: data["name"] as! String, detail: data["description"] as! String, favourite: "NO"))
+                    i += 1
+                }
+                self.connectionErrorView.removeFromSuperview()
+                self.navigationController?.navigationBarHidden = false
+                self.loadData()
+                self.indicator.stopAnimating()
+            }) { (task:NSURLSessionDataTask?, error:NSError?) -> Void in
+                self.indicator.stopAnimating()
+                self.connectionErrorView.addSubview(self.retryButton)
+                self.connectionErrorLabel.text = "网络无连接\n请重试"
+            }
+        }
     }
     
     func openMap(){
@@ -188,7 +242,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func scrollViewDidScroll(scrollView: UIScrollView) {
         self.navigationBlurView.alpha = scrollView.contentOffset.y / 120
         self.backgroundBlurView.alpha = scrollView.contentOffset.y / 120
-        remainingSeconds = 3
+        //用户浏览更多图片时推迟切换轮播图
+        remainingSeconds = 10
     }
     
     override func viewWillAppear(animated: Bool) {
