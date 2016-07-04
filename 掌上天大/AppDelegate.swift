@@ -9,8 +9,10 @@
 import UIKit
 
 let mapVC = BaiduMapOfTJUViewController()
+let HomeVC = HomeViewController()
 var Buildings = [BuildingData]()
 var BuildingDict = Dictionary<String, NSInteger>()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
     var _mapManager: BMKMapManager?

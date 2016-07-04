@@ -7,9 +7,11 @@
 //
 
 import UIKit
+
 protocol SearchPosInMap{
     func sendPoiSearchRequest()
 }
+
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDataSource, iCarouselDelegate {
     var delegate: SearchPosInMap?
     
@@ -19,6 +21,33 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var backgroundBlurView:UIVisualEffectView!
     var indexChanged = false
     var isDataLoaded = false
+    var countdownTimer: NSTimer?
+    var isCounting = false {
+        willSet {
+            if newValue {
+                countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTime:", userInfo: nil, repeats: true)
+                remainingSeconds = 3
+            } else {
+                countdownTimer?.invalidate()
+                countdownTimer = nil
+            }
+        }
+    }
+    
+    var remainingSeconds: Int = 3 {
+        willSet {
+            if newValue <= 0 {
+                remainingSeconds = 3
+                self.mainTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1), atScrollPosition: .Bottom, animated: true)
+                self.coverflow.scrollToItemAtIndex((coverflow.currentItemIndex + 1) % coverflow.numberOfItems, animated: true)
+            }
+        }
+    }
+    
+    func updateTime(timer: NSTimer) {
+        // 计时开始时，逐秒减少remainingSeconds的值
+        remainingSeconds -= 1
+    }
     
     init(){
         super.init(nibName: nil, bundle: nil)
@@ -30,6 +59,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func loadData() {
         self.isDataLoaded = true
+        self.isCounting = true
         coverflow = iCarousel(frame: CGRectMake(10, 100, self.view.bounds.width - 20, (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 5))
         coverflow.dataSource = self
         coverflow.delegate = self
@@ -63,9 +93,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
         self.navigationItem.leftBarButtonItems = [mapButton]
         self.navigationItem.rightBarButtonItems = [searchButton]
-        self.navigationController?.navigationBar.translucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     func openMap(){
@@ -102,6 +129,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func carouselDidEndScrollingAnimation(carousel: iCarousel) {
         if self.mainTableView != nil && indexChanged{
             indexChanged = false
+            remainingSeconds = 3
             Buildings[coverflow.currentItemIndex].getImages()
             self.mainTableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
         }
@@ -123,7 +151,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 110 : 0
+        return section == 0 ? (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 105 : 0
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -131,7 +159,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return section == 0 ? coverflow : UIView()
+        return section == 0 ? coverflow : UIView(frame: CGRectMake(0, 0, 0, 0))
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) ->UITableViewCell{
@@ -160,10 +188,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func scrollViewDidScroll(scrollView: UIScrollView) {
         self.navigationBlurView.alpha = scrollView.contentOffset.y / 120
         self.backgroundBlurView.alpha = scrollView.contentOffset.y / 120
+        remainingSeconds = 3
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         let blurEffect = UIBlurEffect(style: .Light)
         navigationBlurView = UIVisualEffectView(effect: blurEffect)
         navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
@@ -171,11 +203,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         self.navigationBlurView.alpha = isDataLoaded ? self.mainTableView.contentOffset.y / 120 : 0
         self.backgroundBlurView.alpha = isDataLoaded ? self.mainTableView.contentOffset.y / 120 : 0
+        if isDataLoaded{
+            self.isCounting = true
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
         self.navigationBlurView.removeFromSuperview()
+        if isDataLoaded{
+            self.isCounting = false
+        }
     }
     
 }

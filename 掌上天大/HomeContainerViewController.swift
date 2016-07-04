@@ -14,16 +14,11 @@ class HomeContainerViewController: SWRevealViewController {
         super.viewDidLoad()
         //设置侧栏菜单
         self.setRearViewController(MyMenuTableViewController(), animated: true)
-        let homeVC = HomeViewController()
-        self.setFrontViewController(UINavigationController(rootViewController: homeVC), animated: true)
-        if Buildings.count > 0{
-//            homeVC.loadData()
-        }
-        else{
+        self.setFrontViewController(UINavigationController(rootViewController: HomeVC), animated: true)
+        if Buildings.count <= 0{
             let url = "index.php/Home/BuildingData/getAllData"
             RequestAPI.POST(url, body: [], succeed:{ (task:NSURLSessionDataTask!, responseObject:AnyObject?) -> Void in
                 let resultDict = try! NSJSONSerialization.JSONObjectWithData(responseObject as! NSData, options: NSJSONReadingOptions.MutableContainers)
-                
                 let arr = resultDict["modelArr"] as! NSArray
                 Buildings = [BuildingData]()
                 var i : NSInteger = 0
@@ -32,12 +27,11 @@ class HomeContainerViewController: SWRevealViewController {
                     BuildingDict[data["nameinmap"] as! String] = i
                     i += 1
                 }
-                homeVC.loadData()
+                HomeVC.loadData()
             }) { (task:NSURLSessionDataTask?, error:NSError?) -> Void in
-                //显示无连接
+                //
             }
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
