@@ -127,6 +127,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
             self.likeButton.setImage(UIImage(named: "2"), forState: .Highlighted)
             self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
             self.isLike = "1"
+            self.building.isFavourite = "YES"
             
             DatabaseService.sharedInstance.insertData(building)
         }
