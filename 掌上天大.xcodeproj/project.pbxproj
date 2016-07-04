@@ -48,7 +48,6 @@
 		A5C960E91D1CC3D800ABA0EF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C960E81D1CC3D800ABA0EF /* libsqlite3.0.tbd */; };
 		A5C960EC1D1CC42500ABA0EF /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960EB1D1CC42500ABA0EF /* BaseCell.swift */; };
 		A5C960F51D1CC7DB00ABA0EF /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F01D1CC7DB00ABA0EF /* ImageHelper.swift */; };
-		A5C960F61D1CC7DB00ABA0EF /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F11D1CC7DB00ABA0EF /* DatabaseService.swift */; };
 		A5C960F71D1CC7DB00ABA0EF /* RequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */; };
 		A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */; };
 		A5C960F91D1CC7DB00ABA0EF /* CustomNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */; };
@@ -66,6 +65,7 @@
 		A8E92FFB1D24F13000485BD9 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E92FFA1D24F13000485BD9 /* HomeContainerViewController.swift */; };
 		A8E92FFD1D24F54100485BD9 /* FavoriteContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E92FFC1D24F54100485BD9 /* FavoriteContainerViewController.swift */; };
 		A8E92FFF1D24F5CC00485BD9 /* SetupContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E92FFE1D24F5CC00485BD9 /* SetupContainerViewController.swift */; };
+		A8F6C8661D2A27A900802587 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F11D1CC7DB00ABA0EF /* DatabaseService.swift */; };
 		C3B1EDD142FE33F407179B93 /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFAF80E2D79C889ADB5635C4 /* Pods_____.framework */; };
 		C3D124061D20EBC4006FAB34 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D124051D20EBC4006FAB34 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -586,7 +586,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5C9608B1D1CC27600ABA0EF /* AFHTTPSessionManager.m in Sources */,
-				A5C960F61D1CC7DB00ABA0EF /* DatabaseService.swift in Sources */,
 				5BBB7BB61D238D4E009FB4DB /* SearchViewController.swift in Sources */,
 				A5C960C81D1CC28100ABA0EF /* MJRefreshBackGifFooter.m in Sources */,
 				A5C960C51D1CC28100ABA0EF /* MJRefreshAutoGifFooter.m in Sources */,
@@ -607,6 +606,7 @@
 				A5AD8B3B1D22E0460017ED19 /* iCarousel.m in Sources */,
 				A87478781D23AD72009CB3FD /* MyRect.swift in Sources */,
 				A5C960D21D1CC28100ABA0EF /* UIScrollView+MJRefresh.m in Sources */,
+				A8F6C8661D2A27A900802587 /* DatabaseService.swift in Sources */,
 				A5C960F71D1CC7DB00ABA0EF /* RequestClient.swift in Sources */,
 				A5C960CF1D1CC28100ABA0EF /* MJRefreshConst.m in Sources */,
 				A5C9608E1D1CC27600ABA0EF /* AFURLRequestSerialization.m in Sources */,

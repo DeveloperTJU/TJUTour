@@ -25,6 +25,7 @@ class HomeContainerViewController: SWRevealViewController {
                 for data in arr{
                     Buildings.append(BuildingData(id: data["id"] as! String, nameinmap: data["nameinmap"] as! String, name: data["name"] as! String, detail: data["description"] as! String))
                     BuildingDict[data["nameinmap"] as! String] = i
+                    DatabaseService.sharedInstance.insertData(BuildingData(id: data["id"] as! String, nameinmap: data["nameinmap"] as! String, name: data["name"] as! String, detail: data["description"] as! String, favourite: "NO"))
                     i += 1
                 }
                 HomeVC.loadData()
