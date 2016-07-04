@@ -15,15 +15,14 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     let cellidentifier:String = "BaseCell"
     var navigationBlurView:UIVisualEffectView!
     var backgroundBlurView:UIVisualEffectView!
-    var favoriteBuildings = [BuildingData]()
+    var favoriteBuildings = DatabaseService.sharedInstance.selectFavorite()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        for favorite in Buildings {
-            if favorite.isFavourite == "YES"{
-                favoriteBuildings.append(favorite)
-            }
-        }
+//        for favorite in Buildings {
+//            if favorite.isFavourite == "YES"{
+//                favoriteBuildings.append(favorite)
+//            }
+//        }
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
@@ -71,7 +70,9 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         
         let deleteButton = UITableViewRowAction(style: .Destructive, title: "  ") {
             action, index in
-            self.favoriteBuildings[indexPath.row].isFavourite = "NO"
+            DatabaseService.sharedInstance.cancelFavouite(Buildings[indexPath.row].id)
+            self.favoriteBuildings.removeAtIndex(indexPath.row)
+            self.mainTableView.reloadData()
         }
         let image = UIImage(CGImage: (UIImage(named: "垃圾箱")?.CGImage)!, scale: 2.5, orientation: .Up)
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 40, height: 200), false, 1.0)
@@ -99,7 +100,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         }
         print(indexPath.row)
         cell.contentView.addSubview(cell.cellImage)
-        cell.detailLabel.text = Buildings[indexPath.row].name
+        cell.detailLabel.text = favoriteBuildings[indexPath.row].name
         cell.detailLabel.textColor = UIColor.redColor()
         cell.detailLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20.0)
         cell.contentView.addSubview(cell.detailLabel)
