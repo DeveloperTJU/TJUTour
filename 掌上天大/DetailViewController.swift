@@ -11,6 +11,7 @@ import UIKit
 class DetailViewController: UIViewController,UITextViewDelegate {
     
     var building:BuildingData!
+    var initIndex: Int = 0
     var likeArray : [NSArray]?
     var contentTextView:UITextView!
     var likeButton:UIButton!
@@ -163,12 +164,13 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         let image_H:CGFloat = self.scrollview.frame.size.height
         var image_Y:CGFloat = 0
         var totalCount:NSInteger = 5
-        for index in 0..<totalCount{
+        var allImages = self.building.getImages()
+        for index in 0..<allImages.count{
             var imageView:UIImageView = UIImageView()
             let image_X:CGFloat = CGFloat(index) * image_W
             imageView.frame = CGRectMake(image_X, image_Y, image_W, image_H)
             let name:NSString = NSString(format:"%d",index+1)
-            imageView.image = UIImage(named:name as String)
+            imageView.image = allImages[index]//UIImage(named:name as String)
             self.scrollview.showsHorizontalScrollIndicator = false
             self.scrollview.addSubview(imageView)
         }
