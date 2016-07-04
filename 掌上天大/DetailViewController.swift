@@ -163,23 +163,22 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         let image_W:CGFloat = self.scrollview.frame.size.width
         let image_H:CGFloat = self.scrollview.frame.size.height
         var image_Y:CGFloat = 0
-        var totalCount:NSInteger = 5
         var allImages = self.building.getImages()
         for index in 0..<allImages.count{
             var imageView:UIImageView = UIImageView()
             let image_X:CGFloat = CGFloat(index) * image_W
             imageView.frame = CGRectMake(image_X, image_Y, image_W, image_H)
             let name:NSString = NSString(format:"%d",index+1)
-            imageView.image = allImages[index]//UIImage(named:name as String)
+            imageView.image = allImages[index]
             self.scrollview.showsHorizontalScrollIndicator = false
             self.scrollview.addSubview(imageView)
         }
         self.view.addSubview(self.pagecontrol)
-        let content_W:CGFloat = image_W * CGFloat(totalCount)
+        let content_W:CGFloat = image_W * CGFloat(allImages.count)
         self.scrollview.contentSize = CGSizeMake(content_W, 0)
         self.scrollview.pagingEnabled = true;
         self.scrollview.delegate = self
-        self.pagecontrol.numberOfPages = totalCount
+        self.pagecontrol.numberOfPages = allImages.count
         self.addTimer()
     }
     
@@ -207,7 +206,8 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     }
     func nextImage(sender:AnyObject!){
         var page:Int = self.pagecontrol.currentPage
-        if(page == 4){
+        var allImages = self.building.getImages()
+        if(page == (allImages.count-1)){
             page = 0
         }
         else{
