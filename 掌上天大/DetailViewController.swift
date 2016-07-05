@@ -23,12 +23,16 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     var timer:NSTimer!
     var likeimage:UIImage!
     var likelabel:UILabel!
+    var bgImageView:UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = building.name
         self.view.backgroundColor = UIColor(red: 241/255, green: 245/255, blue: 248/255, alpha: 1)
+        self.bgImageView = UIImageView(image: UIImage(named: "background"))
+        self.bgImageView.frame = self.view.bounds
+        self.view.addSubview(self.bgImageView)
         
         //给导航增加item
         let mainColor = UIColor.whiteColor()
@@ -51,7 +55,8 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         self.contentTextView.layer.borderColor = UIColor(red: 60/255, green: 40/255, blue: 129/255, alpha: 1).CGColor;
         self.contentTextView.editable = false
         self.contentTextView.delegate = self
-        self.contentTextView.backgroundColor = UIColor.whiteColor()
+        self.contentTextView.backgroundColor = UIColor.clearColor()
+        self.contentTextView.textColor = UIColor.whiteColor()
         
         let comment_message_style = NSMutableParagraphStyle()
         comment_message_style.firstLineHeadIndent = 12.0
@@ -62,8 +67,14 @@ class DetailViewController: UIViewController,UITextViewDelegate {
                                             value: comment_message_style,
                                             range: NSMakeRange(0, comment_message_indent.length))
         comment_message_indent.addAttribute(NSFontAttributeName,
-                                            value: UIFont.systemFontOfSize(15),
+                                            value: UIFont(name: "HelveticaNeue-Thin", size: 15.0)!,
                                             range: NSMakeRange(0, comment_message_indent.length))
+        comment_message_indent.addAttribute(NSForegroundColorAttributeName,
+                                            value: UIColor.whiteColor(),
+                                            range: NSMakeRange(0, comment_message_indent.length))
+    
+        
+        
         //        comment_message_indent.addAttribute(NSForegroundColorAttributeName,
         //                                            value: UIColor.whiteColor(),
         //                                            range: NSMakeRange(0, comment_message_indent.length))
@@ -94,13 +105,13 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         likeButton.frame=CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width / 2, 60)
         if(self.isLike == "0"){
             self.likeimage = UIImage(named: "未收藏")
-            var vImg1 = UIImageView(image: self.likeimage)
+            let vImg1 = UIImageView(image: self.likeimage)
             vImg1.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
             self.view.addSubview(vImg1)
         }
         else{
             self.likeimage = UIImage(named: "已收藏")
-            var vImg2 = UIImageView(image: self.likeimage)
+            let vImg2 = UIImageView(image: self.likeimage)
             vImg2.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
             self.view.addSubview(vImg2)
         }
@@ -110,6 +121,8 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         self.likelabel = UILabel()
         self.likelabel.frame=CGRectMake((self.view.frame.size.width/2) - 90, self.view.frame.size.height - 40, 70, 20)
         self.likelabel.text = "收藏"
+        self.likelabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16.0)
+        self.likelabel.textColor = UIColor.whiteColor()
         self.view.addSubview(self.likelabel)
         
         
@@ -118,16 +131,18 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         self.goodButton.frame=CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height - 60, self.view.frame.size.width / 2, 60)
         
         self.likeimage = UIImage(named: "分享")
-        var vImg3 = UIImageView(image: self.likeimage)
-        vImg3.frame = CGRect(x:(self.view.frame.size.width/2) + 40,y:self.view.frame.size.height - 40,width:20,height:20)
+        let vImg3 = UIImageView(image: self.likeimage)
+        vImg3.frame = CGRect(x:(self.view.frame.size.width/2) + 65,y:self.view.frame.size.height - 40,width:20,height:20)
         self.view.addSubview(vImg3)
         
         self.goodButton.addTarget(self, action: Selector("good:"), forControlEvents: .TouchDown)
         self.view.addSubview(self.goodButton)
         
         let sharelabel = UILabel()
-        sharelabel.frame=CGRectMake((self.view.frame.size.width / 2)+80, self.view.frame.size.height - 40, 50, 20)
+        sharelabel.textColor = UIColor.whiteColor()
+        sharelabel.frame=CGRectMake((self.view.frame.size.width / 2)+105, self.view.frame.size.height - 40, 50, 20)
         sharelabel.text = "分享"
+        sharelabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16.0)
         self.view.addSubview(sharelabel)
         
         

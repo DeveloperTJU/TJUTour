@@ -103,7 +103,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         print(indexPath.row)
         cell.contentView.addSubview(cell.cellImage)
         cell.detailLabel.text = favoriteBuildings[indexPath.row].name
-        cell.detailLabel.textColor = UIColor.redColor()
+        cell.detailLabel.textColor = UIColor.whiteColor()
         cell.detailLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20.0)
         cell.contentView.addSubview(cell.detailLabel)
         let view = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 10))
