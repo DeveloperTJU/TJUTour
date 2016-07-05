@@ -1,48 +1,72 @@
 //
-//  MyMenuTableViewController.swift
-//  SwiftSideMenu
+//  MenuViewController.swift
+//  掌上天大
 //
-//  Created by Evgeny Nazarov on 29.09.14.
-//  Copyright (c) 2014 Evgeny Nazarov. All rights reserved.
+//  Created by zyf on 16/7/5.
+//  Copyright © 2016年 hui. All rights reserved.
 //
 
 import UIKit
 
-class MyMenuTableViewController: UITableViewController {
+class MyMenuTableViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+    
     var selectedMenuItem : Int = 0
+    var mainTableView:UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Customize apperance of table view
-        tableView.contentInset = UIEdgeInsetsMake(64.0, 0, 0, 0) //
-        tableView.separatorStyle = .None
-        tableView.backgroundColor = UIColor.lightGrayColor()
-        tableView.scrollsToTop = false
         
-        // Preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = true
+        let  tableViewFrame = CGRectMake(self.view.bounds.width * 0.2, self.view.bounds.height * 0.5 - 75, self.view.bounds.width * 0.4, 150)
+        self.mainTableView = UITableView(frame: tableViewFrame, style: UITableViewStyle.Plain)
+        mainTableView.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        self.mainTableView.delegate = self
+        self.mainTableView.dataSource = self
+        self.mainTableView.scrollEnabled = false
         
+        let homepageButton = UIButton(type: .System)
+        homepageButton.frame =  CGRectMake(self.view.bounds.width * 0.2 - 25, self.view.bounds.height * 0.5 - 60, 22, 22)
+        homepageButton.setBackgroundImage(UIImage(named: "垃圾箱")!, forState: .Normal)
+        homepageButton.addTarget(self, action: #selector(MyMenuTableViewController.hompage(_:)), forControlEvents: .TouchUpInside)
+        let favpageButton = UIButton(type: .System)
+        favpageButton.frame =  CGRectMake(self.view.bounds.width * 0.2 - 25, self.view.bounds.height * 0.5 - 10, 22, 22)
+        favpageButton.setBackgroundImage(UIImage(named: "垃圾箱")!, forState: .Normal)
+        favpageButton.addTarget(self, action: #selector(MyMenuTableViewController.favpage(_:)), forControlEvents: .TouchUpInside)
+        let setupButton = UIButton(type: .System)
+        setupButton.frame =  CGRectMake(self.view.bounds.width * 0.2 - 25, self.view.bounds.height * 0.5 + 40, 22, 22)
+        setupButton.setBackgroundImage(UIImage(named: "垃圾箱")!, forState: .Normal)
+        setupButton.addTarget(self, action: #selector(MyMenuTableViewController.setup(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(mainTableView)
+        self.view.addSubview(homepageButton)
+        self.view.addSubview(favpageButton)
+        self.view.addSubview(setupButton)
+
         
-        tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: .Middle)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func hompage(button:UIButton) {
+        self.revealViewController().pushFrontViewController(HomeContainerViewController(), animated: true)
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
+    func favpage(button:UIButton) {
+        self.revealViewController().pushFrontViewController(FavoriteContainerViewController(), animated: true)
+    }
+    
+    func setup(button:UIButton) {
+        self.revealViewController().pushFrontViewController(SetupContainerViewController(), animated: true)
+    }
+    
+    
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
         return 1
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return 3
     }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCellWithIdentifier("CELL")
         
@@ -67,18 +91,14 @@ class MyMenuTableViewController: UITableViewController {
         return cell!
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50.0
     }
+
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         print("did select row: \(indexPath.row)")
-        
-//        if (indexPath.row == selectedMenuItem) {
-//            return
-//        }
-        
         selectedMenuItem = indexPath.row
         
         //Present new view controller
@@ -94,9 +114,7 @@ class MyMenuTableViewController: UITableViewController {
         }
         self.revealViewController().pushFrontViewController(destViewController, animated: true)
     }
-    
-    
 
-    
+
 
 }
