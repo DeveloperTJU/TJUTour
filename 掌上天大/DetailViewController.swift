@@ -201,7 +201,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     }
     
     func addTimer(){
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "nextImage:", userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "nextImage:", userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(self.timer, forMode: NSRunLoopCommonModes)
     }
     func removeTimer(){
