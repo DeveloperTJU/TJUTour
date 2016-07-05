@@ -21,6 +21,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     var scrollview:UIScrollView!
     var pagecontrol:UIPageControl!
     var timer:NSTimer!
+    var likelabel:UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,10 +101,10 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         self.likeButton.addTarget(self, action: Selector("like:"), forControlEvents: .TouchDown)
         self.view.addSubview(self.likeButton)
         
-        let likelabel = UILabel()
-        likelabel.frame=CGRectMake(110, self.view.frame.size.height - 40, 50, 20)
-        likelabel.text = "收藏"
-        self.view.addSubview(likelabel)
+        self.likelabel = UILabel()
+        self.likelabel.frame=CGRectMake(110, self.view.frame.size.height - 40, 70, 20)
+        self.likelabel.text = "收藏"
+        self.view.addSubview(self.likelabel)
         
         
         //点赞按钮
@@ -151,6 +152,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
             self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 70, bottom: 20, right: 117)
             self.isLike = "1"
             self.building.isFavourite = "YES"
+            self.likelabel.text = "已收藏"
 
             DatabaseService.sharedInstance.insertData(building)
         }
@@ -160,6 +162,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
             self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 70, bottom: 20, right: 117)
             self.isLike = "0"
             self.building.isFavourite = "NO"
+            self.likelabel.text = "收藏"
             DatabaseService.sharedInstance.deleteData(building.id)
         }
         
