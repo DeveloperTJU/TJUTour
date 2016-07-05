@@ -22,7 +22,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
 //            if favorite.isFavourite == "YES"{
 //                favoriteBuildings.append(favorite)
 //            }
-//        }
+        //        }
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
@@ -44,6 +44,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.titleTextAttributes = NavigationBarFont
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         self.title = "收藏"
         // Do any additional setup after loading the view.
