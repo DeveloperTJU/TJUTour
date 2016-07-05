@@ -42,7 +42,10 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         
         //详细信息
         self.contentTextView = UITextView(frame: CGRectMake(15, 260, self.view.frame.size.width - 30, self.view.frame.size.height - 325))
-        
+        self.contentTextView.layer.shadowColor = UIColor.blackColor().CGColor
+        self.contentTextView.layer.shadowOffset = CGSizeMake(4,4)
+        self.contentTextView.layer.shadowOpacity = 0.8
+        self.contentTextView.layer.shadowRadius = 4
         
         self.contentTextView.layer.borderColor = UIColor(red: 60/255, green: 40/255, blue: 129/255, alpha: 1).CGColor;
         self.contentTextView.editable = false
