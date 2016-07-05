@@ -18,18 +18,18 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        self.view.backgroundColor = UIColor.whiteColor()
         self.setSearchBar()
         self.setMainTableView()
         self.mainTableView.userInteractionEnabled = true
-        self.mainTableView.backgroundColor = UIColor.clearColor()
+        // self.mainTableView.backgroundColor = UIColor.clearColor()
     }
     
     //设置搜索条
     func setSearchBar(){
         let leftBtn:UIBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: self, action: "OnBackBtnClicked")
         self.navigationItem.leftBarButtonItem = leftBtn
-        let frame:CGRect = CGRectMake(50, 0, self.view.bounds.width-50, 0)
+        let frame:CGRect = CGRectMake(70, 0, self.view.bounds.width-80, 0)
         self.searchBar = UISearchBar(frame: frame)
         self.searchBar.searchBarStyle = .Minimal
         self.searchBar.delegate = self
@@ -82,12 +82,10 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
         //        let set:NSArray = userDefault.objectForKey("history") as! NSArray
         //        self.historyArr = set as! [String]
         self.historyArr = DatabaseService.sharedInstance.loadHistory()
-        let frame:CGRect = CGRectMake(10, 10, self.view.bounds.width-20, self.view.bounds.height)
+        let frame:CGRect = CGRectMake(0, 10, self.view.bounds.width, self.view.bounds.height)
         self.mainTableView = UITableView(frame: frame)
         self.mainTableView.dataSource = self
         self.mainTableView.delegate = self
-        self.mainTableView.backgroundColor = UIColor.clearColor()
-        
         self.view.addSubview(mainTableView)
     }
     
@@ -106,28 +104,59 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
         let cell:UITableViewCell = UITableViewCell(frame: frame)
         cell.selectionStyle = .None
         cell.backgroundColor = .clearColor()
-        cell.textLabel?.textColor = UIColor.whiteColor()
         tableView.separatorStyle = .None
+        self.mainTableView.backgroundColor = UIColor(colorLiteralRed: 239, green: 242, blue: 244, alpha: 0)
         if searchState == 1{
             if indexPath.row == 0{
-                cell.textLabel?.text = "历史搜索"
-                let imageFrame:CGRect = CGRectMake(self.mainTableView.bounds.width-80, 0, 50, cell.bounds.size.height)
-                //let deleteImage:UIImageView = UIImageView(frame: imageFrame)
-                let deleteBtn:UIButton = UIButton(frame: imageFrame)
-                deleteBtn.setTitle("删除", forState: UIControlState.Normal)
-                deleteBtn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-                deleteBtn.addTarget(self, action: "onDeleteHistorySearch", forControlEvents: UIControlEvents.TouchUpInside)
-                cell.addSubview(deleteBtn)
+                let textWidth:CGFloat = 100.0//文本标签宽度
+                let textX:CGFloat = self.view.frame.width/3//文本标签x值
+                let imageWidth:CGFloat = 50.0//iamgeView的宽度
+                //添加文本
+                let textframe:CGRect = CGRectMake(textX, 0, textWidth, 20)
+                let textLabel:UILabel = UILabel(frame: textframe)
+                textLabel.text = "历史搜索"
+                textLabel.textColor = UIColor.grayColor()
+                textLabel.textAlignment = .Center
+                cell.addSubview(textLabel)
+                
+                //添加删除图标
+                let imageFrame:CGRect = CGRectMake(textWidth+textX, 0, imageWidth, 20)
+                let imageView:UIImageView = UIImageView(frame: imageFrame)
+                imageView.image = UIImage(named: "删除")
+                let gesture:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "onDeleteHistorySearch:")
+                imageView.userInteractionEnabled = true
+                imageView.addGestureRecognizer(gesture)
+                cell.addSubview(imageView)
+                
+                //添加分割线
+                let textSize:CGSize = textLabel.text!.sizeWithAttributes(["sizeWithFont":textLabel.font,"forWidth":textLabel.bounds.size.width])
+                let distance = (textWidth - textSize.width)/2-10//文本开始位置，与标签开始位置的间距
+                
+                let leftFrame:CGRect = CGRectMake(10, textSize.height/2, textX+distance-10, 2)
+                let leftView:UIView = UIView(frame: leftFrame)
+                leftView.backgroundColor = UIColor.blackColor()
+                cell.addSubview(leftView)
+                
+                let centerFrame:CGRect = CGRectMake(textX+textWidth-distance, textSize.height/2, distance, 2)
+                let centerView:UIView = UIView(frame: centerFrame)
+                centerView.backgroundColor = UIColor.blackColor()
+                cell.addSubview(centerView)
+                
+                let rightFrame:CGRect = CGRectMake(textX+textWidth+imageWidth, textSize.height/2, self.view.frame.width-(textX+textWidth+imageWidth)-10, 2)
+                let rightView:UIView = UIView(frame: rightFrame)
+                rightView.backgroundColor = UIColor.blackColor()
+                cell.addSubview(rightView)
             }else{
                 cell.textLabel?.drawTextInRect(CGRectMake(100, 0, self.mainTableView.bounds.width-50, 0))
                 cell.textLabel?.text = "   " + historyArr[self.historyArr.count - indexPath.row]
-                cell.accessoryType = .DisclosureIndicator
+                cell.textLabel?.textColor = UIColor.grayColor()
             }
             return cell
         }
         else if searchState == 0{
             //搜索状态，显示当前搜索
             cell.textLabel!.text = self.currentArr[indexPath.row].name
+            cell.textLabel!.textColor = UIColor.grayColor()
             cell.accessoryType = .DisclosureIndicator
             return cell
         }else{
@@ -146,28 +175,21 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
                 DatabaseService.sharedInstance.deleteHistory(self.searchBar.text!)
             }
             self.historyArr.append(self.searchBar.text!)
-            //            let userDefault:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            //            let set:NSArray = NSArray(array: self.historyArr)
-            //            userDefault.setObject(set, forKey: "history")
             DatabaseService.sharedInstance.insertInHistory(self.searchBar.text!)
+            //跳转到详情页
             let detailVC = DetailViewController()
-            
+            detailVC.building = currentArr[indexPath.row]
             self.navigationController?.pushViewController(detailVC, animated: true)
             
         }else if searchState == 1 && indexPath.row > 0{
             self.searchBar.text = cell.textLabel?.text?.substringFromIndex((cell.textLabel?.text!.startIndex.advancedBy(3))!)
             self.refreshSearchTableView(searchBar.text!)
-            // DatabaseService.sharedInstance.insertInHistory(searchBar.text!)
         }
     }
     
     //设置删除图标响应事件
-    func onDeleteHistorySearch(){
+    func onDeleteHistorySearch(gesture:UITapGestureRecognizer){
         self.historyArr.removeAll()
-        //        let userDefault = NSUserDefaults.standardUserDefaults()
-        //        let array:NSArray = NSArray(array: [])
-        //        userDefault.setObject(array, forKey: "history")
-        
         if DatabaseService.sharedInstance.clearHistory()
         {
             print("删除成功")
@@ -181,14 +203,14 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
     //从数据库中搜索当前关键词
     func getAllBuildings()->[BuildingData]{
         var allBuildings:[BuildingData] = [BuildingData]()
-        
-        //因返回数据库为空，此处模拟数据
-        for i in 0 ... 10{
-            let building:BuildingData = BuildingData()
-            building.name = "Model\(i)"
-            building.id = String(i)
-            allBuildings.append(building)
-        }
+        allBuildings = Buildings
+        // 模拟数据
+        //        for i in 0 ... 10{
+        //            let building:BuildingData = BuildingData()
+        //            building.name = "Model\(i)"
+        //            building.id = String(i)
+        //            allBuildings.append(building)
+        //        }
         return allBuildings
     }
     
@@ -196,7 +218,8 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
     func filterContentForSearchText(searchText: String) {
         currentArr = self.currentArr.filter({ (buildingModel:BuildingData) -> Bool in
             let nameMatch = buildingModel.name.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-            return nameMatch != nil
+            let nameMatchInMap = buildingModel.nameinmap.rangeOfString(searchText, options: .CaseInsensitiveSearch)
+            return nameMatch != nil || nameMatchInMap != nil
         })
     }
     
