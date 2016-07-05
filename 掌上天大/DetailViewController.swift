@@ -21,37 +21,36 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     var scrollview:UIScrollView!
     var pagecontrol:UIPageControl!
     var timer:NSTimer!
+    var likelabel:UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = building.name
-        self.view.backgroundColor = UIColor.grayColor()
+        self.view.backgroundColor = UIColor(red: 241/255, green: 245/255, blue: 248/255, alpha: 1)
 
         //给导航增加item
+        let mainColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = mainColor
         let rightItem = UIBarButtonItem(title: "3D模式", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(DetailViewController.threeDItem(_:)))
         rightItem.title = "3D模式"
         self.navigationItem.rightBarButtonItem = rightItem
-        
-        
-        //轮播图
-        self.scrollview = UIScrollView()
-        self.pagecontrol = UIPageControl()
-        self.scrollview.backgroundColor = UIColor.whiteColor()
-        self.scrollview.frame = CGRect(x: 20, y: 90, width: (self.view.frame.size.width - 40), height: 190)
-        self.pagecontrol.frame = CGRect(x: 200, y: 240, width: 20, height: 20)
-        initView()
-        self.view.addSubview(self.scrollview)
-        self.view.addSubview(self.pagecontrol)
+        let resetButton = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("reset"))
+        resetButton.title = "返回"
+        self.navigationItem.leftBarButtonItem = resetButton
         
         
         //详细信息
-        self.contentTextView = UITextView(frame: CGRectMake(15, 270, self.view.frame.size.width - 30, self.view.frame.size.height - 380))
+        self.contentTextView = UITextView(frame: CGRectMake(15, 260, self.view.frame.size.width - 30, self.view.frame.size.height - 325))
+        self.contentTextView.layer.shadowColor = UIColor.blackColor().CGColor
+        self.contentTextView.layer.shadowOffset = CGSizeMake(4,4)
+        self.contentTextView.layer.shadowOpacity = 0.8
+        self.contentTextView.layer.shadowRadius = 4
         
         self.contentTextView.layer.borderColor = UIColor(red: 60/255, green: 40/255, blue: 129/255, alpha: 1).CGColor;
         self.contentTextView.editable = false
         self.contentTextView.delegate = self
-        self.contentTextView.backgroundColor = UIColor.grayColor()
+        self.contentTextView.backgroundColor = UIColor.whiteColor()
         
         let comment_message_style = NSMutableParagraphStyle()
         comment_message_style.firstLineHeadIndent = 12.0
@@ -64,12 +63,25 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         comment_message_indent.addAttribute(NSFontAttributeName,
                                             value: UIFont.systemFontOfSize(15),
                                             range: NSMakeRange(0, comment_message_indent.length))
-        comment_message_indent.addAttribute(NSForegroundColorAttributeName,
-                                            value: UIColor.whiteColor(),
-                                            range: NSMakeRange(0, comment_message_indent.length))
+        //        comment_message_indent.addAttribute(NSForegroundColorAttributeName,
+        //                                            value: UIColor.whiteColor(),
+        //                                            range: NSMakeRange(0, comment_message_indent.length))
         self.contentTextView.attributedText = comment_message_indent
         
         self.view.addSubview(self.contentTextView)
+        
+        //轮播图
+        self.scrollview = UIScrollView()
+        self.pagecontrol = UIPageControl()
+        self.scrollview.backgroundColor = UIColor.whiteColor()
+        self.scrollview.frame = CGRect(x: 15, y: 80, width: (self.view.frame.size.width - 30), height: 230)
+        self.pagecontrol.frame = CGRect(x: 200, y: 270, width: 20, height: 20)
+        initView()
+        self.view.addSubview(self.scrollview)
+        self.view.addSubview(self.pagecontrol)
+        
+        
+        
         
         
         //喜欢按钮
@@ -80,33 +92,48 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         self.likeButton = UIButton()
         likeButton.frame=CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width / 2, 60)
         if(self.isLike == "0"){
-            self.likeButton.setImage(UIImage(named: "3"), forState: .Normal)
-            self.likeButton.setImage(UIImage(named: "3"), forState: .Highlighted)
-            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
+            self.likeButton.setImage(UIImage(named: "未收藏"), forState: .Normal)
+            self.likeButton.setImage(UIImage(named: "未收藏"), forState: .Highlighted)
+            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 70, bottom: 20, right: 117)
         }
         else{
-            self.likeButton.setImage(UIImage(named: "2"), forState: .Normal)
-            self.likeButton.setImage(UIImage(named: "2"), forState: .Highlighted)
-            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
+            self.likeButton.setImage(UIImage(named: "已收藏"), forState: .Normal)
+            self.likeButton.setImage(UIImage(named: "已收藏"), forState: .Highlighted)
+            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 70, bottom: 20, right: 117)
         }
         self.likeButton.addTarget(self, action: Selector("like:"), forControlEvents: .TouchDown)
         self.view.addSubview(self.likeButton)
         
+        self.likelabel = UILabel()
+        self.likelabel.frame=CGRectMake(110, self.view.frame.size.height - 40, 70, 20)
+        self.likelabel.text = "收藏"
+        self.view.addSubview(self.likelabel)
+        
+        
         //点赞按钮
         self.goodButton = UIButton()
         self.goodButton.frame=CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height - 60, self.view.frame.size.width / 2, 60)
-        if(self.isGood == "0"){
-            self.goodButton.setImage(UIImage(named: "2"), forState: .Normal)
-            self.goodButton.setImage(UIImage(named: "2"), forState: .Highlighted)
-            self.goodButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
-        }
-        else{
-            self.goodButton.setImage(UIImage(named: "3"), forState: .Normal)
-            self.goodButton.setImage(UIImage(named: "3"), forState: .Highlighted)
-            self.goodButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
-        }
+
+        self.goodButton.setImage(UIImage(named: "分享"), forState: .Normal)
+        self.goodButton.setImage(UIImage(named: "分享"), forState: .Highlighted)
+        self.goodButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 60, bottom: 20, right: 127)
+
         self.goodButton.addTarget(self, action: Selector("good:"), forControlEvents: .TouchDown)
         self.view.addSubview(self.goodButton)
+        
+        let sharelabel = UILabel()
+        sharelabel.frame=CGRectMake((self.view.frame.size.width / 2)+100, self.view.frame.size.height - 40, 50, 20)
+        sharelabel.text = "分享"
+        self.view.addSubview(sharelabel)
+        
+        
+        //中间的竖线
+        let line = UITextView(frame: CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height - 45, 0.8, 30))
+        line.editable=false
+        line.layer.borderColor = UIColor(red: 160/255, green: 160/255, blue: 160/255, alpha: 1).CGColor;
+        line.layer.borderWidth = 0.4;
+        line.layer.cornerRadius = 3;
+        self.view.addSubview(line)
         
     }
     
@@ -123,20 +150,22 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     
     func like(button:UIButton){
         if(self.isLike == "0"){
-            self.likeButton.setImage(UIImage(named: "2"), forState: .Normal)
-            self.likeButton.setImage(UIImage(named: "2"), forState: .Highlighted)
-            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
+            self.likeButton.setImage(UIImage(named: "已收藏"), forState: .Normal)
+            self.likeButton.setImage(UIImage(named: "已收藏"), forState: .Highlighted)
+            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 70, bottom: 20, right: 117)
             self.isLike = "1"
             self.building.isFavourite = "YES"
+            self.likelabel.text = "已收藏"
 
             DatabaseService.sharedInstance.insertData(building)
         }
         else{
-            self.likeButton.setImage(UIImage(named: "3"), forState: .Normal)
-            self.likeButton.setImage(UIImage(named: "3"), forState: .Highlighted)
-            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
+            self.likeButton.setImage(UIImage(named: "未收藏"), forState: .Normal)
+            self.likeButton.setImage(UIImage(named: "未收藏"), forState: .Highlighted)
+            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 70, bottom: 20, right: 117)
             self.isLike = "0"
             self.building.isFavourite = "NO"
+            self.likelabel.text = "收藏"
             DatabaseService.sharedInstance.deleteData(building.id)
         }
         
@@ -144,19 +173,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     }
     
     func good(button:UIButton){
-        print("good")
-        if(self.isGood == "0"){
-            self.goodButton.setImage(UIImage(named: "3"), forState: .Normal)
-            self.goodButton.setImage(UIImage(named: "3"), forState: .Highlighted)
-            self.goodButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
-            self.isGood = "1"
-        }
-        else{
-            self.goodButton.setImage(UIImage(named: "2"), forState: .Normal)
-            self.goodButton.setImage(UIImage(named: "2"), forState: .Highlighted)
-            self.goodButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: self.view.frame.size.width / 6, bottom: 5, right: self.view.frame.size.width / 6)
-            self.isGood = "0"
-        }
+        
     }
     
     
@@ -220,31 +237,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         self.scrollview.contentOffset = CGPointMake(x, 0)
     }
     
-//    func load () {
-//        var likes : [NSArray] = []
-//        
-//        let stringsArray = NSUserDefaults.standardUserDefaults().objectForKey("likeArray") as [String]?
-//        
-//        if let array = stringsArray {
-//            for string in array {
-//                var url = NSURL(string: string)
-//                urls.append(url!) //no null check
-//            }
-//        }
-//        
-//        self.likeArray = likes
-//    }
-//    
-//    func save () {
-//        var strings : [String] = []
-//        
-//        if let array = self.likeArray {
-//            for like in array {
-//                let string = String(like)
-//                strings.append(string)
-//            }
-//        }
-//        
-//        NSUserDefaults.standardUserDefaults().setObject(strings, forKey: "likeArray")
-//    }
+    func reset() {
+        self.navigationController!.popViewControllerAnimated(true)
+    }
 }
