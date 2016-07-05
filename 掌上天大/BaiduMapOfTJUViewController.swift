@@ -87,9 +87,26 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
             let detailVC = DetailViewController()
             detailVC.building = Buildings[index! as! NSInteger]
             //._mapView?.centerCoordinate = mapPoi.pt
-            self.navigationController?.pushViewController(detailVC, animated: true)
-
+           // self.navigationController?.pushViewController(detailVC, animated: true)
+            addBuildingInfoView(index!)
         }
+    }
+    
+    func addBuildingInfoView(index: NSInteger){
+        let mainSize = UIScreen.mainScreen().bounds.size
+        let height: CGFloat = 80
+        let frame = CGRect(x: 0, y: mainSize.height-height, width: mainSize.width, height: height)
+        let buildingInfoView = UIView(frame: frame)
+        buildingInfoView.backgroundColor = .whiteColor()
+        
+        let frame1 = CGRect(x:0, y:10, width:frame.width-20, height:frame.height-10)
+        let text = UITextView(frame: frame)
+        text.text = Buildings[index].name
+        print(text.text)
+        
+        
+        buildingInfoView.addSubview(text)
+        self.view.addSubview(buildingInfoView)
     }
 //    func startLocation() {
 //        print("进入普通定位态");
