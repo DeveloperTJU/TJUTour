@@ -38,6 +38,7 @@ class BuildingData: NSObject {
         self.isFavourite = favourite
     }
     
+
     func getImageCount() -> Int{
         return images.count
     }

@@ -86,28 +86,37 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
         if index != nil {
             let detailVC = DetailViewController()
             detailVC.building = Buildings[index! as! NSInteger]
-            //._mapView?.centerCoordinate = mapPoi.pt
-           // self.navigationController?.pushViewController(detailVC, animated: true)
-            addBuildingInfoView(index!)
+            
+           self.navigationController?.pushViewController(detailVC, animated: true)
+           // addBuildingInfoView(index!, details:true)
+        }
+        else{
+            _mapView?.centerCoordinate = mapPoi.pt
         }
     }
     
-    func addBuildingInfoView(index: NSInteger){
-        let mainSize = UIScreen.mainScreen().bounds.size
-        let height: CGFloat = 80
-        let frame = CGRect(x: 0, y: mainSize.height-height, width: mainSize.width, height: height)
-        let buildingInfoView = UIView(frame: frame)
-        buildingInfoView.backgroundColor = .whiteColor()
-        
-        let frame1 = CGRect(x:0, y:10, width:frame.width-20, height:frame.height-10)
-        let text = UITextView(frame: frame)
-        text.text = Buildings[index].name
-        print(text.text)
-        
-        
-        buildingInfoView.addSubview(text)
-        self.view.addSubview(buildingInfoView)
-    }
+//    func addBuildingInfoView(index: NSInteger, details: Bool){
+//        let mainSize = UIScreen.mainScreen().bounds.size
+//        let height: CGFloat = 80
+//        let frame = CGRect(x: 0, y: mainSize.height-height, width: mainSize.width, height: height)
+//        let buildingInfoView = UIView(frame: frame)
+//        buildingInfoView.backgroundColor = .grayColor()
+//        
+//        let frame1 = CGRect(x:0, y:0, width: frame.width,  height: 19)
+//        let down = UIButton(frame: frame1)
+//        down.backgroundColor = .whiteColor()
+//        down.setTitle("hehe", forState:UIControlState.Normal)
+//        down.setTitleShadowColor(UIColor.blueColor(),forState:.Normal)
+//        let frame2 = CGRect(x:0, y:20, width:frame.width-20, height:frame.height-20)
+//        let label = UILabel(frame: frame2)
+//        label.backgroundColor = .whiteColor()
+//        label.text = Buildings[index].name
+//        label.textAlignment = NSTextAlignment.Center
+//        
+//        buildingInfoView.addSubview(down)
+//        buildingInfoView.addSubview(label)
+//        self.view.addSubview(buildingInfoView)
+//    }
 //    func startLocation() {
 //        print("进入普通定位态");
 //        _locService?.startUserLocationService()
@@ -126,10 +135,15 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
         let bound = BMKBoundSearchOption()
         bound.leftBottom = self.leftBottom
         bound.rightTop = self.rightTop
-        bound.keyword = Buildings[self.curPosIndex].nameinmap
+        if self.curPosIndex == -1 {
+            bound.keyword = ""
+        }
+        else{
+            bound.keyword = Buildings[self.curPosIndex].nameinmap
+        }
         bound.pageIndex = currPageIndex
         bound.pageCapacity = 10
-        
+        self.curPosIndex = -1
         if poiSearch.poiSearchInbounds(bound){
             print("城市内检索发送成功！")
         }else {
