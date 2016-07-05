@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
         UITextField.appearance().tintColor = .blackColor()
         
         self.window?.rootViewController = HomeContainerViewController()
+        print(self.databasePath)
         return true
     }
 

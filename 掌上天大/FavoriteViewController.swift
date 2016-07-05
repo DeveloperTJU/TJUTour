@@ -71,7 +71,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         
         let deleteButton = UITableViewRowAction(style: .Destructive, title: "  ") {
             action, index in
-            DatabaseService.sharedInstance.deleteData(Buildings[indexPath.row].id)
+            DatabaseService.sharedInstance.deleteData(self.favoriteBuildings[indexPath.row].id)
+            print(Buildings[indexPath.row].name)
             self.favoriteBuildings.removeAtIndex(indexPath.row)
             self.mainTableView.reloadData()
         }

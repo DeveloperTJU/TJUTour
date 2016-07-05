@@ -110,7 +110,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         connectionErrorLabel.numberOfLines = 0
         connectionErrorView.addSubview(connectionErrorLabel)
         self.view.addSubview(connectionErrorView)
-        
+        self.revealViewController().panGestureRecognizer().enabled = false
         let frame = CGRectMake(self.view.bounds.size.width/2 - 5, self.view.bounds.size.height/2 - 60, 10, 10)
         indicator = UIActivityIndicatorView(frame: frame)
         indicator.activityIndicatorViewStyle = .WhiteLarge
@@ -136,10 +136,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 for data in arr{
                     Buildings.append(BuildingData(id: data["id"] as! String, nameinmap: data["nameinmap"] as! String, name: data["name"] as! String, detail: data["description"] as! String))
                     BuildingDict[data["nameinmap"] as! String] = i
-                    DatabaseService.sharedInstance.insertData(BuildingData(id: data["id"] as! String, nameinmap: data["nameinmap"] as! String, name: data["name"] as! String, detail: data["description"] as! String, favourite: "NO"))
                     i += 1
                 }
                 self.connectionErrorView.removeFromSuperview()
+                self.revealViewController().panGestureRecognizer().enabled = true
                 self.navigationController?.navigationBarHidden = false
                 self.loadData()
                 self.indicator.stopAnimating()
