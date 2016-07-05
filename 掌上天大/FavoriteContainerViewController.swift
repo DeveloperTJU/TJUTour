@@ -18,6 +18,7 @@ class FavoriteContainerViewController: SWRevealViewController {
         //设置主页面
         let a = UINavigationController(rootViewController: FavoriteViewController())
         self.setFrontViewController(a, animated: true)
+        self.rearViewRevealWidth = self.view.bounds.width * 0.5
         // Do any additional setup after loading the view.
     }
     

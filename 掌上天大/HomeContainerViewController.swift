@@ -15,6 +15,7 @@ class HomeContainerViewController: SWRevealViewController {
         //设置侧栏菜单
         self.setRearViewController(MyMenuTableViewController(), animated: true)
         self.setFrontViewController(UINavigationController(rootViewController: HomeVC), animated: true)
+        self.rearViewRevealWidth = self.view.bounds.width * 0.5
     }
 
     override func didReceiveMemoryWarning() {
