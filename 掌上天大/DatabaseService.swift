@@ -37,7 +37,7 @@ class DatabaseService: NSObject {
                 print("Error:\(db.lastErrorMessage())")
             }
             if db.open(){
-                var sqlStr = "CREATE TABLE IF NOT EXISTS BUILDING(ID TEXT, NAME TEXT, DETAIL TEXT,FAVOURITE INT, PRIMARY KEY(ID))"
+                var sqlStr = "CREATE TABLE IF NOT EXISTS BUILDING(ID TEXT, NAME TEXT, NAMEINMAP TEXT, DETAIL TEXT, PRIMARY KEY(ID))"
                 if !db.executeUpdate(sqlStr, withArgumentsInArray: []) {
                     print("Error:\(db.lastErrorMessage())")
                 }
@@ -59,39 +59,49 @@ class DatabaseService: NSObject {
         return FMDatabaseQueue(path: (UIApplication.sharedApplication().delegate as! AppDelegate).databasePath)
     }
     
-    func insert(buildingData : BuildingData) -> Bool{
+    func insertData(buildingData : BuildingData) -> Bool{
         self.database.open()
-        let sqlStr = "INSERT INTO BUILDING VALUES (?, ? ,? ,?)"
-        let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [buildingData.id, buildingData.name, buildingData.detail, buildingData.isFavourite])
+        let sqlStr = "INSERT INTO BUILDING VALUES (?, ? ,? ,? )"
+        let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [buildingData.id, buildingData.name, buildingData.nameinmap, buildingData.detail])
         self.database.close()
         return succeed
     }
     
     func deleteData(id:String) -> Bool{
         self.database.open()
-        var sqlStr = "DELETE FROM BUILDING WHERE NUM = ?"
+        let sqlStr = "DELETE FROM BUILDING WHERE ID = ?"
         self.database.executeUpdate(sqlStr, withArgumentsInArray: [id])
         let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: [id])
         self.database.close()
+        print("delete\(id)")
         return succeed
     }
     
-    func selectAll() -> [BuildingData] {
+    //选择被收藏的建筑
+    func selectFavorite() -> [BuildingData] {
         self.database.open()
         var buildingData = [BuildingData]()
-        let sqlStr = "SELECT * FROM BUILDING"
+        let sqlStr = "SELECT * FROM BUILDING "
         let rs = self.database.executeQuery(sqlStr, withArgumentsInArray: [])
-        var i = 0
         while rs.next(){
-            buildingData[i].detail = rs.stringForColumn("DETAIL")
-            buildingData[i].name = rs.stringForColumn("NAME")
-            buildingData[i].id = rs.stringForColumn("NUM")
-            //buildingData[i].isHistory = rs.stringForColumn("FAVOURITE")
-            buildingData[i].isFavourite = rs.stringForColumn("FAVOURITE")
-            i = i + 1
+            let favorite = BuildingData(id: rs.stringForColumn("ID"), nameinmap: rs.stringForColumn("NAMEINMAP"), name: rs.stringForColumn("NAME"), detail: rs.stringForColumn("DETAIL"), isFavourite: "YES")
+            print("selecefavorite\(favorite.id)")
+            buildingData.append(favorite)
         }
         self.database.close()
+        
         return buildingData
+    }
+    
+    //取消某个建筑的收藏
+    func cancelFavouite(id:String) {
+        self.database.open()
+        let sqlStr = "UPDATE BUILDING SET FAVOURITE = ? WHERE ID = ?"
+        print(id)
+        let succeed = self.database.executeUpdate(sqlStr, withArgumentsInArray: ["NO",id])
+        print(self.database.lastErrorMessage())
+        self.database.close()
+
     }
     
     func insertInHistory(str:String) -> Bool {
@@ -131,6 +141,15 @@ class DatabaseService: NSObject {
         self.database.close()
         return history
     }
+    
+//    func loadFavorite()  {
+//        self.database.open()
+//        let sqlStr = "SELECT * FROM BUILDING WHERE FAVORITE = 1"
+//        let rs =  self.database.executeQuery(sqlStr, withArgumentsInArray: [])
+//        while rs.next(){
+//            
+//        }
+//    }
     
     
 }

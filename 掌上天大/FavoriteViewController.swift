@@ -15,6 +15,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     let cellidentifier:String = "BaseCell"
     var navigationBlurView:UIVisualEffectView!
     var backgroundBlurView:UIVisualEffectView!
+    var favoriteBuildings = DatabaseService.sharedInstance.selectFavorite()
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.revealViewController() != nil {
@@ -57,17 +58,25 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         
-        return Buildings.count
+        return favoriteBuildings.count
     }
     //左滑删除
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-        let more = UITableViewRowAction(style: .Normal, title: "删除") { action, index in
-            print("shanchu")
-            
+        let deleteButton = UITableViewRowAction(style: .Destructive, title: "  ") {
+            action, index in
+            DatabaseService.sharedInstance.deleteData(self.favoriteBuildings[indexPath.row].id)
+            print(Buildings[indexPath.row].name)
+            self.favoriteBuildings.removeAtIndex(indexPath.row)
+            self.mainTableView.reloadData()
         }
-        more.backgroundColor = UIColor.lightGrayColor()
-        return [more]
+        let image = UIImage(CGImage: (UIImage(named: "垃圾箱")?.CGImage)!, scale: 2.5, orientation: .Up)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 40, height: 200), false, 1.0)
+        image.drawInRect(CGRectMake(5, 13, 25, 25))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        deleteButton.backgroundColor = UIColor(patternImage: newImage)
+        return [deleteButton]
     }
 
     
@@ -78,12 +87,16 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     {
         let cell = BaseCell()
         cell.backgroundColor = UIColor.clearColor()
-        //cell.cellImage.image = UIImage(named: "0")
         
-        cell.cellImage.image = UIImage(named: "0")
+        if favoriteBuildings.count != 0{
+            cell.cellImage.image = favoriteBuildings[indexPath.row].getCoverImage()
+        }
+        else{
+            cell.cellImage.image = UIImage(named: "1")
+        }
         print(indexPath.row)
         cell.contentView.addSubview(cell.cellImage)
-        cell.detailLabel.text = Buildings[indexPath.row].name
+        cell.detailLabel.text = favoriteBuildings[indexPath.row].name
         cell.detailLabel.textColor = UIColor.redColor()
         cell.detailLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20.0)
         cell.contentView.addSubview(cell.detailLabel)
@@ -101,6 +114,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailVC = DetailViewController()
+        detailVC.building = Buildings[indexPath.row]
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

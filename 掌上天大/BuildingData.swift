@@ -29,15 +29,16 @@ class BuildingData: NSObject {
         self.detail = detail
     }
     
-    convenience init(id:String, nameinmap:String, name:String, detail:String, favourite: String){
+    convenience init(id:String, nameinmap:String, name:String, detail:String, isFavourite: String){
         self.init()
         self.id = id
         self.nameinmap = nameinmap
         self.name = name
         self.detail = detail
-        self.isFavourite = favourite
+        self.isFavourite = isFavourite
     }
     
+
     func getImageCount() -> Int{
         return images.count
     }
