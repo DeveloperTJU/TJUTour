@@ -16,19 +16,20 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     var contentTextView:UITextView!
     var likeButton:UIButton!
     var goodButton:UIButton!
-    var isLike:String = "1"
+    var isLike:String = "0"
     var isGood:String = "1"
     var scrollview:UIScrollView!
     var pagecontrol:UIPageControl!
     var timer:NSTimer!
+    var likeimage:UIImage!
     var likelabel:UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = building.name
         self.view.backgroundColor = UIColor(red: 241/255, green: 245/255, blue: 248/255, alpha: 1)
-
+        
         //给导航增加item
         let mainColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barTintColor = mainColor
@@ -41,7 +42,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         
         
         //详细信息
-        self.contentTextView = UITextView(frame: CGRectMake(15, 260, self.view.frame.size.width - 30, self.view.frame.size.height - 325))
+        self.contentTextView = UITextView(frame: CGRectMake(15, (self.view.frame.size.height/4)+80, self.view.frame.size.width - 30, ((self.view.frame.size.height/4)*3)-140))
         self.contentTextView.layer.shadowColor = UIColor.blackColor().CGColor
         self.contentTextView.layer.shadowOffset = CGSizeMake(4,4)
         self.contentTextView.layer.shadowOpacity = 0.8
@@ -74,8 +75,8 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         self.scrollview = UIScrollView()
         self.pagecontrol = UIPageControl()
         self.scrollview.backgroundColor = UIColor.whiteColor()
-        self.scrollview.frame = CGRect(x: 15, y: 80, width: (self.view.frame.size.width - 30), height: 230)
-        self.pagecontrol.frame = CGRect(x: 200, y: 270, width: 20, height: 20)
+        self.scrollview.frame = CGRect(x: 15, y: 80, width: (self.view.frame.size.width - 30), height: self.view.frame.size.height/4)
+        self.pagecontrol.frame = CGRect(x: (self.view.frame.size.width/2)-10, y: (self.view.frame.size.height/4)+40, width: 20, height: 20)
         initView()
         self.view.addSubview(self.scrollview)
         self.view.addSubview(self.pagecontrol)
@@ -85,27 +86,29 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         
         
         //喜欢按钮
-
+        
         if(building.isFavourite=="NO"){
             self.isLike = "0"
         }
         self.likeButton = UIButton()
         likeButton.frame=CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width / 2, 60)
         if(self.isLike == "0"){
-            self.likeButton.setImage(UIImage(named: "未收藏"), forState: .Normal)
-            self.likeButton.setImage(UIImage(named: "未收藏"), forState: .Highlighted)
-            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 70, bottom: 20, right: 117)
+            self.likeimage = UIImage(named: "未收藏")
+            var vImg1 = UIImageView(image: self.likeimage)
+            vImg1.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
+            self.view.addSubview(vImg1)
         }
         else{
-            self.likeButton.setImage(UIImage(named: "已收藏"), forState: .Normal)
-            self.likeButton.setImage(UIImage(named: "已收藏"), forState: .Highlighted)
-            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 70, bottom: 20, right: 117)
+            self.likeimage = UIImage(named: "已收藏")
+            var vImg2 = UIImageView(image: self.likeimage)
+            vImg2.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
+            self.view.addSubview(vImg2)
         }
         self.likeButton.addTarget(self, action: Selector("like:"), forControlEvents: .TouchDown)
         self.view.addSubview(self.likeButton)
         
         self.likelabel = UILabel()
-        self.likelabel.frame=CGRectMake(110, self.view.frame.size.height - 40, 70, 20)
+        self.likelabel.frame=CGRectMake((self.view.frame.size.width/2) - 90, self.view.frame.size.height - 40, 70, 20)
         self.likelabel.text = "收藏"
         self.view.addSubview(self.likelabel)
         
@@ -113,16 +116,17 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         //点赞按钮
         self.goodButton = UIButton()
         self.goodButton.frame=CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height - 60, self.view.frame.size.width / 2, 60)
-
-        self.goodButton.setImage(UIImage(named: "分享"), forState: .Normal)
-        self.goodButton.setImage(UIImage(named: "分享"), forState: .Highlighted)
-        self.goodButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 60, bottom: 20, right: 127)
-
+        
+        self.likeimage = UIImage(named: "分享")
+        var vImg3 = UIImageView(image: self.likeimage)
+        vImg3.frame = CGRect(x:(self.view.frame.size.width/2) + 40,y:self.view.frame.size.height - 40,width:20,height:20)
+        self.view.addSubview(vImg3)
+        
         self.goodButton.addTarget(self, action: Selector("good:"), forControlEvents: .TouchDown)
         self.view.addSubview(self.goodButton)
         
         let sharelabel = UILabel()
-        sharelabel.frame=CGRectMake((self.view.frame.size.width / 2)+100, self.view.frame.size.height - 40, 50, 20)
+        sharelabel.frame=CGRectMake((self.view.frame.size.width / 2)+80, self.view.frame.size.height - 40, 50, 20)
         sharelabel.text = "分享"
         self.view.addSubview(sharelabel)
         
@@ -150,26 +154,28 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     
     func like(button:UIButton){
         if(self.isLike == "0"){
-            self.likeButton.setImage(UIImage(named: "已收藏"), forState: .Normal)
-            self.likeButton.setImage(UIImage(named: "已收藏"), forState: .Highlighted)
-            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 70, bottom: 20, right: 117)
+            self.likeimage = UIImage(named: "已收藏")
+            var vImg1 = UIImageView(image: self.likeimage)
+            vImg1.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
+            self.view.addSubview(vImg1)
             self.isLike = "1"
             self.building.isFavourite = "YES"
             self.likelabel.text = "已收藏"
-
+            
             DatabaseService.sharedInstance.insertData(building)
         }
         else{
-            self.likeButton.setImage(UIImage(named: "未收藏"), forState: .Normal)
-            self.likeButton.setImage(UIImage(named: "未收藏"), forState: .Highlighted)
-            self.likeButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 70, bottom: 20, right: 117)
+            self.likeimage = UIImage(named: "未收藏")
+            var vImg1 = UIImageView(image: self.likeimage)
+            vImg1.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
+            self.view.addSubview(vImg1)
             self.isLike = "0"
             self.building.isFavourite = "NO"
             self.likelabel.text = "收藏"
             DatabaseService.sharedInstance.deleteData(building.id)
         }
         
-
+        
     }
     
     func good(button:UIButton){
