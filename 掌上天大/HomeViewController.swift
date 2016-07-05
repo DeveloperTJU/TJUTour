@@ -56,7 +56,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func loadData() {
         self.isDataLoaded = true
         self.isCounting = true
-        coverflow = iCarousel(frame: CGRectMake(10, 100, self.view.bounds.width - 20, (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 5))
+        coverflow = iCarousel(frame: CGRectMake(10, 0, self.view.bounds.width - 20, (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 5))
         coverflow.dataSource = self
         coverflow.delegate = self
         coverflow.type = .CoverFlow
@@ -80,13 +80,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffect = UIBlurEffect(style: .Dark)
         backgroundBlurView = UIVisualEffectView(effect: blurEffect)
         backgroundBlurView.frame.size = self.view.bounds.size
         self.view.addSubview(backgroundBlurView)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
-        let searchButton = UIBarButtonItem(image: UIImage(named: "搜索"), style: .Plain, target: self, action: Selector("search"))
+        let searchButton = UIBarButtonItem(image: UIImage(named: "搜索黑色"), style: .Plain, target: self, action: Selector("search"))
         self.navigationItem.leftBarButtonItems = [mapButton]
         self.navigationItem.rightBarButtonItems = [searchButton]
         
@@ -98,15 +98,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         errorBlurView.frame.size = self.view.bounds.size
         connectionErrorView.addSubview(errorBlurView)
         
-        retryButton = UIButton(frame: CGRectMake(UIScreen.mainScreen().bounds.width / 2 - 40, UIScreen.mainScreen().bounds.height / 2 - 120, 80, 80))
-        retryButton.setImage(UIImage(named: "1"), forState: .Normal)
-        retryButton.setImage(UIImage(named: "1"), forState: .Highlighted)
+        retryButton = UIButton(frame: CGRectMake(UIScreen.mainScreen().bounds.width / 2 - 40, UIScreen.mainScreen().bounds.height / 2 - 100, 80, 80))
+        retryButton.setImage(UIImage(named: "重试"), forState: .Normal)
+        retryButton.setImage(UIImage(named: "重试"), forState: .Highlighted)
         retryButton.addTarget(self, action: Selector("downloadCoverImages"), forControlEvents: .TouchDown)
         connectionErrorView.addSubview(self.retryButton)
         
         connectionErrorLabel = UILabel(frame: CGRectMake(20, UIScreen.mainScreen().bounds.height / 2 - 20, UIScreen.mainScreen().bounds.width - 40, 60))
         connectionErrorLabel.textAlignment = .Center
         connectionErrorLabel.textColor = .whiteColor()
+        connectionErrorLabel.numberOfLines = 0
         connectionErrorView.addSubview(connectionErrorLabel)
         self.view.addSubview(connectionErrorView)
         self.revealViewController().panGestureRecognizer().enabled = false
@@ -116,6 +117,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         indicator.color = UIColor.grayColor()
         indicator.hidesWhenStopped = true
         self.view.addSubview(indicator)
+        self.navigationController!.navigationBar.titleTextAttributes = NavigationBarFont
         downloadCoverImages()
     }
     
@@ -172,11 +174,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             imageView = UIImageView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width * 2 / 3, UIScreen.mainScreen().bounds.width * 3 / 8))
         }
         imageView.image = Buildings[index].getCoverImage()
-        let nameLabel = UILabel(frame: CGRectMake(0, UIScreen.mainScreen().bounds.width * 3 / 8, UIScreen.mainScreen().bounds.width * 2 / 3, 20))
-        nameLabel.text = Buildings[index].name
-        nameLabel.textColor = .whiteColor()
-        nameLabel.textAlignment = .Center
-        imageView.addSubview(nameLabel)
         return imageView
     }
     
@@ -205,7 +202,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 105 : 0
+        return section == 0 ? (UIScreen.mainScreen().bounds.width - 20) * 3 / 8 + 41 : 30
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -213,7 +210,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return section == 0 ? coverflow : UIView(frame: CGRectMake(0, 0, 0, 0))
+        if section == 0{
+            coverflow.contentOffset = CGSize(width: 0, height: 30)
+            return coverflow
+        }
+        else if section == 1{
+            return BuildingNameView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 30), name: Buildings[self.coverflow.currentItemIndex].name)
+        }
+        else{
+            return UIView(frame: CGRectMake(0, 0, 0, 0))
+        }
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath) ->UITableViewCell{
@@ -236,13 +242,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let detailVC = DetailViewController()
         detailVC.building = Buildings[coverflow.currentItemIndex]
         detailVC.initIndex = indexPath.row
-        print(detailVC.building.isFavourite)
         self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
+                   forRowAtIndexPath indexPath: NSIndexPath){
+        //设置cell的显示动画为3D缩放
+        //xy方向缩放的初始值为0.1
+        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+        //设置动画时间为0.25秒，xy方向缩放的最终值为1
+        UIView.animateWithDuration(0.25, animations: {
+            cell.layer.transform=CATransform3DMakeScale(1, 1, 1)
+        })
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         self.navigationBlurView.alpha = scrollView.contentOffset.y / 120
         self.backgroundBlurView.alpha = scrollView.contentOffset.y / 120
+        self.title = self.mainTableView.contentOffset.y > 100 ? "掌上天大" : ""
         //用户浏览更多图片时推迟切换轮播图
         remainingSeconds = 10
     }
@@ -252,13 +269,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffect = UIBlurEffect(style: .Dark)
         navigationBlurView = UIVisualEffectView(effect: blurEffect)
         navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
         self.navigationController?.view.addSubview(self.navigationBlurView)
+        self.navigationController?.navigationBar.tintColor = .whiteColor()
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
-        self.navigationBlurView.alpha = isDataLoaded ? self.mainTableView.contentOffset.y / 120 : 0
-        self.backgroundBlurView.alpha = isDataLoaded ? self.mainTableView.contentOffset.y / 120 : 0
+        if isDataLoaded{
+            self.navigationBlurView.alpha = self.mainTableView.contentOffset.y / 120
+            self.backgroundBlurView.alpha = self.mainTableView.contentOffset.y / 120
+            self.title = self.mainTableView.contentOffset.y > 100 ? "掌上天大" : ""
+        }
+        else{
+            self.navigationBlurView.alpha = 0
+            self.backgroundBlurView.alpha = 0
+            self.title = ""
+        }
         if isDataLoaded{
             self.isCounting = true
         }
@@ -267,6 +293,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
         self.navigationBlurView.removeFromSuperview()
+        self.navigationController?.navigationBar.tintColor = .None
         if isDataLoaded{
             self.isCounting = false
         }

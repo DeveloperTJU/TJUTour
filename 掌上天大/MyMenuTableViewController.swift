@@ -25,15 +25,15 @@ class MyMenuTableViewController: UIViewController, UITableViewDelegate,UITableVi
         
         let homepageButton = UIButton(type: .System)
         homepageButton.frame =  CGRectMake(self.view.bounds.width * 0.2 - 25, self.view.bounds.height * 0.5 - 60, 22, 22)
-        homepageButton.setBackgroundImage(UIImage(named: "垃圾箱")!, forState: .Normal)
+        homepageButton.setBackgroundImage(UIImage(named: "主页")!, forState: .Normal)
         homepageButton.addTarget(self, action: #selector(MyMenuTableViewController.hompage(_:)), forControlEvents: .TouchUpInside)
         let favpageButton = UIButton(type: .System)
         favpageButton.frame =  CGRectMake(self.view.bounds.width * 0.2 - 25, self.view.bounds.height * 0.5 - 10, 22, 22)
-        favpageButton.setBackgroundImage(UIImage(named: "垃圾箱")!, forState: .Normal)
+        favpageButton.setBackgroundImage(UIImage(named: "收藏")!, forState: .Normal)
         favpageButton.addTarget(self, action: #selector(MyMenuTableViewController.favpage(_:)), forControlEvents: .TouchUpInside)
         let setupButton = UIButton(type: .System)
         setupButton.frame =  CGRectMake(self.view.bounds.width * 0.2 - 25, self.view.bounds.height * 0.5 + 40, 22, 22)
-        setupButton.setBackgroundImage(UIImage(named: "垃圾箱")!, forState: .Normal)
+        setupButton.setBackgroundImage(UIImage(named: "设定")!, forState: .Normal)
         setupButton.addTarget(self, action: #selector(MyMenuTableViewController.setup(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(mainTableView)
         self.view.addSubview(homepageButton)
@@ -73,7 +73,7 @@ class MyMenuTableViewController: UIViewController, UITableViewDelegate,UITableVi
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
             cell!.backgroundColor = UIColor.clearColor()
-            cell!.textLabel?.textColor = UIColor.darkGrayColor()
+            cell!.textLabel?.textColor = UIColor.whiteColor()
             let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell!.frame.size.width, cell!.frame.size.height))
             selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
             cell!.selectedBackgroundView = selectedBackgroundView

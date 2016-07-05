@@ -18,6 +18,11 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     var favoriteBuildings = DatabaseService.sharedInstance.selectFavorite()
     override func viewDidLoad() {
         super.viewDidLoad()
+//        for favorite in Buildings {
+//            if favorite.isFavourite == "YES"{
+//                favoriteBuildings.append(favorite)
+//            }
+        //        }
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
@@ -39,6 +44,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.titleTextAttributes = NavigationBarFont
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         self.title = "收藏"
         // Do any additional setup after loading the view.
@@ -97,7 +103,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         print(indexPath.row)
         cell.contentView.addSubview(cell.cellImage)
         cell.detailLabel.text = favoriteBuildings[indexPath.row].name
-        cell.detailLabel.textColor = UIColor.redColor()
+        cell.detailLabel.textColor = UIColor.whiteColor()
         cell.detailLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20.0)
         cell.contentView.addSubview(cell.detailLabel)
         let view = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 10))
