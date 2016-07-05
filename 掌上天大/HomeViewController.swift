@@ -80,7 +80,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffect = UIBlurEffect(style: .Dark)
         backgroundBlurView = UIVisualEffectView(effect: blurEffect)
         backgroundBlurView.frame.size = self.view.bounds.size
         self.view.addSubview(backgroundBlurView)
@@ -269,7 +269,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffect = UIBlurEffect(style: .Dark)
         navigationBlurView = UIVisualEffectView(effect: blurEffect)
         navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
         self.navigationController?.view.addSubview(self.navigationBlurView)
@@ -278,7 +278,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if isDataLoaded{
             self.navigationBlurView.alpha = self.mainTableView.contentOffset.y / 120
             self.backgroundBlurView.alpha = self.mainTableView.contentOffset.y / 120
-            self.title = self.mainTableView.contentOffset.y < 60 ? "掌上天大" : ""
+            self.title = self.mainTableView.contentOffset.y > 100 ? "掌上天大" : ""
         }
         else{
             self.navigationBlurView.alpha = 0
