@@ -32,8 +32,8 @@ class BuildingNameView: UIView {
         let y = self.frame.size.height / 2
         CGContextSetAllowsAntialiasing(context, true)
         CGPathMoveToPoint(path, nil, 10, y)
-        CGPathAddLineToPoint(path, nil, UIScreen.mainScreen().bounds.width / 2 - dx, y)
-        CGPathMoveToPoint(path, nil, UIScreen.mainScreen().bounds.width / 2 + dx + 15, y)
+        CGPathAddLineToPoint(path, nil, UIScreen.mainScreen().bounds.width / 2 - dx - 5, y)
+        CGPathMoveToPoint(path, nil, UIScreen.mainScreen().bounds.width / 2 + dx + 20, y)
         CGPathAddLineToPoint(path, nil, UIScreen.mainScreen().bounds.width - 10, y)
         CGContextAddPath(context, path)
         CGContextSetStrokeColorWithColor(context, UIColor.whiteColor().CGColor)
@@ -47,8 +47,8 @@ class BuildingNameView: UIView {
         nameLabel.font = UIFont.systemFontOfSize(14)
         self.addSubview(nameLabel)
         self.backgroundColor = .clearColor()
-        dx = NSString(string: nameLabel.text!).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14)]).width / 2 + 5
-        let mapButton = UIButton(frame: CGRectMake(UIScreen.mainScreen().bounds.width / 2 + dx - 2, 7, 15, 15))
+        dx = NSString(string: nameLabel.text!).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14)]).width / 2
+        let mapButton = UIButton(frame: CGRectMake(UIScreen.mainScreen().bounds.width / 2 + dx + 3, 7, 15, 15))
         mapButton.setImage(UIImage(named: "地图"), forState: .Normal)
         mapButton.addTarget(self, action: Selector("openMap"), forControlEvents: .TouchDown)
         self.addSubview(mapButton)

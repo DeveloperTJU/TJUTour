@@ -43,8 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
         UITextField.appearance().font = UIFont(name: "HelveticaNeue-Thin", size: 13.0)
         UITextField.appearance().tintColor = .blackColor()
         
-        self.window?.rootViewController = SetupContainerViewController()//HomeContainerViewController()
-        print(self.databasePath)
+        self.window?.rootViewController = HomeContainerViewController()
         return true
     }
 
