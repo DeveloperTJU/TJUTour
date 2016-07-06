@@ -175,6 +175,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     func threeDItem(right:UIBarButtonItem)
     {
         //连接3D视图
+        self.navigationController?.pushViewController(threeDViewController(), animated: true)
         
     }
     

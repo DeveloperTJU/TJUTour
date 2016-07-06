@@ -27,6 +27,9 @@ class SetupContainerViewController: SWRevealViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask{
+        return UIInterfaceOrientationMask.Portrait
+    }
 
     /*
     // MARK: - Navigation

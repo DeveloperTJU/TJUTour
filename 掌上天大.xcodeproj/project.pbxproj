@@ -57,8 +57,6 @@
 		A874787B1D23AD72009CB3FD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478771D23AD72009CB3FD /* AboutViewController.swift */; };
 		A87BC63B1D2CE713000A1089 /* threeDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC63A1D2CE713000A1089 /* threeDViewController.swift */; };
 		A895D6791D2D405500E05BC2 /* TreasureHuntRenderLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = A895D6751D2D405500E05BC2 /* TreasureHuntRenderLoop.m */; };
-		A895D67E1D2D440F00E05BC2 /* TreasureHuntRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = A895D67D1D2D440F00E05BC2 /* TreasureHuntRenderer.m */; };
-		A895D6801D2D45DD00E05BC2 /* threedObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A895D67F1D2D45DD00E05BC2 /* threedObjectViewController.swift */; };
 		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
 		A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */; };
 		A8E71E491D2B49A1004E15F5 /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E71E481D2B49A1004E15F5 /* MyMenuTableViewController.swift */; };
@@ -162,9 +160,6 @@
 		A87BC63A1D2CE713000A1089 /* threeDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threeDViewController.swift; sourceTree = "<group>"; };
 		A895D6741D2D405500E05BC2 /* TreasureHuntRenderLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreasureHuntRenderLoop.h; sourceTree = "<group>"; };
 		A895D6751D2D405500E05BC2 /* TreasureHuntRenderLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreasureHuntRenderLoop.m; sourceTree = "<group>"; };
-		A895D67C1D2D440F00E05BC2 /* TreasureHuntRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreasureHuntRenderer.h; sourceTree = "<group>"; };
-		A895D67D1D2D440F00E05BC2 /* TreasureHuntRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreasureHuntRenderer.m; sourceTree = "<group>"; };
-		A895D67F1D2D45DD00E05BC2 /* threedObjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threedObjectViewController.swift; sourceTree = "<group>"; };
 		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 		A8E71E481D2B49A1004E15F5 /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -460,9 +455,6 @@
 			children = (
 				A895D6741D2D405500E05BC2 /* TreasureHuntRenderLoop.h */,
 				A895D6751D2D405500E05BC2 /* TreasureHuntRenderLoop.m */,
-				A895D67C1D2D440F00E05BC2 /* TreasureHuntRenderer.h */,
-				A895D67D1D2D440F00E05BC2 /* TreasureHuntRenderer.m */,
-				A895D67F1D2D45DD00E05BC2 /* threedObjectViewController.swift */,
 				A87BC63A1D2CE713000A1089 /* threeDViewController.swift */,
 			);
 			name = 3D;
@@ -520,6 +512,7 @@
 				TargetAttributes = {
 					A5C960671D1CC08900ABA0EF = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 2SPA2FSXHP;
 					};
 				};
 			};
@@ -620,7 +613,6 @@
 				A5C960EC1D1CC42500ABA0EF /* BaseCell.swift in Sources */,
 				A5C960E51D1CC28D00ABA0EF /* FMResultSet.m in Sources */,
 				A5C960901D1CC27600ABA0EF /* AFURLSessionManager.m in Sources */,
-				A895D67E1D2D440F00E05BC2 /* TreasureHuntRenderer.m in Sources */,
 				C3D124061D20EBC4006FAB34 /* DetailViewController.swift in Sources */,
 				A874787B1D23AD72009CB3FD /* AboutViewController.swift in Sources */,
 				A5C960E31D1CC28D00ABA0EF /* FMDatabasePool.m in Sources */,
@@ -658,7 +650,6 @@
 				A5C960C01D1CC28100ABA0EF /* MJRefreshAutoFooter.m in Sources */,
 				A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */,
 				A5C960E41D1CC28D00ABA0EF /* FMDatabaseQueue.m in Sources */,
-				A895D6801D2D45DD00E05BC2 /* threedObjectViewController.swift in Sources */,
 				A5C960C91D1CC28100ABA0EF /* MJRefreshBackNormalFooter.m in Sources */,
 				A87BC63B1D2CE713000A1089 /* threeDViewController.swift in Sources */,
 				A5C960C11D1CC28100ABA0EF /* MJRefreshBackFooter.m in Sources */,
@@ -767,9 +758,67 @@
 			baseConfigurationReference = 9C3A251F75B04971089B66C7 /* Pods-掌上天大.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "掌上天大/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tju.scs.TJUTour;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"CardboardSDK_arm64\"",
+					"-l\"CardboardSDK_i386\"",
+					"-l\"CardboardSDK_armv7\"",
+					"-l\"CardboardSDK_x86_64\"",
+					"-l\"c++\"",
+					"-l\"sqlite3.0\"",
+					"-l\"stdc++.6.0.9\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"BaiduMapAPI_Base\"",
+					"-framework",
+					"\"BaiduMapAPI_Cloud\"",
+					"-framework",
+					"\"BaiduMapAPI_Location\"",
+					"-framework",
+					"\"BaiduMapAPI_Map\"",
+					"-framework",
+					"\"BaiduMapAPI_Radar\"",
+					"-framework",
+					"\"BaiduMapAPI_Search\"",
+					"-framework",
+					"\"BaiduMapAPI_Utils\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hui.Memo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "掌上天大/掌上天大-Bridging-Header.h";
 			};
@@ -780,9 +829,67 @@
 			baseConfigurationReference = FE26D1251A6032D6CD42DCF1 /* Pods-掌上天大.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "掌上天大/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tju.scs.TJUTour;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"CardboardSDK_arm64\"",
+					"-l\"CardboardSDK_i386\"",
+					"-l\"CardboardSDK_armv7\"",
+					"-l\"CardboardSDK_x86_64\"",
+					"-l\"c++\"",
+					"-l\"sqlite3.0\"",
+					"-l\"stdc++.6.0.9\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"AudioToolbox\"",
+					"-framework",
+					"\"BaiduMapAPI_Base\"",
+					"-framework",
+					"\"BaiduMapAPI_Cloud\"",
+					"-framework",
+					"\"BaiduMapAPI_Location\"",
+					"-framework",
+					"\"BaiduMapAPI_Map\"",
+					"-framework",
+					"\"BaiduMapAPI_Radar\"",
+					"-framework",
+					"\"BaiduMapAPI_Search\"",
+					"-framework",
+					"\"BaiduMapAPI_Utils\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"CoreMotion\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"CoreVideo\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"MediaPlayer\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hui.Memo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "掌上天大/掌上天大-Bridging-Header.h";
 			};

@@ -10,7 +10,7 @@
 #import "GVRPanoramaView.h"
 #import "GVRWidgetView.h"
 #import "TreasureHuntRenderLoop.h"
-#import "TreasureHuntRenderer.h"
+
 
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>//引入base相关所有的头文件
 
