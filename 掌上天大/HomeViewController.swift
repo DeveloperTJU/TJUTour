@@ -85,7 +85,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         backgroundBlurView.frame.size = self.view.bounds.size
         self.view.addSubview(backgroundBlurView)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
-        let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
+        let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap:"))
         let sideButton = UIBarButtonItem(image: UIImage(named: "三道杠"), style: .Plain, target: self, action: Selector("openSide"))
         let searchButton = UIBarButtonItem(image: UIImage(named: "搜索黑色"), style: .Plain, target: self, action: Selector("search"))
         self.navigationItem.leftBarButtonItems = [mapButton]
