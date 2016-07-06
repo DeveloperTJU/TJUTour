@@ -23,21 +23,22 @@ class SetupViewController: UIViewController,UIAlertViewDelegate {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         let mainSize = self.view.bounds.size
+        self.title = "设置"
         self.view.backgroundColor = .whiteColor()
         let img = UIImage(named:"background")
         let vImg = UIImageView(image: img)
         vImg.frame = CGRect(x:0,y:0,width:mainSize.width ,height:mainSize.height)
         self.view.sendSubviewToBack(vImg)
         self.view.addSubview(vImg)
-        let vLogin = UIView(frame:CGRectMake(10, 180, mainSize.width - 20, 88))
+        let vLogin = UIView(frame:CGRectMake(10, self.view.bounds.height * 0.15, mainSize.width - 20, 88))
+        vLogin.backgroundColor = UIColor.clearColor()
         self.view.addSubview(vLogin)
         vLogin.addSubview(MyRect(frame: CGRectMake(0, 41, mainSize.width - 20, 3)))
-        vLogin.layer.cornerRadius = 3
-        vLogin.backgroundColor = .whiteColor()
+        vLogin.layer.cornerRadius = 4
+        vLogin.backgroundColor = UIColor.clearColor()
         let button1:UIButton = UIButton(type:.System)
         //设置按钮位置和大小
         button1.frame = CGRectMake(0, 0, vLogin.frame.size.width , 44)
-        button1.backgroundColor = UIColor(red: 67/255, green: 67/255, blue: 67/255, alpha: 1)
         button1.tintColor = UIColor(red: 232/255, green: 208/255, blue: 120/255, alpha: 1)
         button1.layer.cornerRadius = 4
         //设置按钮文字
@@ -47,8 +48,7 @@ class SetupViewController: UIViewController,UIAlertViewDelegate {
         
         let button2:UIButton = UIButton(type:.System)
         //设置按钮位置和大小
-        button2.frame = CGRectMake(0, 48, vLogin.frame.size.width , 44)
-        button2.backgroundColor = UIColor(red: 67/255, green: 67/255, blue: 67/255, alpha: 1)
+        button2.frame = CGRectMake(0, 44, vLogin.frame.size.width , 44)
         button2.tintColor = UIColor(red: 232/255, green: 208/255, blue: 120/255, alpha: 1)
         button2.layer.cornerRadius = 4
         //设置按钮文字
