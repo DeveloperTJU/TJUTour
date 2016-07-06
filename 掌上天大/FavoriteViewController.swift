@@ -154,6 +154,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         self.navigationBlurView.alpha = self.mainTableView.contentOffset.y / 120
         self.backgroundBlurView.alpha = self.mainTableView.contentOffset.y / 120
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
