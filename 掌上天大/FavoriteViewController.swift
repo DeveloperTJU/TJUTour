@@ -18,12 +18,11 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     var favoriteBuildings = DatabaseService.sharedInstance.selectFavorite()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        for favorite in Buildings {
-//            if favorite.isFavourite == "YES"{
-//                favoriteBuildings.append(favorite)
-//            }
-        //        }
+
+        let leftBtn = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap:"))
         if self.revealViewController() != nil {
+            leftBtn.target = self.revealViewController()//点击左上角按钮会弹出侧滑菜单
+            leftBtn.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         let blurEffect = UIBlurEffect(style: .Dark)
@@ -38,7 +37,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.mainTableView.backgroundColor = .clearColor()
         self.mainTableView.separatorStyle = .None
         self.view.addSubview(mainTableView)
-        let leftBtn = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
         leftBtn.tintColor=UIColor.whiteColor()
         self.navigationItem.leftBarButtonItem=leftBtn
         self.navigationController?.navigationBar.translucent = true
@@ -49,6 +47,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.title = "收藏"
         // Do any additional setup after loading the view.
     }
+
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
                    forRowAtIndexPath indexPath: NSIndexPath){

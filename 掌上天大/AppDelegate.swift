@@ -10,6 +10,7 @@ import UIKit
 
 let mapVC = BaiduMapOfTJUViewController()
 let HomeVC = HomeViewController()
+let FavVc = FavoriteViewController()
 var Buildings = [BuildingData]()
 var BuildingDict = Dictionary<String, NSInteger>()
 let NavigationBarFont = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue-Thin", size: 16.0)!]
@@ -43,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMKGeneralDelegate {
         UITextField.appearance().font = UIFont(name: "HelveticaNeue-Thin", size: 13.0)
         UITextField.appearance().tintColor = .blackColor()
         
-        self.window?.rootViewController = SetupContainerViewController()//HomeContainerViewController()
+        self.window?.rootViewController = HomeContainerViewController()
         print(self.databasePath)
         return true
     }

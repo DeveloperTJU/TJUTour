@@ -16,7 +16,7 @@ class FavoriteContainerViewController: SWRevealViewController {
         self.setRearViewController(MyMenuTableViewController(), animated: true)
         
         //设置主页面
-        let a = UINavigationController(rootViewController: FavoriteViewController())
+        let a = UINavigationController(rootViewController: FavVc)
         self.setFrontViewController(a, animated: true)
         self.rearViewRevealWidth = self.view.bounds.width * 0.5
         // Do any additional setup after loading the view.
