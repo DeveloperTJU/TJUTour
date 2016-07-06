@@ -11,6 +11,7 @@ import UIKit
 class DetailViewController: UIViewController,UITextViewDelegate {
     
     var building:BuildingData!
+    var buildingIndex: NSInteger!
     var initIndex: Int = 0
     var likeArray : [NSArray]?
     var contentTextView:UITextView!
@@ -28,7 +29,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        building = Buildings[self.buildingIndex]
         self.title = building.name
         self.view.backgroundColor = UIColor(red: 241/255, green: 245/255, blue: 248/255, alpha: 1)
         self.bgImageView = UIImageView(image: UIImage(named: "background"))
@@ -102,6 +103,9 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         if(building.isFavourite=="NO"){
             self.isLike = "0"
         }
+        else{
+            self.isLike = "1"
+        }
         self.likeButton = UIButton()
         likeButton.frame=CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width / 2, 60)
         if(self.isLike == "0"){
@@ -130,7 +134,6 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         }
         self.likeButton.addTarget(self, action: Selector("like:"), forControlEvents: .TouchDown)
         self.view.addSubview(self.likeButton)
-        
         
         
         
@@ -184,6 +187,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
             self.building.isFavourite = "YES"
             self.likelabel.text = "已收藏"
             DatabaseService.sharedInstance.insertData(building)
+            Buildings[self.buildingIndex].isFavourite = "YES"
         }
         else{
             self.vImg.image = UIImage(named: "未收藏")
@@ -194,9 +198,9 @@ class DetailViewController: UIViewController,UITextViewDelegate {
             self.building.isFavourite = "NO"
             self.likelabel.text = "收藏"
             DatabaseService.sharedInstance.deleteData(building.id)
+        
+            Buildings[self.buildingIndex].isFavourite = "NO"
         }
-        
-        
     }
     
     func good(button:UIButton){

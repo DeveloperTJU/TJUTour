@@ -241,7 +241,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailVC = DetailViewController()
-        detailVC.building = Buildings[coverflow.currentItemIndex]
+        detailVC.buildingIndex = coverflow.currentItemIndex
         detailVC.initIndex = indexPath.row
         self.navigationController?.pushViewController(detailVC, animated: true)
     }

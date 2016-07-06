@@ -12,6 +12,7 @@ let mapVC = BaiduMapOfTJUViewController()
 let HomeVC = HomeViewController()
 var Buildings = [BuildingData]()
 var BuildingDict = Dictionary<String, NSInteger>()
+
 let NavigationBarFont = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue-Thin", size: 16.0)!]
 
 @UIApplicationMain
