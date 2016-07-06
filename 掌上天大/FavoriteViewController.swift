@@ -76,7 +76,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
             self.favoriteBuildings.removeAtIndex(indexPath.row)
             self.mainTableView.reloadData()
         }
-        let image = UIImage(CGImage: (UIImage(named: "垃圾箱")?.CGImage)!, scale: 2.5, orientation: .Up)
+        let image = UIImage(CGImage: (UIImage(named: "删除")?.CGImage)!, scale: 2.5, orientation: .Up)
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 40, height: 200), false, 1.0)
         image.drawInRect(CGRectMake(5, 13, 25, 25))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -93,7 +93,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     {
         let cell = BaseCell()
         cell.backgroundColor = UIColor.clearColor()
-        
         if favoriteBuildings.count != 0{
             cell.cellImage.image = favoriteBuildings[indexPath.row].getCoverImage()
         }
@@ -162,5 +161,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.navigationBlurView.removeFromSuperview()
     }
     
+    func openMap(){
+        mapVC.curPosIndex = -1
+        self.navigationController?.pushViewController(mapVC, animated: true)
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+    }
 
 }
