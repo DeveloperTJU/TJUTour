@@ -34,7 +34,7 @@ class BuildingNameView: UIView {
         CGPathMoveToPoint(path, nil, 10, y)
         CGPathAddLineToPoint(path, nil, UIScreen.mainScreen().bounds.width / 2 - dx, y)
         CGPathMoveToPoint(path, nil, UIScreen.mainScreen().bounds.width / 2 + dx, y)
-        CGPathAddLineToPoint(path, nil, UIScreen.mainScreen().bounds.width - 20, y)
+        CGPathAddLineToPoint(path, nil, UIScreen.mainScreen().bounds.width - 10, y)
         CGContextAddPath(context, path)
         CGContextSetStrokeColorWithColor(context, UIColor.whiteColor().CGColor)
         CGContextStrokePath(context)
