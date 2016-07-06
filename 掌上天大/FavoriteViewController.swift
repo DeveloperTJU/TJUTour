@@ -161,5 +161,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.navigationBlurView.removeFromSuperview()
     }
     
+    func openMap(){
+        mapVC.curPosIndex = -1
+        self.navigationController?.pushViewController(mapVC, animated: true)
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+    }
 
 }
