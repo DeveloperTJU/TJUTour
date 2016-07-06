@@ -56,7 +56,9 @@
 		A874787A1D23AD72009CB3FD /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478761D23AD72009CB3FD /* SetupViewController.swift */; };
 		A874787B1D23AD72009CB3FD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478771D23AD72009CB3FD /* AboutViewController.swift */; };
 		A87BC63B1D2CE713000A1089 /* threeDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC63A1D2CE713000A1089 /* threeDViewController.swift */; };
-		A87BC63D1D2CF25E000A1089 /* threedObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC63C1D2CF25E000A1089 /* threedObjectViewController.swift */; };
+		A895D6791D2D405500E05BC2 /* TreasureHuntRenderLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = A895D6751D2D405500E05BC2 /* TreasureHuntRenderLoop.m */; };
+		A895D67E1D2D440F00E05BC2 /* TreasureHuntRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = A895D67D1D2D440F00E05BC2 /* TreasureHuntRenderer.m */; };
+		A895D6801D2D45DD00E05BC2 /* threedObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A895D67F1D2D45DD00E05BC2 /* threedObjectViewController.swift */; };
 		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
 		A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */; };
 		A8E71E491D2B49A1004E15F5 /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E71E481D2B49A1004E15F5 /* MyMenuTableViewController.swift */; };
@@ -158,7 +160,11 @@
 		A87478761D23AD72009CB3FD /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		A87478771D23AD72009CB3FD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A87BC63A1D2CE713000A1089 /* threeDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threeDViewController.swift; sourceTree = "<group>"; };
-		A87BC63C1D2CF25E000A1089 /* threedObjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threedObjectViewController.swift; sourceTree = "<group>"; };
+		A895D6741D2D405500E05BC2 /* TreasureHuntRenderLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreasureHuntRenderLoop.h; sourceTree = "<group>"; };
+		A895D6751D2D405500E05BC2 /* TreasureHuntRenderLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreasureHuntRenderLoop.m; sourceTree = "<group>"; };
+		A895D67C1D2D440F00E05BC2 /* TreasureHuntRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreasureHuntRenderer.h; sourceTree = "<group>"; };
+		A895D67D1D2D440F00E05BC2 /* TreasureHuntRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreasureHuntRenderer.m; sourceTree = "<group>"; };
+		A895D67F1D2D45DD00E05BC2 /* threedObjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threedObjectViewController.swift; sourceTree = "<group>"; };
 		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 		A8E71E481D2B49A1004E15F5 /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -452,8 +458,12 @@
 		A87BC6391D2CE5AB000A1089 /* 3D */ = {
 			isa = PBXGroup;
 			children = (
+				A895D6741D2D405500E05BC2 /* TreasureHuntRenderLoop.h */,
+				A895D6751D2D405500E05BC2 /* TreasureHuntRenderLoop.m */,
+				A895D67C1D2D440F00E05BC2 /* TreasureHuntRenderer.h */,
+				A895D67D1D2D440F00E05BC2 /* TreasureHuntRenderer.m */,
+				A895D67F1D2D45DD00E05BC2 /* threedObjectViewController.swift */,
 				A87BC63A1D2CE713000A1089 /* threeDViewController.swift */,
-				A87BC63C1D2CF25E000A1089 /* threedObjectViewController.swift */,
 			);
 			name = 3D;
 			sourceTree = "<group>";
@@ -603,12 +613,14 @@
 				A5C960C81D1CC28100ABA0EF /* MJRefreshBackGifFooter.m in Sources */,
 				A5D0DADC1D2B564A006D11D5 /* BuildingNameView.swift in Sources */,
 				A5C960C51D1CC28100ABA0EF /* MJRefreshAutoGifFooter.m in Sources */,
+				A895D6791D2D405500E05BC2 /* TreasureHuntRenderLoop.m in Sources */,
 				A5C960E11D1CC28D00ABA0EF /* FMDatabase.m in Sources */,
 				A5C960CC1D1CC28100ABA0EF /* MJRefreshNormalHeader.m in Sources */,
 				A5C960D11D1CC28100ABA0EF /* UIScrollView+MJExtension.m in Sources */,
 				A5C960EC1D1CC42500ABA0EF /* BaseCell.swift in Sources */,
 				A5C960E51D1CC28D00ABA0EF /* FMResultSet.m in Sources */,
 				A5C960901D1CC27600ABA0EF /* AFURLSessionManager.m in Sources */,
+				A895D67E1D2D440F00E05BC2 /* TreasureHuntRenderer.m in Sources */,
 				C3D124061D20EBC4006FAB34 /* DetailViewController.swift in Sources */,
 				A874787B1D23AD72009CB3FD /* AboutViewController.swift in Sources */,
 				A5C960E31D1CC28D00ABA0EF /* FMDatabasePool.m in Sources */,
@@ -632,7 +644,6 @@
 				A8E71E491D2B49A1004E15F5 /* MyMenuTableViewController.swift in Sources */,
 				A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */,
 				A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */,
-				A87BC63D1D2CF25E000A1089 /* threedObjectViewController.swift in Sources */,
 				A5C960C21D1CC28100ABA0EF /* MJRefreshComponent.m in Sources */,
 				A5C960CA1D1CC28100ABA0EF /* MJRefreshBackStateFooter.m in Sources */,
 				A8E92FEF1D24E9FE00485BD9 /* SWRevealViewController.m in Sources */,
@@ -647,6 +658,7 @@
 				A5C960C01D1CC28100ABA0EF /* MJRefreshAutoFooter.m in Sources */,
 				A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */,
 				A5C960E41D1CC28D00ABA0EF /* FMDatabaseQueue.m in Sources */,
+				A895D6801D2D45DD00E05BC2 /* threedObjectViewController.swift in Sources */,
 				A5C960C91D1CC28100ABA0EF /* MJRefreshBackNormalFooter.m in Sources */,
 				A87BC63B1D2CE713000A1089 /* threeDViewController.swift in Sources */,
 				A5C960C11D1CC28100ABA0EF /* MJRefreshBackFooter.m in Sources */,
