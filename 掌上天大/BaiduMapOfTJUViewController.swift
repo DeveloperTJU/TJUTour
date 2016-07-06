@@ -83,8 +83,7 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
         let index = BuildingDict[mapPoi.text]
         if index != nil {
             let detailVC = DetailViewController()
-            detailVC.building = Buildings[index! as! NSInteger]
-            
+            detailVC.buildingIndex = index;
            self.navigationController?.pushViewController(detailVC, animated: true)
            // addBuildingInfoView(index!, details:true)
         }
@@ -162,7 +161,7 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
         _mapView!.removeAnnotations(_mapView!.annotations)
         if errorCode == BMK_SEARCH_NO_ERROR {
             var annotations = [BMKPointAnnotation]()
-            for i in 0..<poiResult.poiInfoList.count {
+            for i in 0..<1 {
                 let poi = poiResult.poiInfoList[i] as! BMKPoiInfo
                 let item = BMKPointAnnotation()
                 item.coordinate = poi.pt

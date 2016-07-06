@@ -56,6 +56,12 @@ class SetupViewController: UIViewController,UIAlertViewDelegate {
         button2.addTarget(self,action:Selector("tapped2:"),forControlEvents: .TouchUpInside)
         vLogin.addSubview(button2)
         
+        
+        let sideButton = UIBarButtonItem(image: UIImage(named: "菜单"), style: .Plain, target: self.revealViewController(), action: Selector("revealToggle:"))
+        self.navigationItem.leftBarButtonItems = [sideButton]
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
 
     }
     
