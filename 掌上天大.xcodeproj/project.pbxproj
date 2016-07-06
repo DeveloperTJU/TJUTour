@@ -53,7 +53,6 @@
 		A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */; };
 		A5D0DADC1D2B564A006D11D5 /* BuildingNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D0DADB1D2B564A006D11D5 /* BuildingNameView.swift */; };
 		A87478781D23AD72009CB3FD /* MyRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478741D23AD72009CB3FD /* MyRect.swift */; };
-		A87478791D23AD72009CB3FD /* UrlLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478751D23AD72009CB3FD /* UrlLabel.swift */; };
 		A874787A1D23AD72009CB3FD /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478761D23AD72009CB3FD /* SetupViewController.swift */; };
 		A874787B1D23AD72009CB3FD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478771D23AD72009CB3FD /* AboutViewController.swift */; };
 		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
@@ -154,7 +153,6 @@
 		A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A5D0DADB1D2B564A006D11D5 /* BuildingNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingNameView.swift; sourceTree = "<group>"; };
 		A87478741D23AD72009CB3FD /* MyRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRect.swift; sourceTree = "<group>"; };
-		A87478751D23AD72009CB3FD /* UrlLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlLabel.swift; sourceTree = "<group>"; };
 		A87478761D23AD72009CB3FD /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		A87478771D23AD72009CB3FD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -439,7 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				A87478741D23AD72009CB3FD /* MyRect.swift */,
-				A87478751D23AD72009CB3FD /* UrlLabel.swift */,
 				A87478761D23AD72009CB3FD /* SetupViewController.swift */,
 				A87478771D23AD72009CB3FD /* AboutViewController.swift */,
 				A8E92FFE1D24F5CC00485BD9 /* SetupContainerViewController.swift */,
@@ -618,7 +615,6 @@
 				A8E92FFD1D24F54100485BD9 /* FavoriteContainerViewController.swift in Sources */,
 				A5C960CD1D1CC28100ABA0EF /* MJRefreshStateHeader.m in Sources */,
 				A5C9608C1D1CC27600ABA0EF /* AFNetworkReachabilityManager.m in Sources */,
-				A87478791D23AD72009CB3FD /* UrlLabel.swift in Sources */,
 				A8E71E491D2B49A1004E15F5 /* MyMenuTableViewController.swift in Sources */,
 				A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */,
 				A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */,
