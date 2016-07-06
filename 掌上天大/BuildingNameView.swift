@@ -11,6 +11,7 @@ import UIKit
 class BuildingNameView: UIView {
     
     let nameLabel = UILabel(frame: CGRectMake(15, 0, UIScreen.mainScreen().bounds.width - 30, 30))
+    var dx:CGFloat!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,12 +30,11 @@ class BuildingNameView: UIView {
         let path = CGPathCreateMutable()
         let context =  UIGraphicsGetCurrentContext()!
         let y = self.frame.size.height / 2
-        let dx = NSString(string: nameLabel.text!).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14)]).width / 2 + 5
         CGContextSetAllowsAntialiasing(context, true)
         CGPathMoveToPoint(path, nil, 10, y)
         CGPathAddLineToPoint(path, nil, UIScreen.mainScreen().bounds.width / 2 - dx, y)
-        CGPathMoveToPoint(path, nil, UIScreen.mainScreen().bounds.width / 2 + dx, y)
-        CGPathAddLineToPoint(path, nil, UIScreen.mainScreen().bounds.width - 20, y)
+        CGPathMoveToPoint(path, nil, UIScreen.mainScreen().bounds.width / 2 + dx + 15, y)
+        CGPathAddLineToPoint(path, nil, UIScreen.mainScreen().bounds.width - 10, y)
         CGContextAddPath(context, path)
         CGContextSetStrokeColorWithColor(context, UIColor.whiteColor().CGColor)
         CGContextStrokePath(context)
@@ -47,6 +47,16 @@ class BuildingNameView: UIView {
         nameLabel.font = UIFont.systemFontOfSize(14)
         self.addSubview(nameLabel)
         self.backgroundColor = .clearColor()
+        dx = NSString(string: nameLabel.text!).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14)]).width / 2 + 5
+        let mapButton = UIButton(frame: CGRectMake(UIScreen.mainScreen().bounds.width / 2 + dx - 2, 7, 15, 15))
+        mapButton.setImage(UIImage(named: "地图"), forState: .Normal)
+        mapButton.addTarget(self, action: Selector("openMap"), forControlEvents: .TouchDown)
+        self.addSubview(mapButton)
     }
     
+    func openMap(){
+        mapVC.curPosIndex = HomeVC.coverflow.currentItemIndex
+        HomeVC.navigationController?.pushViewController(mapVC, animated: true)
+        HomeVC.navigationController?.interactivePopGestureRecognizer?.enabled = false
+    }
 }
