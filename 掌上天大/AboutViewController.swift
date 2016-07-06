@@ -28,6 +28,7 @@ class AboutViewController: UIViewController ,UITableViewDelegate,UITableViewData
         for i in 0 ..< 8{
             urls.append(UILabel(frame: textFrame))
             urls[i].font = UIFont(name: "HelveticaNeue-Thin", size: 10.0)
+            urls[i].backgroundColor = .clearColor()
         }
         
         self.setTableView()
@@ -74,13 +75,15 @@ class AboutViewController: UIViewController ,UITableViewDelegate,UITableViewData
         self.imageView = UIImageView(frame: CGRectMake(self.view.bounds.size.width/2 - cellHeight*5/6 - 8, 10, cellHeight * 5/3, cellHeight*5/3))
         self.imageView.layer.cornerRadius = 10
         self.imageView.layer.masksToBounds = true
-        let image = UIImage(named: "Icon-76")
+        let image = UIImage(named: "Logo")
         self.imageView.image = image
+        self.imageView.backgroundColor = .clearColor()
     }
     
     func setversionText(){
         let textFrame:CGRect = CGRectMake(15, cellHeight*9/5, self.view.bounds.size.width - 46, 50)
         self.versionText = UILabel(frame: textFrame)
+        self.versionText.textColor = .whiteColor()
     }
     
     //控制分区数
@@ -130,11 +133,14 @@ class AboutViewController: UIViewController ,UITableViewDelegate,UITableViewData
         cell.textLabel?.text = sectionArr[indexPath.row]
         let font = UIFont(name: "HelveticaNeue-Thin", size: 14.0)
         cell.textLabel!.font = font
+        cell.textLabel!.textColor = .whiteColor()
+        cell.backgroundColor = .clearColor()
         if indexPath.section == 1 && indexPath.row == 0{
             tableView.separatorStyle = .SingleLine
             let frame:CGRect = CGRectMake(self.view.bounds.size.width - 250, 0, 200, cellHeight)
             let developerText = UILabel(frame: frame)
             developerText.text = "tju酱油一号"
+            developerText.textColor = .whiteColor()
             developerText.textAlignment = .Right
             developerText.font = font
             cell.addSubview(developerText)
@@ -144,6 +150,7 @@ class AboutViewController: UIViewController ,UITableViewDelegate,UITableViewData
             tableView.separatorStyle = .SingleLine
             cell.textLabel?.autoresizingMask = UIViewAutoresizing.FlexibleWidth
             let url = urls[indexPath.row - 1]
+            url.textColor = .whiteColor()
             cell.addSubview(url)
             switch(indexPath.row){
             case 1:
@@ -171,7 +178,8 @@ class AboutViewController: UIViewController ,UITableViewDelegate,UITableViewData
                 let frame:CGRect = CGRectMake(20, 0, 200, 200)
                 cell = UITableViewCell(frame: frame)
                 cell.addSubview(imageView)
-                self.versionText.text = "咕嘟笔记 v1.0"
+                cell.backgroundColor = .clearColor()
+                self.versionText.text = "掌上天大 v1.0"
                 self.versionText.textAlignment = .Center
                 cell.addSubview(versionText)
                 versionText.font = font

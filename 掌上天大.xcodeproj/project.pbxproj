@@ -50,15 +50,13 @@
 		A5C960F51D1CC7DB00ABA0EF /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F01D1CC7DB00ABA0EF /* ImageHelper.swift */; };
 		A5C960F71D1CC7DB00ABA0EF /* RequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */; };
 		A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */; };
-		A5C960F91D1CC7DB00ABA0EF /* CustomNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */; };
 		A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */; };
 		A5D0DADC1D2B564A006D11D5 /* BuildingNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D0DADB1D2B564A006D11D5 /* BuildingNameView.swift */; };
-		A862F9621D21078300EBD06B /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9611D21078300EBD06B /* ViewController1.swift */; };
-		A862F9641D21078D00EBD06B /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A862F9631D21078D00EBD06B /* ViewController2.swift */; };
 		A87478781D23AD72009CB3FD /* MyRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478741D23AD72009CB3FD /* MyRect.swift */; };
-		A87478791D23AD72009CB3FD /* UrlLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478751D23AD72009CB3FD /* UrlLabel.swift */; };
 		A874787A1D23AD72009CB3FD /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478761D23AD72009CB3FD /* SetupViewController.swift */; };
 		A874787B1D23AD72009CB3FD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478771D23AD72009CB3FD /* AboutViewController.swift */; };
+		A87BC63B1D2CE713000A1089 /* threeDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC63A1D2CE713000A1089 /* threeDViewController.swift */; };
+		A87BC63D1D2CF25E000A1089 /* threedObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC63C1D2CF25E000A1089 /* threedObjectViewController.swift */; };
 		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
 		A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */; };
 		A8E71E491D2B49A1004E15F5 /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E71E481D2B49A1004E15F5 /* MyMenuTableViewController.swift */; };
@@ -153,16 +151,14 @@
 		A5C960F11D1CC7DB00ABA0EF /* DatabaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestClient.swift; sourceTree = "<group>"; };
 		A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
-		A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavController.swift; sourceTree = "<group>"; };
 		A5C960FA1D1CC83200ABA0EF /* 掌上天大-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "掌上天大-Bridging-Header.h"; sourceTree = "<group>"; };
 		A5C960FC1D1CCA9900ABA0EF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A5D0DADB1D2B564A006D11D5 /* BuildingNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingNameView.swift; sourceTree = "<group>"; };
-		A862F9611D21078300EBD06B /* ViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
-		A862F9631D21078D00EBD06B /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		A87478741D23AD72009CB3FD /* MyRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRect.swift; sourceTree = "<group>"; };
-		A87478751D23AD72009CB3FD /* UrlLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlLabel.swift; sourceTree = "<group>"; };
 		A87478761D23AD72009CB3FD /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		A87478771D23AD72009CB3FD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		A87BC63A1D2CE713000A1089 /* threeDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threeDViewController.swift; sourceTree = "<group>"; };
+		A87BC63C1D2CF25E000A1089 /* threedObjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threedObjectViewController.swift; sourceTree = "<group>"; };
 		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 		A8E71E481D2B49A1004E15F5 /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +201,15 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
+		A58C3BAC1D2CAF7600C16FD8 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A8E92FED1D24E9FE00485BD9 /* SWRevealViewController.m */,
+				A8E92FEE1D24E9FE00485BD9 /* SWRevealViewController.h */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		A5AD8B381D22E0460017ED19 /* iCarousel */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,7 +248,7 @@
 				A5C960F11D1CC7DB00ABA0EF /* DatabaseService.swift */,
 				A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */,
 				A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */,
-				A5C960F41D1CC7DB00ABA0EF /* CustomNavController.swift */,
+				A87BC6391D2CE5AB000A1089 /* 3D */,
 				8509C2721D23741900639CE5 /* Map */,
 				C31732941D236EA200F0FAA9 /* Detail */,
 				5BBB7BB41D238D1B009FB4DB /* Search */,
@@ -254,8 +259,6 @@
 				A5C960721D1CC08900ABA0EF /* Assets.xcassets */,
 				A5C960741D1CC08900ABA0EF /* LaunchScreen.storyboard */,
 				A5C960771D1CC08900ABA0EF /* Info.plist */,
-				A862F9611D21078300EBD06B /* ViewController1.swift */,
-				A862F9631D21078D00EBD06B /* ViewController2.swift */,
 			);
 			path = "掌上天大";
 			sourceTree = "<group>";
@@ -397,9 +400,8 @@
 		A5C960E71D1CC29300ABA0EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A8E92FED1D24E9FE00485BD9 /* SWRevealViewController.m */,
-				A8E92FEE1D24E9FE00485BD9 /* SWRevealViewController.h */,
 				A5C960E81D1CC3D800ABA0EF /* libsqlite3.0.tbd */,
+				A58C3BAC1D2CAF7600C16FD8 /* SWRevealViewController */,
 				A5C960D41D1CC28D00ABA0EF /* FMDataBase */,
 				A5AD8B381D22E0460017ED19 /* iCarousel */,
 				A5C960911D1CC28100ABA0EF /* MJRefresh */,
@@ -440,12 +442,20 @@
 			isa = PBXGroup;
 			children = (
 				A87478741D23AD72009CB3FD /* MyRect.swift */,
-				A87478751D23AD72009CB3FD /* UrlLabel.swift */,
 				A87478761D23AD72009CB3FD /* SetupViewController.swift */,
 				A87478771D23AD72009CB3FD /* AboutViewController.swift */,
 				A8E92FFE1D24F5CC00485BD9 /* SetupContainerViewController.swift */,
 			);
 			name = setup;
+			sourceTree = "<group>";
+		};
+		A87BC6391D2CE5AB000A1089 /* 3D */ = {
+			isa = PBXGroup;
+			children = (
+				A87BC63A1D2CE713000A1089 /* threeDViewController.swift */,
+				A87BC63C1D2CF25E000A1089 /* threedObjectViewController.swift */,
+			);
+			name = 3D;
 			sourceTree = "<group>";
 		};
 		A8CC3D001D20BB1A00A44AD1 /* Favorite */ = {
@@ -619,10 +629,10 @@
 				A8E92FFD1D24F54100485BD9 /* FavoriteContainerViewController.swift in Sources */,
 				A5C960CD1D1CC28100ABA0EF /* MJRefreshStateHeader.m in Sources */,
 				A5C9608C1D1CC27600ABA0EF /* AFNetworkReachabilityManager.m in Sources */,
-				A87478791D23AD72009CB3FD /* UrlLabel.swift in Sources */,
 				A8E71E491D2B49A1004E15F5 /* MyMenuTableViewController.swift in Sources */,
 				A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */,
 				A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */,
+				A87BC63D1D2CF25E000A1089 /* threedObjectViewController.swift in Sources */,
 				A5C960C21D1CC28100ABA0EF /* MJRefreshComponent.m in Sources */,
 				A5C960CA1D1CC28100ABA0EF /* MJRefreshBackStateFooter.m in Sources */,
 				A8E92FEF1D24E9FE00485BD9 /* SWRevealViewController.m in Sources */,
@@ -635,12 +645,10 @@
 				A5C960D01D1CC28100ABA0EF /* NSBundle+MJRefresh.m in Sources */,
 				A5C960D31D1CC28100ABA0EF /* UIView+MJExtension.m in Sources */,
 				A5C960C01D1CC28100ABA0EF /* MJRefreshAutoFooter.m in Sources */,
-				A5C960F91D1CC7DB00ABA0EF /* CustomNavController.swift in Sources */,
-				A862F9621D21078300EBD06B /* ViewController1.swift in Sources */,
-				A862F9641D21078D00EBD06B /* ViewController2.swift in Sources */,
 				A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */,
 				A5C960E41D1CC28D00ABA0EF /* FMDatabaseQueue.m in Sources */,
 				A5C960C91D1CC28100ABA0EF /* MJRefreshBackNormalFooter.m in Sources */,
+				A87BC63B1D2CE713000A1089 /* threeDViewController.swift in Sources */,
 				A5C960C11D1CC28100ABA0EF /* MJRefreshBackFooter.m in Sources */,
 				A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */,
 				A5C960F51D1CC7DB00ABA0EF /* ImageHelper.swift in Sources */,

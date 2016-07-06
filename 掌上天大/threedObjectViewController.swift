@@ -1,20 +1,19 @@
 //
-//  ViewController1.swift
+//  threedObjectViewController.swift
 //  掌上天大
 //
-//  Created by zyf on 16/6/27.
+//  Created by zyf on 16/7/6.
 //  Copyright © 2016年 hui. All rights reserved.
 //
 
 import UIKit
 
-class ViewController1: UIViewController {
-    
-    let a = MyMenuTableViewController()
+class threedObjectViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.greenColor()
 
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

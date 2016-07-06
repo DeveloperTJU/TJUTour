@@ -29,6 +29,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var isCounting = false {
         willSet {
             if newValue {
+                if countdownTimer != nil{
+                    countdownTimer?.invalidate()
+                    countdownTimer = nil
+                }
                 countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTime:", userInfo: nil, repeats: true)
                 remainingSeconds = 3
             } else {
@@ -77,19 +81,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.revealViewController() != nil {
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
         let blurEffect = UIBlurEffect(style: .Dark)
         backgroundBlurView = UIVisualEffectView(effect: blurEffect)
         backgroundBlurView.frame.size = self.view.bounds.size
         self.view.addSubview(backgroundBlurView)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
-        let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
-        let sideButton = UIBarButtonItem(image: UIImage(named: "三道杠"), style: .Plain, target: self, action: Selector("openSide"))
+        let sideButton = UIBarButtonItem(image: UIImage(named: "菜单"), style: .Plain, target: self.revealViewController(), action: Selector("revealToggle:"))
         let searchButton = UIBarButtonItem(image: UIImage(named: "搜索黑色"), style: .Plain, target: self, action: Selector("search"))
-        self.navigationItem.leftBarButtonItems = [mapButton]
+        self.navigationItem.leftBarButtonItems = [sideButton]
         self.navigationItem.rightBarButtonItems = [searchButton]
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         
         //无连接显示error并提示重试
         connectionErrorView = UIButton(type: .Custom)
@@ -118,7 +121,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         indicator.color = UIColor.grayColor()
         indicator.hidesWhenStopped = true
         self.view.addSubview(indicator)
-        self.navigationController!.navigationBar.titleTextAttributes = NavigationBarFont
         downloadCoverImages()
     }
     
@@ -273,6 +275,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
         self.navigationController?.view.addSubview(self.navigationBlurView)
         self.navigationController?.navigationBar.tintColor = .whiteColor()
+        self.navigationController!.navigationBar.titleTextAttributes = NavigationBarFont
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         if isDataLoaded{
             self.navigationBlurView.alpha = self.mainTableView.contentOffset.y / 120
