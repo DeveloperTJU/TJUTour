@@ -118,7 +118,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailVC = DetailViewController()
-        detailVC.buildingIndex = indexPath.row
+        detailVC.buildingIndex = BuildingIndexDict[favoriteBuildings[indexPath.row].id]
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
@@ -153,7 +153,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         self.navigationBlurView.alpha = self.mainTableView.contentOffset.y / 120
         self.backgroundBlurView.alpha = self.mainTableView.contentOffset.y / 120
-        
+        favoriteBuildings = DatabaseService.sharedInstance.selectFavorite()
+        self.mainTableView.reloadData()
     }
     
     override func viewWillDisappear(animated: Bool) {

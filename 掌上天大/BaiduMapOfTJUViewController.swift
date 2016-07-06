@@ -92,6 +92,7 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
         }
     }
     
+ //   func didSelectAnnotationView:(BMKAnnotationView *)
 //    func addBuildingInfoView(index: NSInteger, details: Bool){
 //        let mainSize = UIScreen.mainScreen().bounds.size
 //        let height: CGFloat = 80
@@ -178,5 +179,5 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
         }
     }
     
-
+    
 }

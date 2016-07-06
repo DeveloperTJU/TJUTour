@@ -139,6 +139,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 for data in arr{
                     Buildings.append(BuildingData(id: data["id"] as! String, nameinmap: data["nameinmap"] as! String, name: data["name"] as! String, detail: data["description"] as! String))
                     BuildingDict[data["nameinmap"] as! String] = i
+                    BuildingIndexDict[data["id"] as! String] = i
                     i += 1
                 }
                 self.connectionErrorView.removeFromSuperview()
@@ -300,5 +301,4 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.isCounting = false
         }
     }
-    
 }
