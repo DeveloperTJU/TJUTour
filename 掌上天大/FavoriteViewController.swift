@@ -38,16 +38,19 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         self.mainTableView.backgroundColor = .clearColor()
         self.mainTableView.separatorStyle = .None
         self.view.addSubview(mainTableView)
-        let leftBtn = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
-        leftBtn.tintColor=UIColor.whiteColor()
-        self.navigationItem.leftBarButtonItem=leftBtn
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController!.navigationBar.titleTextAttributes = NavigationBarFont
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         self.title = "收藏"
+        
         // Do any additional setup after loading the view.
+        let sideButton = UIBarButtonItem(image: UIImage(named: "菜单"), style: .Plain, target: self.revealViewController(), action: Selector("revealToggle:"))
+        self.navigationItem.leftBarButtonItems = [sideButton]
+        if self.revealViewController() != nil {
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
