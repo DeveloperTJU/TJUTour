@@ -18,11 +18,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     var favoriteBuildings = DatabaseService.sharedInstance.selectFavorite()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        for favorite in Buildings {
-//            if favorite.isFavourite == "YES"{
-//                favoriteBuildings.append(favorite)
-//            }
-        //        }
+
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
@@ -48,10 +44,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         // Do any additional setup after loading the view.
         let sideButton = UIBarButtonItem(image: UIImage(named: "菜单"), style: .Plain, target: self.revealViewController(), action: Selector("revealToggle:"))
         self.navigationItem.leftBarButtonItems = [sideButton]
-        if self.revealViewController() != nil {
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
     }
+
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,
                    forRowAtIndexPath indexPath: NSIndexPath){

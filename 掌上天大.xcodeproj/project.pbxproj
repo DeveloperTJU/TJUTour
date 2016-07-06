@@ -55,6 +55,8 @@
 		A87478781D23AD72009CB3FD /* MyRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478741D23AD72009CB3FD /* MyRect.swift */; };
 		A874787A1D23AD72009CB3FD /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478761D23AD72009CB3FD /* SetupViewController.swift */; };
 		A874787B1D23AD72009CB3FD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87478771D23AD72009CB3FD /* AboutViewController.swift */; };
+		A87BC63B1D2CE713000A1089 /* threeDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC63A1D2CE713000A1089 /* threeDViewController.swift */; };
+		A87BC63D1D2CF25E000A1089 /* threedObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87BC63C1D2CF25E000A1089 /* threedObjectViewController.swift */; };
 		A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */; };
 		A8CC3D051D20C47B00A44AD1 /* BuildingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */; };
 		A8E71E491D2B49A1004E15F5 /* MyMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E71E481D2B49A1004E15F5 /* MyMenuTableViewController.swift */; };
@@ -155,6 +157,8 @@
 		A87478741D23AD72009CB3FD /* MyRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRect.swift; sourceTree = "<group>"; };
 		A87478761D23AD72009CB3FD /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		A87478771D23AD72009CB3FD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		A87BC63A1D2CE713000A1089 /* threeDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threeDViewController.swift; sourceTree = "<group>"; };
+		A87BC63C1D2CF25E000A1089 /* threedObjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = threedObjectViewController.swift; sourceTree = "<group>"; };
 		A8CC3D011D20BB5400A44AD1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		A8CC3D041D20C47B00A44AD1 /* BuildingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingData.swift; sourceTree = "<group>"; };
 		A8E71E481D2B49A1004E15F5 /* MyMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMenuTableViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 				A5C960F11D1CC7DB00ABA0EF /* DatabaseService.swift */,
 				A5C960F21D1CC7DB00ABA0EF /* RequestClient.swift */,
 				A5C960F31D1CC7DB00ABA0EF /* RequestAPI.swift */,
+				A87BC6391D2CE5AB000A1089 /* 3D */,
 				8509C2721D23741900639CE5 /* Map */,
 				C31732941D236EA200F0FAA9 /* Detail */,
 				5BBB7BB41D238D1B009FB4DB /* Search */,
@@ -444,6 +449,15 @@
 			name = setup;
 			sourceTree = "<group>";
 		};
+		A87BC6391D2CE5AB000A1089 /* 3D */ = {
+			isa = PBXGroup;
+			children = (
+				A87BC63A1D2CE713000A1089 /* threeDViewController.swift */,
+				A87BC63C1D2CF25E000A1089 /* threedObjectViewController.swift */,
+			);
+			name = 3D;
+			sourceTree = "<group>";
+		};
 		A8CC3D001D20BB1A00A44AD1 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +632,7 @@
 				A8E71E491D2B49A1004E15F5 /* MyMenuTableViewController.swift in Sources */,
 				A5C960FD1D1CCA9900ABA0EF /* HomeViewController.swift in Sources */,
 				A8CC3D021D20BB5400A44AD1 /* FavoriteViewController.swift in Sources */,
+				A87BC63D1D2CF25E000A1089 /* threedObjectViewController.swift in Sources */,
 				A5C960C21D1CC28100ABA0EF /* MJRefreshComponent.m in Sources */,
 				A5C960CA1D1CC28100ABA0EF /* MJRefreshBackStateFooter.m in Sources */,
 				A8E92FEF1D24E9FE00485BD9 /* SWRevealViewController.m in Sources */,
@@ -633,6 +648,7 @@
 				A5C960F81D1CC7DB00ABA0EF /* RequestAPI.swift in Sources */,
 				A5C960E41D1CC28D00ABA0EF /* FMDatabaseQueue.m in Sources */,
 				A5C960C91D1CC28100ABA0EF /* MJRefreshBackNormalFooter.m in Sources */,
+				A87BC63B1D2CE713000A1089 /* threeDViewController.swift in Sources */,
 				A5C960C11D1CC28100ABA0EF /* MJRefreshBackFooter.m in Sources */,
 				A5C9606C1D1CC08900ABA0EF /* AppDelegate.swift in Sources */,
 				A5C960F51D1CC7DB00ABA0EF /* ImageHelper.swift in Sources */,

@@ -81,9 +81,19 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle"
+  install_resource "GVRSDK/Resources/CardboardSDK.bundle"
+  install_resource "GVRSDK/Resources/GoogleKitCore.bundle"
+  install_resource "GVRSDK/Resources/GoogleKitDialogs.bundle"
+  install_resource "GVRSDK/Resources/GoogleKitHUD.bundle"
+  install_resource "GVRSDK/Resources/MaterialRobotoFontLoader.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle"
+  install_resource "GVRSDK/Resources/CardboardSDK.bundle"
+  install_resource "GVRSDK/Resources/GoogleKitCore.bundle"
+  install_resource "GVRSDK/Resources/GoogleKitDialogs.bundle"
+  install_resource "GVRSDK/Resources/GoogleKitHUD.bundle"
+  install_resource "GVRSDK/Resources/MaterialRobotoFontLoader.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
