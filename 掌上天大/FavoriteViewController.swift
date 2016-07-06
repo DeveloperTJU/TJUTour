@@ -26,7 +26,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffect = UIBlurEffect(style: .Dark)
         backgroundBlurView = UIVisualEffectView(effect: blurEffect)
         backgroundBlurView.frame.size = self.view.bounds.size
         self.view.addSubview(backgroundBlurView)
@@ -147,7 +147,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffect = UIBlurEffect(style: .Dark)
         navigationBlurView = UIVisualEffectView(effect: blurEffect)
         navigationBlurView.frame.size = CGSize(width: view.frame.width, height: 64)
         self.navigationController?.view.addSubview(self.navigationBlurView)

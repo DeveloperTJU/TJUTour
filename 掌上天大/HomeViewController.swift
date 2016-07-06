@@ -86,6 +86,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.addSubview(backgroundBlurView)
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
         let mapButton = UIBarButtonItem(image: UIImage(named: "地图"), style: .Plain, target: self, action: Selector("openMap"))
+        let sideButton = UIBarButtonItem(image: UIImage(named: "三道杠"), style: .Plain, target: self, action: Selector("openSide"))
         let searchButton = UIBarButtonItem(image: UIImage(named: "搜索黑色"), style: .Plain, target: self, action: Selector("search"))
         self.navigationItem.leftBarButtonItems = [mapButton]
         self.navigationItem.rightBarButtonItems = [searchButton]
@@ -151,14 +152,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func openMap(){
-        mapVC.curPosIndex = coverflow.currentItemIndex
-        self.navigationController?.pushViewController(mapVC, animated: true)
-        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
-    }
-    
     func search(){
         self.navigationController?.pushViewController(SearchViewController(), animated: true)
+    }
+    
+    func openSide(){
+        self.navigationController?.pushViewController(HomeContainerViewController(), animated: true)
     }
     
     func numberOfItemsInCarousel(carousel: iCarousel) -> Int {
@@ -258,7 +257,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         self.navigationBlurView.alpha = scrollView.contentOffset.y / 120
-        self.backgroundBlurView.alpha = scrollView.contentOffset.y / 120
+        self.backgroundBlurView.alpha = scrollView.contentOffset.y / UIScreen.mainScreen().bounds.size.height
         self.title = self.mainTableView.contentOffset.y > 100 ? "掌上天大" : ""
         //用户浏览更多图片时推迟切换轮播图
         remainingSeconds = 10
@@ -277,7 +276,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController!.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
         if isDataLoaded{
             self.navigationBlurView.alpha = self.mainTableView.contentOffset.y / 120
-            self.backgroundBlurView.alpha = self.mainTableView.contentOffset.y / 120
+            self.backgroundBlurView.alpha = self.mainTableView.contentOffset.y / UIScreen.mainScreen().bounds.size.height
             self.title = self.mainTableView.contentOffset.y > 100 ? "掌上天大" : ""
         }
         else{

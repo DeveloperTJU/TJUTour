@@ -24,6 +24,7 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     var likeimage:UIImage!
     var likelabel:UILabel!
     var bgImageView:UIImageView!
+    var vImg:UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,25 +106,32 @@ class DetailViewController: UIViewController,UITextViewDelegate {
         likeButton.frame=CGRectMake(0, self.view.frame.size.height - 60, self.view.frame.size.width / 2, 60)
         if(self.isLike == "0"){
             self.likeimage = UIImage(named: "未收藏")
-            let vImg1 = UIImageView(image: self.likeimage)
-            vImg1.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
-            self.view.addSubview(vImg1)
+            self.vImg = UIImageView(image: self.likeimage)
+            self.vImg.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
+            self.view.addSubview(self.vImg)
+            self.likelabel = UILabel()
+            self.likelabel.frame=CGRectMake((self.view.frame.size.width/2) - 90, self.view.frame.size.height - 40, 70, 20)
+            self.likelabel.text = "收藏"
+            self.likelabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16.0)
+            self.likelabel.textColor = UIColor.whiteColor()
+            self.view.addSubview(self.likelabel)
         }
         else{
             self.likeimage = UIImage(named: "已收藏")
-            let vImg2 = UIImageView(image: self.likeimage)
-            vImg2.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
-            self.view.addSubview(vImg2)
+            self.vImg = UIImageView(image: self.likeimage)
+            self.vImg.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
+            self.view.addSubview(self.vImg)
+            self.likelabel = UILabel()
+            self.likelabel.frame=CGRectMake((self.view.frame.size.width/2) - 90, self.view.frame.size.height - 40, 70, 20)
+            self.likelabel.text = "已收藏"
+            self.likelabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16.0)
+            self.likelabel.textColor = UIColor.whiteColor()
+            self.view.addSubview(self.likelabel)
         }
         self.likeButton.addTarget(self, action: Selector("like:"), forControlEvents: .TouchDown)
         self.view.addSubview(self.likeButton)
         
-        self.likelabel = UILabel()
-        self.likelabel.frame=CGRectMake((self.view.frame.size.width/2) - 90, self.view.frame.size.height - 40, 70, 20)
-        self.likelabel.text = "收藏"
-        self.likelabel.font = UIFont(name: "HelveticaNeue-Thin", size: 16.0)
-        self.likelabel.textColor = UIColor.whiteColor()
-        self.view.addSubview(self.likelabel)
+        
         
         
         //点赞按钮
@@ -169,21 +177,19 @@ class DetailViewController: UIViewController,UITextViewDelegate {
     
     func like(button:UIButton){
         if(self.isLike == "0"){
-            self.likeimage = UIImage(named: "已收藏")
-            var vImg1 = UIImageView(image: self.likeimage)
-            vImg1.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
-            self.view.addSubview(vImg1)
+            self.vImg.image = UIImage(named: "已收藏")
+            self.vImg.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
+            self.view.addSubview(self.vImg)
             self.isLike = "1"
             self.building.isFavourite = "YES"
             self.likelabel.text = "已收藏"
-            
             DatabaseService.sharedInstance.insertData(building)
         }
         else{
-            self.likeimage = UIImage(named: "未收藏")
-            var vImg1 = UIImageView(image: self.likeimage)
-            vImg1.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
-            self.view.addSubview(vImg1)
+            self.vImg.image = UIImage(named: "未收藏")
+            self.vImg.frame = CGRect(x:(self.view.frame.size.width/2) - 130,y:self.view.frame.size.height - 40,width:20,height:20)
+            self.view.addSubview(self.vImg)
+            
             self.isLike = "0"
             self.building.isFavourite = "NO"
             self.likelabel.text = "收藏"
