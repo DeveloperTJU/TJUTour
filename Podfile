@@ -6,6 +6,6 @@ target '掌上天大' do
   use_frameworks!
     pod 'BaiduMapKit' #百度地图SDK
   # Pods for 掌上天大
-    pod 'GVRSDK'
+
 
 end
