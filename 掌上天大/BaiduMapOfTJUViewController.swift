@@ -29,8 +29,6 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
         
         poiSearch = BMKPoiSearch()
         currPageIndex = 0
-        //self.sendPoiSearchRequest()
-        
         self.view.addSubview(_mapView!)
     }
     
