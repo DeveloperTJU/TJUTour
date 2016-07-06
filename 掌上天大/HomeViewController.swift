@@ -29,6 +29,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var isCounting = false {
         willSet {
             if newValue {
+                if countdownTimer != nil{
+                    countdownTimer?.invalidate()
+                    countdownTimer = nil
+                }
                 countdownTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateTime:", userInfo: nil, repeats: true)
                 remainingSeconds = 3
             } else {
