@@ -141,6 +141,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     BuildingDict[data["nameinmap"] as! String] = i
                     i += 1
                 }
+                let fav = DatabaseService.sharedInstance.selectFavorite()
+                for data in fav{
+                    for build in Buildings{
+                        if data.id == build.id{
+                            build.isFavourite = "YES"
+                            break
+                        }
+                    }
+                }
                 self.connectionErrorView.removeFromSuperview()
                 self.revealViewController().panGestureRecognizer().enabled = true
                 self.navigationController?.navigationBarHidden = false
