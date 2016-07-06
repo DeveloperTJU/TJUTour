@@ -18,6 +18,7 @@ class SetupViewController: UIViewController,UIAlertViewDelegate {
         if self.revealViewController() != nil {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        self.navigationController!.navigationBar.titleTextAttributes = NavigationBarFont
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
