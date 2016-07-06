@@ -82,10 +82,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
         return [deleteButton]
     }
 
-    
-
-
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = BaseCell()
@@ -116,7 +112,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate,UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailVC = DetailViewController()
-        detailVC.building = Buildings[indexPath.row]
+        detailVC.buildingIndex = indexPath.row
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

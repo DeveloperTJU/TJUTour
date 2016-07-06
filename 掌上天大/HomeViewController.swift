@@ -141,6 +141,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     BuildingDict[data["nameinmap"] as! String] = i
                     i += 1
                 }
+                let fav = DatabaseService.sharedInstance.selectFavorite()
+                for data in fav{
+                    for build in Buildings{
+                        if data.id == build.id{
+                            build.isFavourite = "YES"
+                            break
+                        }
+                    }
+                }
                 self.connectionErrorView.removeFromSuperview()
                 self.revealViewController().panGestureRecognizer().enabled = true
                 self.navigationController?.navigationBarHidden = false
@@ -241,7 +250,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let detailVC = DetailViewController()
-        detailVC.building = Buildings[coverflow.currentItemIndex]
+        detailVC.buildingIndex = coverflow.currentItemIndex
         detailVC.initIndex = indexPath.row
         self.navigationController?.pushViewController(detailVC, animated: true)
     }

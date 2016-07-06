@@ -83,8 +83,7 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
         let index = BuildingDict[mapPoi.text]
         if index != nil {
             let detailVC = DetailViewController()
-            detailVC.building = Buildings[index! as! NSInteger]
-            
+            detailVC.buildingIndex = index;
            self.navigationController?.pushViewController(detailVC, animated: true)
            // addBuildingInfoView(index!, details:true)
         }
