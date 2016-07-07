@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiSearchDelegate  {
     let leftBottom = CLLocationCoordinate2D(latitude: 38.99473,longitude: 117.303725)
     let rightTop = CLLocationCoordinate2D(latitude:39.013053, longitude: 117.334033)
@@ -16,6 +17,7 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
     var _locService: BMKLocationService?
     var poiSearch: BMKPoiSearch!
     var currPageIndex: Int32 = 0
+    var inOrOut = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +52,10 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.sendPoiSearchRequest()
+        if(self.inOrOut == 1){
+            self.inOrOut = 0
+            self.sendPoiSearchRequest()
+        }
         _mapView?.viewWillAppear()
         _mapView?.delegate = self // 此处记得不用的时候需要置nil，否则影响内存的释放
         poiSearch.delegate = self
@@ -91,6 +96,13 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
             _mapView?.centerCoordinate = mapPoi.pt
         }
     }
+    
+    func mapView(mapView: BMKMapView!,didSelectAnnotationView annotation: BMKAnnotationView!){
+        let detailVC = DetailViewController()
+        detailVC.buildingIndex = self.curPosIndex
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+   // (void)selectAnnotation:(id <BMKAnnotation>)annotation animated:(BOOL)animated;
     
  //   func didSelectAnnotationView:(BMKAnnotationView *)
 //    func addBuildingInfoView(index: NSInteger, details: Bool){
@@ -141,11 +153,12 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
         }
         bound.pageIndex = currPageIndex
         bound.pageCapacity = 10
-        self.curPosIndex = -1
+        
         if poiSearch.poiSearchInbounds(bound){
             print("城市内检索发送成功！")
         }else {
             print("城市内检索发送失败！")
+            self.curPosIndex = -1
         }
     }
     // MARK: - BMKPoiSearchDelegate
@@ -171,13 +184,11 @@ class BaiduMapOfTJUViewController: UIViewController, BMKMapViewDelegate, BMKPoiS
             }
             self._mapView?.centerCoordinate = (poiResult.poiInfoList[0] as! BMKPoiInfo).pt
             _mapView!.addAnnotations(annotations)
-            //_mapView!.showAnnotations(annotations, animated: true)
+            _mapView!.showAnnotations(annotations, animated: false)
         } else if errorCode == BMK_SEARCH_AMBIGUOUS_KEYWORD {
             print("检索词有歧义")
         } else {
             // 各种情况的判断……
         }
     }
-    
-    
 }
