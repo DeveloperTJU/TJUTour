@@ -14,7 +14,7 @@ protocol RequestClientDelegate{
 class RequestClient: AFHTTPSessionManager {
     
     var delegate:RequestClientDelegate?
-    static var URL = NSURL(string: "http://101.200.73.189/tjutour/")!
+    static var URL = NSURL(string: "http://localhost/tjutour/")!
 
     class var sharedInstance:RequestClient {
         struct Static {
