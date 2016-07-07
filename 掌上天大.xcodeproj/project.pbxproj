@@ -818,7 +818,7 @@
 					"-framework",
 					"\"SystemConfiguration\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hui.Memo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tju.meettju;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "掌上天大/掌上天大-Bridging-Header.h";
 			};
@@ -889,7 +889,7 @@
 					"-framework",
 					"\"SystemConfiguration\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hui.Memo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tju.meettju;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "掌上天大/掌上天大-Bridging-Header.h";
 			};

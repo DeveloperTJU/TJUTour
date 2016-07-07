@@ -182,7 +182,8 @@ class SearchViewController: UIViewController ,UISearchBarDelegate,UITableViewDel
             DatabaseService.sharedInstance.insertInHistory(self.searchBar.text!)
             //跳转到详情页
             let detailVC = DetailViewController()
-            detailVC.building = currentArr[indexPath.row]
+            let index = BuildingIndexDict[currentArr[indexPath.row].id]
+            detailVC.buildingIndex = index
             self.navigationController?.pushViewController(detailVC, animated: true)
             
         }else if searchState == 1 && indexPath.row > 0{

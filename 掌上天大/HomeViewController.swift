@@ -8,12 +8,7 @@
 
 import UIKit
 
-protocol SearchPosInMap{
-    func sendPoiSearchRequest()
-}
-
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, iCarouselDataSource, iCarouselDelegate {
-    var delegate: SearchPosInMap?
     
     var mainTableView:UITableView!
     var coverflow:iCarousel!
