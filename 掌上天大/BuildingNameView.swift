@@ -56,6 +56,7 @@ class BuildingNameView: UIView {
     
     func openMap(){
         mapVC.curPosIndex = HomeVC.coverflow.currentItemIndex
+        mapVC.inOrOut = 1
         HomeVC.navigationController?.pushViewController(mapVC, animated: true)
         HomeVC.navigationController?.interactivePopGestureRecognizer?.enabled = false
     }

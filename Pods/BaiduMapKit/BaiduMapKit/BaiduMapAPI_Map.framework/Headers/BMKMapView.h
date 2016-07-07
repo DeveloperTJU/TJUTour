@@ -666,7 +666,7 @@ typedef enum {
 - (void)mapView:(BMKMapView *)mapView onClickedBMKOverlayView:(BMKOverlayView *)overlayView;
 
 /**
- *点中底图标注后会回调此接口
+ fz*点中底图标注后会回调此接口
  *@param mapview 地图View
  *@param mapPoi 标注点信息
  */

@@ -26,7 +26,5 @@ class threeDViewController: UIViewController,GVRWidgetViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
 
 }
