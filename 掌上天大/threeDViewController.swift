@@ -17,7 +17,7 @@ class threeDViewController: UIViewController,GVRWidgetViewDelegate {
         panoView.delegate = self
         panoView.enableCardboardButton = true
         panoView.enableFullscreenButton = true
-        panoView.loadImage(UIImage(named: "4"), ofType:.StereoOverUnder)
+        panoView.loadImage(UIImage(named: "andes"), ofType:.StereoOverUnder)
         self.view.addSubview(panoView)
 
     }
