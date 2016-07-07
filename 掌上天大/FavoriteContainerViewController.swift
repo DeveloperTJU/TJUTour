@@ -22,6 +22,9 @@ class FavoriteContainerViewController: SWRevealViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask{
+        return UIInterfaceOrientationMask.Portrait
+    }
 
     /*
     // MARK: - Navigation

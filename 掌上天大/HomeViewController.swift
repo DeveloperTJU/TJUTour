@@ -176,6 +176,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return Buildings.count
     }
     
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask{
+        return UIInterfaceOrientationMask.Portrait
+    }
+    
     func carousel(carousel: iCarousel, viewForItemAtIndex index: Int, reusingView view: UIView?) -> UIView {
         let imageView: UIImageView
         if view != nil {
